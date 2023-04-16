@@ -2,10 +2,15 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 
 PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11'`
+CMD=$(realpath bin/cookiecutter)
 
 
 .PHONY: install
 install: create-venv create-dirs upgrade-pip install-packages install-symlinks
+
+
+.PHONY: update
+update: upgrade-pip install-packages
 
 
 .PHONY: create-venv
@@ -26,12 +31,10 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install glances
+	- bin/pip install --upgrade cookiecutter
 
 
 .PHONY: install-symlinks
 install-symlinks:
-	@echo -e "Create symlink in ${HOME}/bin/cookiecutter"
-	-APP_PATH:=$(realpath bin/cookiecutter) && \
-	cd ~/bin && ln -sf ${APP_PATH} cookiecutter
-
+	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
+	@ cd ~/bin && ln -sf ${CMD}

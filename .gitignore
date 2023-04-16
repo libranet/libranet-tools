@@ -35,6 +35,9 @@ share
 # .env can contain secrets
 /.env
 
+# exclude git-cloned dirs
+repo
+
 # exclude toplevel var-dir
 /var/
 
