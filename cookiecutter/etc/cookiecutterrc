@@ -1,0 +1,17 @@
+# This is a comment.
+# For more information,please see
+#  - <http://cookiecutter.readthedocs.io/en/latest/advanced/user_config.html>
+
+# cookiecutters_dir: "$HOME/.config/cookiecutter/cookiecutters"
+cookiecutters_dir: "../var/cookiecutters"
+
+# replay_dir: "$HOME/.config/cookiecutter/cookiecutters_replay"
+replay_dir: "..var/cookiecutters_replay"
+
+default_context:
+    author_name: "Wouter Vanden Hove"
+    author_email: "wouter@libranet.eu"
+    gitlab_username: "WouterVH"
+
+abbreviations:
+    nz: nz-python-package
