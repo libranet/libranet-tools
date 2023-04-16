@@ -2,16 +2,20 @@
 # For more information,please see
 #  - <http://cookiecutter.readthedocs.io/en/latest/advanced/user_config.html>
 
-# cookiecutters_dir: "$HOME/.config/cookiecutter/cookiecutters"
 cookiecutters_dir: "../var/cookiecutters"
 
-# replay_dir: "$HOME/.config/cookiecutter/cookiecutters_replay"
-replay_dir: "..var/cookiecutters_replay"
+replay_dir: "../var/cookiecutters_replay"
 
 default_context:
     author_name: "Wouter Vanden Hove"
     author_email: "wouter@libranet.eu"
-    gitlab_username: "woutervh"
+    github_username: "woutervh"
+    gitlab_username: "wouter-vanden-hove"
 
 abbreviations:
-    nz: nz-python-package
+    pp: kickstart-python-project
+    python: kickstart-python-project
+
+    pypackage: https://github.com/audreyr/cookiecutter-pypackage.git
+    gh: https://github.com/{0}.git
+    bb: https://bitbucket.org/{0}

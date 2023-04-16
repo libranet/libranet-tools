@@ -3,6 +3,7 @@
 
 PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11'`
 CMD=$(realpath bin/cookiecutter)
+CMD_CRUFT=$(realpath bin/cruft)
 
 
 .PHONY: install
@@ -31,10 +32,13 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade cookiecutter
+	- bin/pip install --upgrade cookiecutter cruft
 
 
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
+
+	@ echo -e "Symlink ${CMD_CRUFT} to ${HOME}/bin/"
+	@ cd ~/bin && ln -sf ${CMD_CRUFT}
