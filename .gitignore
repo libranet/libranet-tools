@@ -38,8 +38,8 @@ share
 # exclude git-cloned dirs
 repo
 
-# exclude toplevel var-dir
-/var/
+# exclude var-dirs
+var/
 
 # excluded generated python-files Byte-compiled / optimized / DLL files
 __pycache__/

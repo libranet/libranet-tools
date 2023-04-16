@@ -9,10 +9,6 @@ URL="https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scann
 install: create-dirs download unzip install-symlinks
 
 
-.PHONY: update
-update: upgrade-pip install-packages
-
-
 .PHONY: create-dirs
 create-dirs:
 	- mkdir -p var

@@ -23,12 +23,22 @@ install:
 	- bin/python -m pip install --upgrade pip
 
 
+.PHONY: create-dirs
+create-dirs:
+	- mkdir -p var
+
+
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade glances
+	# https://github.com/nicolargo/glances
+# - bin/pip install --upgrade glances
+	- bin/pip install  --upgrade 'glances[action,browser,cloud,cpuinfo,docker,export,folders,gpu,graph,ip,raid,snmp,web,wifi]'
+	- bin/pip install  --upgrade sparklines
+	- bin/pip install  --upgrade pySMART
 
 
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
+	@ cd var && ln -sf ~/.cache/glances log

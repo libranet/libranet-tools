@@ -9,7 +9,6 @@ URL="https://neo4j.com/artifact.php?name=neo4j-community-${NEO4J_VERSION}-unix.t
 APOC_VERSION=4.4.0.15
 URL_APOC="https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/${APOC_VERSION}/apoc-${APOC_VERSION}-all.jar"
 
-PROJECT_NAME='instance'
 
 .PHONY: install
 install: create-dirs download-neo4j download-apoc make-instance install-apoc make-symlinks
@@ -45,7 +44,12 @@ install-apoc:
 
 .PHONY: make-symlinks
 make-symlinks:
-	- cd var/instances && ln -fs $(realpath ${NEO4J_VERSION}) current
+	- cd var/instances && ln -fs ${NEO4J_VERSION} current
+	- ln -fs var/instances/current/bin bin
+	- ln -fs var/instances/current/conf etc
+	- cd var && ln -fs instances/current/import import
+	- cd var && ln -fs instances/current/logs log
 
 	# @echo -e "Create symlinks in ${HOME}/bin/"
-	# - cd ~/bin  && ln -fs $(realpath  ${PROJECT_NAME}-${NEO4J_VERSION}/bin/neo4j) neo4j
+	- cd ~/bin  && ln -fs $(realpath var/instances/${NEO4J_VERSION}/bin/neo4j)
+	- cd ~/bin  && ln -fs $(realpath var/instances/${NEO4J_VERSION}/bin/neo4j-admin)
