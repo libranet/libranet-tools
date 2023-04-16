@@ -1,0 +1,7 @@
+# This is a comment.
+
+export PYENV_ROOT="__PYENV_ROOT__"
+
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
+eval "$(pyenv init -)"
