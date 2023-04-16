@@ -1,0 +1,3 @@
+
+# cookiecutter
+export COOKIECUTTER_CONFIG=/opt/tools/cookiecutter/etc/cookiecutterrc

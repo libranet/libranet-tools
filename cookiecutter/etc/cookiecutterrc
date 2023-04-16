@@ -11,7 +11,7 @@ replay_dir: "..var/cookiecutters_replay"
 default_context:
     author_name: "Wouter Vanden Hove"
     author_email: "wouter@libranet.eu"
-    gitlab_username: "WouterVH"
+    gitlab_username: "woutervh"
 
 abbreviations:
     nz: nz-python-package
