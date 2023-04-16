@@ -1,8 +1,8 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
+CMD=$(realpath bin/black)
 PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
-CMD=$(realpath bin/virtualenv)
 
 
 .PHONY: install
@@ -25,7 +25,7 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade virtualenv
+	- bin/pip install --upgrade black
 
 
 .PHONY: install-symlinks

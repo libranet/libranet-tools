@@ -7,15 +7,22 @@ cookiecutters_dir: "../var/cookiecutters"
 replay_dir: "../var/cookiecutters_replay"
 
 default_context:
+    author: "Wouter Vanden Hove"
     author_name: "Wouter Vanden Hove"
     author_email: "wouter@libranet.eu"
+    email: "wouter@libranet.eu"
+    full_name: "Wouter Vanden Hove"
     github_username: "woutervh"
+    github_user: "woutervh"
     gitlab_username: "wouter-vanden-hove"
+    version: "0.1"
 
 abbreviations:
     pp: kickstart-python-project
     python: kickstart-python-project
-
-    pypackage: https://github.com/audreyr/cookiecutter-pypackage.git
-    gh: https://github.com/{0}.git
+    # nz: nz-python-package
+    # wvh: wvh-python-package
     bb: https://bitbucket.org/{0}
+    gh: https://github.com/{0}.git
+    hm: https://github.com/cjolowicz/cookiecutter-hypermodern-python.git --checkout="2022.6.3"
+    pypackage: https://github.com/audreyr/cookiecutter-pypackage.git

@@ -1,9 +1,8 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11'`
-CMD=$(realpath bin/cookiecutter)
-CMD_CRUFT=$(realpath bin/cruft)
+PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
+# PYTHON_VERSION=3.11.2
 
 
 .PHONY: install
@@ -37,8 +36,8 @@ install-packages:
 
 .PHONY: install-symlinks
 install-symlinks:
-	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
-	@ cd ~/bin && ln -sf ${CMD}
+	@ echo -e "Symlink $(realpath bin/cookiecutter) to ${HOME}/bin/"
+	@ cd ~/bin && ln -sf $(realpath bin/cookiecutter)
 
-	@ echo -e "Symlink ${CMD_CRUFT} to ${HOME}/bin/"
-	@ cd ~/bin && ln -sf ${CMD_CRUFT}
+	@ echo -e "Symlink $(realpath bin/cruft) to ${HOME}/bin/"
+	@ cd ~/bin && ln -sf $(realpath bin/cruft)

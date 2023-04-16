@@ -2,7 +2,7 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 
 PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
-CMD=$(realpath bin/virtualenv)
+CMD=$(realpath bin/vendoring)
 
 
 .PHONY: install
@@ -25,7 +25,7 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade virtualenv
+	- bin/pip install --upgrade vendoring
 
 
 .PHONY: install-symlinks
