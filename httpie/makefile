@@ -1,6 +1,8 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
+# https://httpie.io/docs/cli/examples
+
 PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
 
 
