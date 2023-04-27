@@ -10,30 +10,12 @@ We install them in ``/opt/tools``
 sudo chown wouter:wouter /opt
 
 cd /opt
-git clone https://gitlab.com/ek-global/users/wvandenhove/tools.git  tools
+git clone https://github.com/woutervh/tools.git tools
 cd /opt/tools
 ```
 
-
-## Install the various tools
-
-### glances
-See https://nicolargo.github.io/glances/
-
+## Installation
 ```
-cd /opt/tools/glances
-make
-```
-
-### grin
-See https://pypi.org/project/grin3/
-```
-cd /opt/tools/grin
-make
-```
-
-### Neo4J
-```
-cd /opt/tools/neo4j
+cd /opt/tools/<tool-name>
 make install
 ```
