@@ -25,7 +25,7 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade nox
+	- bin/pip install --upgrade nox nox-poetry
 
 
 .PHONY: install-symlinks
