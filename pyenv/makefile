@@ -27,6 +27,9 @@ install-pyenv:
 update-pyenv:
 	${CMD} update
 
+.PHONY: update
+update: update-pyenv
+
 
 .PHONY: create-dirs
 create-dirs:
