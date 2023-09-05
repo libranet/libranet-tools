@@ -38,7 +38,7 @@ install-packages:
 
 
 .PHONY: install-symlinks
-install-symlinks:
+install-symlinks:  create-dirs
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
 	@ cd var && ln -sf ~/.cache/glances log

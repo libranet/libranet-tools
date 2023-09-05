@@ -8,10 +8,13 @@
 # In our makesfiles, use gsed if found, otherwise regular sed.
 SED=`command -v gsed || command -v sed`
 
-PYENV_ROOT=var/repo
+export PYENV_ROOT=var/repo
 TMPDIR=var/tmp
 
+# # PYENV_ROOT="$HOME/.pyenv
+# export PYENV_ROOT='.'
 CMD=$(realpath ${PYENV_ROOT}/libexec/pyenv)
+
 
 
 .PHONY: install

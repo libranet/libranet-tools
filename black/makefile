@@ -2,7 +2,7 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 
 CMD=$(realpath bin/black)
-PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
+PYTHON_VERSION=`pyenv versions --bare |grep '3.11' | tail -n 1`
 
 
 .PHONY: install

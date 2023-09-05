@@ -29,7 +29,7 @@ install-packages:
 
 .PHONY: install-symlinks
 install-symlinks:
-	@ echo -e "Symlink $(realpath bin/black) to ${HOME}/bin/"
+	@ echo -e "Symlink $(realpath bin/pre-commit) to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf $(realpath bin/pre-commit)
 
 

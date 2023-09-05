@@ -1,0 +1,4 @@
+# This is a comment.
+
+# eval "$(oh-my-posh init bash --config ../var/themes/jandedobbeleer.omp.json)"
+eval "$(oh-my-posh init bash --config wvh.omp.json)"
