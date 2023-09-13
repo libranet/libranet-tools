@@ -1,6 +1,29 @@
 # This is a comment.
 
-# Add bin-dir to PATH
-command -v oh-my-posh >/dev/null || export PATH="$BASE_DIR/bin:$PATH"
+# CANONICAL_SCRIPT_DIR=$(readlink -f $(dirname $(readlink -f $0)))
+# echo "CANONICAL_SCRIPT_DIR is $CANONICAL_SCRIPT_DIR"
 
-eval "$(oh-my-posh init bash --config wvh.omp.json)"
+# Add bin-dir to PATH
+# command -v oh-my-posh >/dev/null || export PATH="$BASE_DIR/bin:$PATH"
+
+
+# Function to set the environment name based on the parent directory of VIRTUAL_ENV
+# function set_env_name {
+#     if [ -n "$VIRTUAL_ENV" ]; then
+#         parent_dir=$(dirname "$VIRTUAL_ENV")
+#         env_name=$(basename "$parent_dir")
+#         export ENV_NAME="$env_name"
+#     fi
+# }
+
+# # Alias to run the 'set_env_name' function
+# alias set_posh_context="set_env_name"
+
+
+
+# see https://ohmyposh.dev/docs/installation/prompt
+# eval "$(oh-my-posh init bash)"
+
+# eval "$(oh-my-posh init bash --config /opt/tools/oh-my-posh/etc/wvh.omp.json)"
+# eval "$(oh-my-posh init bash --config /opt/tools/oh-my-posh/var/themes/aliens.omp.json)"
+eval "$(oh-my-posh init bash --config /opt/tools/oh-my-posh/etc/aliens.omp.json)"
