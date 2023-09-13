@@ -5,8 +5,13 @@ PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
 CMD=$(realpath bin/poetry)
 
 
+.PHONY: clean
+clean:
+	rm -fr bin include lib lib64 pyvenv.cfg
+
+
 .PHONY: install
-install: create-venv upgrade-pip install-packages install-extensions install-symlinks
+install: create-venv upgrade-pip install-packages install-extensions install-symlinks 
 
 
 .PHONY: update
@@ -48,14 +53,15 @@ install-extensions:
 	@ echo -e "Installing poetry-plugin: poetry-relax."
 	- bin/poetry self add poetry-relax
 
-    # see https://github.com/topenkoff/poetry-release
-	@ echo -e "Installing poetry-plugin: poetry-release."
-	- bin/poetry self add poetry-release
-
     # see https://github.com/tiangolo/poetry-version-plugin
 	@ echo -e "Installing poetry-plugin: poetry-version-plugin."
 	- bin/poetry self add poetry-version-plugin
 
+
+# see https://github.com/topenkoff/poetry-release
+# broken https://github.com/topenkoff/poetry-release/issues/6
+# @ echo -e "Installing poetry-plugin: poetry-release."
+# - bin/poetry self add poetry-release
 
 .PHONY: install-symlinks
 install-symlinks:

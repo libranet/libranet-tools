@@ -1,5 +1,6 @@
 # This is a comment.
 
-# command -v oh-my-posh >/dev/null || export PATH="$BASE_DIR/bin:$PATH"
+# Add bin-dir to PATH
+command -v oh-my-posh >/dev/null || export PATH="$BASE_DIR/bin:$PATH"
 
 eval "$(oh-my-posh init zsh --config wvh.omp.json)"

@@ -7,7 +7,7 @@ CMD=$(realpath bin/oh-my-posh)
 BASE_DIR := $(CURDIR)
 
 .PHONY: install
-install: create-dirs install-executable install-themes install-symlinks 
+install: create-dirs install-executable install-themes install-symlinks enable-bashrc enable-zshrc download-fonts
 
 
 .PHONY: create-dirs
@@ -36,19 +36,22 @@ install-themes:
 	chmod u+rw var/themes/*.omp.*
 
 
+.PHONY: install-symlinks
+install-symlinks:
+	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
+	@ cd ~/bin && ln -sf ${CMD}
+
+
 .PHONY: enable-bashrc
 enable-bashrc: 
 	echo -e '\n\nsource ${BASE_DIR}/etc/bashrc' >> ~/.bashrc
+
 
 .PHONY: enable-zshrc
 enable-zshrc: 
 	echo -e '\n\nsource ${BASE_DIR}/etc/zshrc' >> ~/.zshrc
 
 
-
-
-
-.PHONY: install-symlinks
-install-symlinks:
-	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
-	@ cd ~/bin && ln -sf ${CMD}
+.PHONY: download-fonts
+download-fonts: 
+	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip var/tmp

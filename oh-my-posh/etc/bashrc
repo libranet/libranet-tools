@@ -1,4 +1,6 @@
 # This is a comment.
 
-# eval "$(oh-my-posh init bash --config ../var/themes/jandedobbeleer.omp.json)"
+# Add bin-dir to PATH
+command -v oh-my-posh >/dev/null || export PATH="$BASE_DIR/bin:$PATH"
+
 eval "$(oh-my-posh init bash --config wvh.omp.json)"
