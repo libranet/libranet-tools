@@ -34,6 +34,14 @@ install-packages:
 	- bin/pip install --upgrade cookiecutter cruft
 
 
+.PHONY: install-configfile
+install-configfile:
+	@echo -e "Copying etc/cookiecutterrc.template to etc/cookiecutterrc" ;\
+	cp -n etc/cookiecutterrc.template etc/cookiecutterrc ;\
+	echo "Please review the config in etc/cookiecutterrc."
+	@echo -e "Replacing string __BASE_DIR__ -> $(PWD)" ;\
+	$(SED) -i 's@__BASE_DIR__@'"$(PWD)"'@'   etc/cookiecutterrc
+
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink $(realpath bin/cookiecutter) to ${HOME}/bin/"
