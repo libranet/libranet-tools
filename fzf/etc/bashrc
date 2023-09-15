@@ -1,6 +1,5 @@
 # see https://github.com/junegunn/fzf
 
-echo -e "HELLO FZF"
 # see https://github.com/junegunn/fzf#environment-variables
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 
