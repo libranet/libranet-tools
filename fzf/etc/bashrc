@@ -1,0 +1,13 @@
+# see https://github.com/junegunn/fzf
+
+echo -e "HELLO FZF"
+# see https://github.com/junegunn/fzf#environment-variables
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+
+# Auto-completion
+# [[ $- == *i* ]] && source "/opt/tools/fzf/repo/shell/completion.bash" 2> /dev/null
+[[ $- == *i* ]] && source "/../repo/shell/completion.bash" 2> /dev/null
+
+# Key bindings
+# source "/opt/tools/fzf/repo/shell/key-bindings.bash"
+# source "../repo/shell/key-bindings.bash"

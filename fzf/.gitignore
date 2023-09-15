@@ -22,6 +22,8 @@
 
 repo/
 
+etc/*-orig
+
 # archived files
 # /_archive/
 

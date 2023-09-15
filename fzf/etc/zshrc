@@ -1,0 +1,15 @@
+# see https://github.com/junegunn/fzf
+
+# see https://github.com/junegunn/fzf#environment-variables
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+
+# Setup fzf
+# if [[ ! "$PATH" == */opt/tools/fzf/repo/bin* ]]; then
+#   PATH="${PATH:+${PATH}:}/opt/tools/fzf/repo/bin"
+# fi
+
+# Auto-completion
+[[ $- == *i* ]] && source ".../repo/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+# source "/opt/tools/fzf/repo/shell/key-bindings.zsh"
