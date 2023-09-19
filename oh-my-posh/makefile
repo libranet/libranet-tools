@@ -10,6 +10,10 @@ BASE_DIR := $(CURDIR)
 install: create-dirs install-executable install-themes install-symlinks enable-bashrc enable-zshrc download-fonts
 
 
+.PHONY: update
+update: install-executable
+
+
 .PHONY: create-dirs
 create-dirs:
 	- mkdir -p bin
