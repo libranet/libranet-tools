@@ -7,7 +7,7 @@ We install them in ``/opt/tools``
 ## Deploy in /opt
 
 ```
-sudo chown wouter:wouter /opt
+sudo chown $USER:$USER /opt
 
 cd /opt
 git clone https://github.com/woutervh/tools.git tools
