@@ -2,7 +2,7 @@
 # For more information,please see
 #  - <http://cookiecutter.readthedocs.io/en/latest/advanced/user_config.html>
 
-# relative pths will be relative to $CWD
+# relative paths will be relative to $CWD.
 cookiecutters_dir: "/opt/tools/cookiecutter/var/cookiecutters"
 
 replay_dir: "/opt/tools/cookiecutter/var/cookiecutters_replay"
