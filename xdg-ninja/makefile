@@ -1,9 +1,13 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
+.PHONY: clean
+clean:
+	- rm -fr bin repo
+
 
 .PHONY: install
-install: create-dirs clone-repo install-symlinks
+install: create-dirs clone-repo install-symlinks install-glow
 
 
 .PHONY: update
@@ -31,3 +35,9 @@ install-symlinks:
 	- cd bin && ln -sf $(realpath repo/xdg-ninja.sh)
 	@ echo -e "Symlink $(realpath repo/xdg-ninja.sh) to ${HOME}/bin/"
 	- cd ~/bin && ln -sf $(realpath repo/xdg-ninja.sh)
+
+
+.PHONY: install-glow
+install-glow:
+	- sudo etc/charm.repo /etc/yum.repos.d/
+	- sudo dnf install glow

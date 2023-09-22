@@ -1,0 +1,8 @@
+# see https://github.com/charmbracelet/glow
+
+[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.charm.sh/yum/gpg.key
