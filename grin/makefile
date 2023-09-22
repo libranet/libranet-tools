@@ -5,6 +5,10 @@ PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11'| tail -n 1`
 CMD=$(realpath bin/grin)
 
 
+.PHONY: clean
+clean:
+	- rm -fr bin include lib lib64 pyvenv.cfg
+
 .PHONY: install
 install: create-venv upgrade-pip install-packages install-symlinks
 

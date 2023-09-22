@@ -7,6 +7,13 @@
 THIS_DIR=$(realpath .)
 
 
+.PHONY: clean
+clean:
+	- rm -fr bin 
+	- rm -fr releases
+	- rm -fr var
+
+
 .PHONY: install
 install: create-dirs download-and-install install-symlinks
 
@@ -36,10 +43,3 @@ install-symlinks:
 
 	@ echo -e "Symlink $(realpath bin/aws_completer) to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf $(realpath bin/aws_completer)
-
-
-.PHONY: clean
-clean:
-	- rm -fr bin 
-	- rm -fr releases
-	- rm -fr var

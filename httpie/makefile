@@ -6,6 +6,10 @@
 PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
 
 
+.PHONY: clean
+clean:
+	- rm -fr bin include lib lib64 pyvenv.cfg share
+
 .PHONY: install
 install: create-venv upgrade-pip install-packages install-symlinks
 
@@ -40,8 +44,3 @@ install-symlinks:
 	- cd ~/bin && ln -sf $(realpath bin/httpie)
 	- cd ~/bin && ln -sf $(realpath bin/http)
 	- cd ~/bin && ln -sf $(realpath bin/https)
-
-
-.PHONY: clean
-clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg

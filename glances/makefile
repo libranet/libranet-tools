@@ -5,6 +5,11 @@ CMD=$(realpath bin/glances)
 PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
 
 
+.PHONY: clean
+clean:
+	- rm -fr bin include lib lib64 pyvenv.cfg share
+
+
 .PHONY: install
 install: create-venv upgrade-pip install-packages install-symlinks
 
@@ -31,7 +36,7 @@ create-dirs:
 .PHONY: install-packages
 install-packages:
 	# https://github.com/nicolargo/glances
-# - bin/pip install --upgrade glances
+    # - bin/pip install --upgrade glances
 	- bin/pip install  --upgrade 'glances[action,browser,cloud,cpuinfo,docker,export,folders,gpu,graph,ip,raid,snmp,web,wifi]'
 	- bin/pip install  --upgrade sparklines
 	- bin/pip install  --upgrade pySMART
