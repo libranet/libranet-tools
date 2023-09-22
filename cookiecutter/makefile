@@ -42,6 +42,7 @@ install-configfile:
 	@echo -e "Replacing string __BASE_DIR__ -> $(PWD)" ;\
 	$(SED) -i 's@__BASE_DIR__@'"$(PWD)"'@'   etc/cookiecutterrc
 
+
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink $(realpath bin/cookiecutter) to ${HOME}/bin/"

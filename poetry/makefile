@@ -67,3 +67,4 @@ install-extensions:
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
+	@ && ln -sf ~/.config/pypoetry etc
