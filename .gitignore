@@ -22,7 +22,7 @@
 # archived files
 /_archive/
 
-# dev-symlinks to .venv to make bin/python work
+# # dev-symlinks to .venv to make bin/python work
 bin
 lib
 lib64
