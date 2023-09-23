@@ -2,6 +2,12 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 
 # see https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+
+
+# https://github.com/hashicorp/terraform/pull/31952
+# https://github.com/hashicorp/terraform/issues/15389
+# generates unwanted $HOME/.terraform.d/checkpoint_signature
+
 # .PHONY: clean
 # clean:
 # 	- rm -fr bin include lib lib64 pyvenv.cfg
@@ -9,10 +15,6 @@
 
 .PHONY: install
 install: add-repo install-rpm install-autocomplete install-docs
-
-
-# .PHONY: update
-# update: 
 
 
 .PHONY: add-repo
