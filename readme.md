@@ -19,3 +19,19 @@ cd /opt/tools
 cd /opt/tools/<tool-name>
 make install
 ```
+
+
+## python setup
+
+
+```
+  > cd /opt/tools/pyenv
+  > make install
+  > pyenv --help
+```
+
+```
+  > cd /opt/tools/poetry
+  > make install
+  > poetry --help
+```
