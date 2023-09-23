@@ -1,4 +1,9 @@
 
+
+# export ANSIBLE_HOME="$HOME/.config/ansible"
+export ANSIBLE_HOME="/opt/tools/ansible/var/home"
+
+
 # https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#control-node-requirements
 # eval $(register-python-argcomplete ansible)
 # eval $(register-python-argcomplete ansible-config)

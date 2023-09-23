@@ -11,11 +11,16 @@ clean:
 
 
 .PHONY: install
-install: create-venv upgrade-pip install-packages install-symlinks
+install: create-venv upgrade-pip install-packages create-dirs install-symlinks
 
 
 .PHONY: update
 update: upgrade-pip install-packages
+
+
+.PHONY: create-dirs
+create-dirs:
+	- mkdir -p var/home
 
 
 .PHONY: create-venv

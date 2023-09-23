@@ -9,23 +9,6 @@
       "alignment": "left",
       "type": "prompt",
       "segments": [
-
-        // {
-        //   "background": "#E0E0E0",
-        //   "background_templates": [
-        //     "{{ if gt .Code 0 }}#ff0044{{ end }}"
-        //   ],
-        //   "foreground": "#EF7D00",
-        //   "properties": {
-        //     "always_enabled": false
-        //   },
-        //   "style": "plain",
-        //   "template": " {{ if gt .Code 0 }}\uf00d{{ else }}\uf00c{{ end }} ",
-        //   "type": "exit"
-        // }
-
-
-  
         {
           "background": "#EF7D00",
           "background_templates": [
@@ -43,34 +26,22 @@
           "trailing_diamond": "\ue0b4",  // rounded closing
           "template": "{{ path .Path .Location }} ",  // clickable path
           "type": "path"
-        },
-
-    
-        {
-          "background": "#FF6471",
-          "foreground": "#ffffff",
-          "leading_diamond": "<transparent,background>\ue0b0</>",
-          "style": "diamond",
-          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
-          "trailing_diamond": "\ue0b4",
-          "type": "python"
         }
-
-        
       ]
     },
-
 
     {	  
       "type": "rprompt",
       "segments": [
       {
-        "type": "python",
-        "style": "powerline",
-        "powerline_symbol": "\uE0B0",
+        "type": "python",  // see https://ohmyposh.dev/docs/segments/python
+        "style": "diamond",
+        "powerline_symbol": "\ue0b0",
+        "leading_diamond": "\ue0b6",  // rounded opening
+        // "trailing_diamond": "\ue0b4", // rounded closing
         "foreground": "#FFD43B",
         "background": "#306998",
-        "template": " \uE235 {{ .Full }} ",  
+        "template": "\uE235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ env `ENV_NAME` }}{{ end }} (v{{ .Full }}){{ end }} ",
         "properties": {
               "display_default": true,
               "fetch_virtual_env": true,
@@ -79,7 +50,6 @@
               "display_mode": "environment"
         }
       },
-
       {
         "background": "#E0E0E0",
         "foreground": "#424242",
@@ -93,16 +63,14 @@
           "fetch_upstream_icon": true
         },
         "style": "powerline",
-        "template": " [{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }}<#BD6200> \uf044 {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#053F22> \uf046 {{ .Staging.String }}</>{{ end }}] ",
+        "template": "[{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }}<#BD6200> \uf044 {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#053F22> \uf046 {{ .Staging.String }}</>{{ end }}] ",
         "type": "git"
       }
        ]
-  
      }
 
-
   ],
-  "tooltips": [
+  "tooltips": [  // see https://ohmyposh.dev/docs/configuration/tooltips
     {
       "type": "git",
       "tips": ["git", "g"],
