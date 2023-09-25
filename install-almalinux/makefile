@@ -19,13 +19,23 @@ update:
 .PHONY: add-repo-epel
 add-repo-epel: 
     # https://www.linuxcapable.com/how-to-install-enable-epel-epel-next-on-almalinux-9/
-    sudo dnf upgrade --refresh -y
-    sudo dnf config-manager --set-enabled crb
-    sudo dnf install -y \
+	sudo dnf upgrade --refresh -y
+	sudo dnf config-manager --set-enabled crb
+	sudo dnf install -y \
         https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
         https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm
+	# https://linux.how2shout.com/enable-crb-code-ready-builder-powertools-in-almalinux-9/
+	sudo dnf config-manager --set-enabled crb
 
 
+install-wslu:
+	# see https://linux.how2shout.com/enable-crb-code-ready-builder-powertools-in-almalinux-9/
+	# ensure data is correct: sudo date --set "2023-09-25 10:00:00
+	sudo dnf update
+	sudo dnf install yum-utils
+	sudo dnf config-manager --set-enabled crb
+	sudo dnf copr enable wslutilities/wslu -y
+	sudo dnf instll wslu
 
 .PHONY: install-packages
 install-packages:

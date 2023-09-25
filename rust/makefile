@@ -1,8 +1,8 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-CARGO_HOME=$(realpath .)
-RUSTUP_HOME=${CARGO_HOME}/rustup
+export CARGO_HOME=$(realpath .)
+export RUSTUP_HOME=${CARGO_HOME}/rustup
 
 
 .PHONY: install

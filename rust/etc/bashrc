@@ -1,4 +1,10 @@
 # rust
 export CARGO_HOME=/opt/tools/rust
 export RUSTUP_HOME=/opt/tools/rust/rustup
-export PATH="$CARGO_HOME/bin:$PATH"
+
+# ensure add directories to PATH once
+# export PATH="$CARGO_HOME/bin:$PATH"
+
+if ! [[ "$PATH" =~ "$CARGO_HOME/bin" ]]; then
+    export PATH="$CARGO_HOME/bin:$PATH"
+fi
