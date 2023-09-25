@@ -23,7 +23,8 @@ install: create-dirs install-pyenv update-pyenv install-local-symlinks install-s
 
 .PHONY: install-pyenv
 install-pyenv:
-	curl https://pyenv.run | bash
+	# curl https://pyenv.run | bash
+	curl -s -S -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 
 
 .PHONY: update-pyenv
