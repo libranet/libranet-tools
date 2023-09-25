@@ -9,7 +9,7 @@ clean:
 
 
 .PHONY: install
-install: create-venv install-packages install-symlinks
+install: add-repo-epel install-packages install-wslu install-symlinks
 
 
 .PHONY: update
@@ -35,7 +35,8 @@ install-wslu:
 	sudo dnf install yum-utils
 	sudo dnf config-manager --set-enabled crb
 	sudo dnf copr enable wslutilities/wslu -y
-	sudo dnf instll wslu
+	sudo dnf install wslu
+
 
 .PHONY: install-packages
 install-packages:
