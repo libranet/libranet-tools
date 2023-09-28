@@ -3,7 +3,7 @@
 
 NVM_DIR=$(realpath .)/repo
 
-VERSION=v0.39.3
+VERSION=v0.39.5
 URL="https://raw.githubusercontent.com/nvm-sh/nvm/${VERSION}/install.sh"
 
 
@@ -15,8 +15,6 @@ install: create-dirs install-nvm
 
 .PHONY: install-nvm
 install-nvm:
-# - curl https://sh.rustup.rs -sSf | sh
-# - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 	- curl -o- ${URL} | bash
 
 
@@ -24,8 +22,12 @@ install-nvm:
 .PHONY: create-dirs
 create-dirs:
 	# - mkdir -p etc
+	- mkdir -p bin
 	- mkdir -p repo
-	- mkdir -p var
+	- mkdir -p var/cache
+	- mkdir -p var/repo
+	- mkdir -p var/tmp
+
 
 .PHONY: install-symlinks
 install-symlinks:
@@ -60,7 +62,3 @@ install-node-18:
 install-node-19:
 	nvm install 19
 	nvm which 19
-
-
-nvm which 19                                                                                                                                                                                                                           main 
-/home/wouter/.config/nvm/versions/node/v19.9.0/bin/node

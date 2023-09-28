@@ -30,7 +30,7 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade virtualenv
+	- bin/pip install --upgrade virtualenv autoread_dotenv
 
 
 .PHONY: install-symlinks

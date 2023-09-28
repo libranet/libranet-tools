@@ -32,8 +32,8 @@ share
 # exclude actual virtual-environment
 /.venv/
 
-# .env can contain secrets
-/.env
+# .env-files can contain secrets
+.env
 
 # exclude git-cloned dirs
 repo
