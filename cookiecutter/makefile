@@ -36,7 +36,7 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade cookiecutter cruft
+	- bin/pip install --upgrade cookiecutter cruft autoread-dotenv
 
 
 .PHONY: install-configfile

@@ -11,7 +11,7 @@ clean:
 
 
 .PHONY: install
-install: create-venv upgrade-pip install-packages install-symlinks
+install: create-venv create-dirs upgrade-pip install-packages install-symlinks
 
 
 .PHONY: update
@@ -23,6 +23,11 @@ create-venv:
 	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
 
 
+.PHONY: create-dirs
+create-dirs:
+	- mkdir -p var/cache
+
+
 .PHONY: upgrade-pip
 install:
 	- bin/python -m pip install --upgrade pip
@@ -30,7 +35,7 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade virtualenv autoread_dotenv
+	- bin/pip install --upgrade virtualenv autoread-dotenv
 
 
 .PHONY: install-symlinks

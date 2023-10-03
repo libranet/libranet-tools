@@ -16,9 +16,14 @@ TMPDIR=var/tmp
 CMD=$(realpath ${PYENV_ROOT}/libexec/pyenv)
 
 
+PHONY: pre-install
+pre-install:
+	# - for i in $(cat etc/rpm.txt);do sudo dnf install $i -y; done	
+	- for i in $$(grep -vE '^\s*(#|$)' etc/rpm.txt); do sudo dnf install "$$i" -y; done
+
 
 .PHONY: install
-install: create-dirs install-pyenv update-pyenv install-local-symlinks install-symlinks bashrc-install-from-example bashrc-set-dir
+install: create-dirs install-pyenv update-pyenv install-plugins install-local-symlinks install-symlinks bashrc-install-from-example bashrc-set-dir
 
 
 .PHONY: install-pyenv
@@ -54,6 +59,13 @@ install-local-symlinks: create-dirs
 	@ echo -e "Symlink ${CMD} to bin/"
 	@ cd bin && ln -sf ${CMD}
 
+
+.PHONY: install-plugins
+install-plugins:
+	# see https://github.com/pyenv/pyenv-ccache
+	- git clone https://github.com/pyenv/pyenv-ccache.git $(PYENV_ROOT)/plugins/pyenv-ccache
+	# see https://github.com/pyenv/pyenv-users
+	- git clone https://github.com/pyenv/pyenv-users.git "$(PYENV_ROOT)/plugins/pyenv-users"
 
 
 .PHONY: bashrc-install-from-example  ## instantiate the bashrc-file (no override)

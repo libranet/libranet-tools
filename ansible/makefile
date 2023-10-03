@@ -39,7 +39,7 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade ansible
+	- bin/pip install --upgrade ansible autoread-dotenv
 
 
 .PHONY: install-symlinks
