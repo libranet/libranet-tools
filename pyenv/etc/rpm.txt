@@ -1,13 +1,23 @@
-gcc
+# see https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 
-sudo dnf groupinstall "Development Tools" -y
+# sudo dnf groupinstall "Development Tools" -y
 
-bzip2
+
+make 
+gcc 
+patch 
+
+bzip2 
 bzip2-devel 
-libffi-devel
+gdbm-libs 
+libffi-devel 
+libnsl2
+libuuid-devel 
 openssl-devel 
-readline-devel
-sqlite-devel
-tk-devel
+readline-devel 
+sqlite 
+sqlite-devel 
+tk-devel 
+xz-devel 
 zlib 
 zlib-devel 

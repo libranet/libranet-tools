@@ -1,6 +1,11 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
+# If .ONESHELL is mentioned as a target, then when a target is built
+# all lines of the recipe will be given to a single invocation of the
+# shell rather than each line being invoked separately.
+.ONESHELL:
+
 # See https://stackoverflow.com/questions/19456518/error-when-using-sed-with-find-command-on-os-x-invalid-command-code
 # By default MacOS does not use GNU Sed, but a different less-compatible sed-implemenation that
 # easily triggers following error: 'invalid command code'.
@@ -16,14 +21,20 @@ TMPDIR=var/tmp
 CMD=$(realpath ${PYENV_ROOT}/libexec/pyenv)
 
 
-PHONY: pre-install
-pre-install:
-	# - for i in $(cat etc/rpm.txt);do sudo dnf install $i -y; done	
-	- for i in $$(grep -vE '^\s*(#|$)' etc/rpm.txt); do sudo dnf install "$$i" -y; done
+.PHONY: clean
+clean:
+	- rm -fr var
 
 
 .PHONY: install
-install: create-dirs install-pyenv update-pyenv install-plugins install-local-symlinks install-symlinks bashrc-install-from-example bashrc-set-dir
+install: install-rpm-packages create-dirs install-pyenv update-pyenv install-plugins install-local-symlinks install-symlinks bashrc-install-from-example bashrc-set-dir
+
+
+.PHONY: install-rpm-packages
+install-rpm-packages:
+	# - for i in $(cat etc/rpm.txt);do sudo dnf install $i -y; done	
+	# - for i in $$(grep -vE '^\s*(#|$)' etc/rpm.txt); do sudo dnf install "$$i" -y; done
+	- ../bin/install-rpm.sh etc/rpm.txt
 
 
 .PHONY: install-pyenv
@@ -50,6 +61,7 @@ create-dirs:
 
 .PHONY: install-symlinks
 install-symlinks:
+	mkdir -p ${HOME}/bin
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
 
@@ -95,18 +107,18 @@ pyenv-installed-versions:
 
 
 .PHONY: pyenv-install-python-3-10-10 ## install python 3.10.10
-pyenv-install-3-10-7:
+pyenv-install-python-3-10-7:
 	bin/pyenv install -v 3.10.10
 
 
-.PHONY: pyenv-install-python-3-11-2 ## install python 3.11.2
-pyenv-install-3-11-2:
-	bin/pyenv install -v 3.11.2
+.PHONY: pyenv-install-python-3-11-5 ## install python 3.11.5
+pyenv-install-python-3-11-5:
+	bin/pyenv install -v 3.11.5
 
 
-.PHONY: pyenv-install-python-3-11-3 ## install python 3.11.3
-pyenv-install-3-11-3:
-	bin/pyenv install -v 3.11.3
+.PHONY: pyenv-install-python-3-11-6 ## install python 3.11.6
+pyenv-install-python-3-11-6:
+	bin/pyenv install -v 3.11.6
 
 
 .PHONY: pyenv-install-python-latest-38 ## install python 3.8.x
@@ -122,12 +134,15 @@ pyenv-install-python-latest-39:
 
 
 .PHONY: pyenv-install-python-latest-310 ## install python 3.10.x
-pyenv-install-python-latest-310:
-	PYTHON_VERSION=$(bin/pyenv install --list | egrep '^[[:space:]]*3\.10' | tail -n 1)
-	bin/pyenv install -v ${PYTHON_VERSION}
+pyenv-install-python-latest-310: ## Install the latest Python 3.10.x
+	PYTHON_VERSION=$$(bin/pyenv install --list | grep -E '^[[:space:]]*3\.10' | tail -n 1); \
+	bin/pyenv install -v $${PYTHON_VERSION}
+
+#pyenv-install-python-latest-310:
+#	PYTHON_VERSION=$(bin/pyenv install --list | egrep '^[[:space:]]*3\.10' | tail -n 1)
+#	bin/pyenv install -v ${PYTHON_VERSION}
 
 
 .PHONY: pyenv-install-python-latest-311 ## install python 3.11.x
 pyenv-install-python-latest-311:
-	PYTHON_VERSION=$(bin/pyenv install --list | egrep '^[[:space:]]*3\.11' | tail -n 1)
-	bin/pyenv install -v ${PYTHON_VERSION}
+	PYTHON_VERSION=$(bin/pyenv install --list | egrep '^[[:space:]]*3\.11' | tail -n 1) && bin/pyenv install -v ${PYTHON_VERSION}

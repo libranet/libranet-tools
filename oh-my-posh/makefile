@@ -36,7 +36,7 @@ install-themes:
 	# install themes
 	mkdir -p var/themes
 	wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O  var/tmp/themes.zip
-	unzip  var/tmp/themes.zip -d  var/themes
+	unzip var/tmp/themes.zip -d var/themes
 	chmod u+rw var/themes/*.omp.*
 
 
@@ -58,4 +58,4 @@ enable-zshrc:
 
 .PHONY: download-fonts
 download-fonts: 
-	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip var/tmp
+	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip -P var/tmp

@@ -1,9 +1,8 @@
-
 #!/bin/bash
 
 # Check if the input file exists
-if [ ! -f package_list.txt ]; then
-    echo "Package list file 'package_list.txt' not found."
+if [ ! -f "$1" ]; then
+    echo "Package list file '$1' not found."
     exit 1
 fi
 
@@ -11,7 +10,7 @@ fi
 while read -r package_name; do
     if [ -n "$package_name" ]; then
         echo "Installing $package_name..."
-        
+
         # Use the appropriate package manager (dnf, yum, or rpm) based on your distribution
         if command -v dnf &>/dev/null; then
             sudo dnf install -y "$package_name"
@@ -30,5 +29,4 @@ while read -r package_name; do
             echo "Error installing $package_name."
         fi
     fi
-done < package_list.txt
-
+done < "$1"
