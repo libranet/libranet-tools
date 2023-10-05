@@ -11,25 +11,28 @@ PYTHON_VERSION=`pyenv versions --bare |grep '3.11' | tail -n 1`
 .PHONY: clean
 clean:
 	- rm -fr bin include lib lib64 pyvenv.cfg
+	- rm -fr var
 
 
 .PHONY: install
-install: create-venv upgrade-pip install-packages install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks
 
 
 .PHONY: update
 update: upgrade-pip install-packages
 
 
-.PHONY: create-venv
-create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
-
 .PHONY: create-dirs
 create-dirs:
 	- mkdir -p etc
 	- mkdir -p etc/themes
-	- mkdir -p var
+	- mkdir -p var/cache
+
+
+.PHONY: create-venv
+create-venv:
+	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+
 
 .PHONY: upgrade-pip
 install:

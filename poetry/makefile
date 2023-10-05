@@ -7,7 +7,8 @@ CMD=$(realpath bin/poetry)
 
 .PHONY: clean
 clean:
-	rm -fr bin include lib lib64 pyvenv.cfg
+	- rm -fr bin include lib lib64 pyvenv.cfg
+	- rm -fr var
 
 
 .PHONY: install
@@ -21,7 +22,6 @@ update: upgrade-pip install-packages poetry-update
 .PHONY: create-dirs
 create-dirs:
 	- mkdir -p var/cache
-	- mkdir -p var/log
 	- mkdir -p var/tmp
 
 

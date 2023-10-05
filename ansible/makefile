@@ -12,10 +12,11 @@ BIN_DIR=$(realpath bin/)
 .PHONY: clean
 clean:
 	- rm -fr bin include lib lib64 pyvenv.cfg
+	- rm -fr var
 
 
 .PHONY: install
-install: create-venv upgrade-pip install-packages create-dirs install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks
 
 
 .PHONY: update
