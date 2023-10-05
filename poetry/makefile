@@ -29,7 +29,7 @@ create-dirs:
 create-venv:
 	# - PYENV_VERSION=${PYTHON_VERSION} python -m venv .
 	# pyenv global 3.11.5
-	- python3 venv .
+	- python3 -m venv .
 
 
 .PHONY: upgrade-pip
