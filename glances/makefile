@@ -11,7 +11,7 @@ clean:
 
 
 .PHONY: install
-install: create-venv upgrade-pip install-packages install-symlinks
+install: create-venv create-dirs upgrade-pip install-packages install-symlinks
 
 
 .PHONY: update
@@ -30,8 +30,9 @@ install:
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var
-
+	- mkdir -p var/cache
+	- mkdir -p var/log
+	- mkdir -p var/tmp
 
 .PHONY: install-packages
 install-packages:
