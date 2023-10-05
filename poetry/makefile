@@ -2,6 +2,7 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 
 # PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
+SED=`command -v gsed || command -v sed`
 CMD=$(realpath bin/poetry)
 
 
@@ -87,3 +88,8 @@ install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
 	@ && ln -sf ~/.config/pypoetry etc
+
+
+.PHONY: check
+check:
+	- bin/poetry --version
