@@ -11,16 +11,11 @@ clean:
 
 
 .PHONY: install
-install: create-venv create-dirs upgrade-pip install-packages install-extensions install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-extensions install-dotenv install-symlinks
 
 
 .PHONY: update
 update: upgrade-pip install-packages poetry-update
-
-
-.PHONY: create-venv
-create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
 
 
 .PHONY: create-dirs
@@ -29,6 +24,12 @@ create-dirs:
 	- mkdir -p var/log
 	- mkdir -p var/tmp
 
+
+.PHONY: create-venv
+create-venv:
+	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+
+
 .PHONY: upgrade-pip
 install:
 	- bin/python -m pip install --upgrade pip
@@ -36,6 +37,7 @@ install:
 
 .PHONY: install-packages
 install-packages:
+	- bin/pip install --upgrade autoread-dotenv
 	- bin/pip install --upgrade poetry
 
 
@@ -68,6 +70,15 @@ install-extensions:
 # broken https://github.com/topenkoff/poetry-release/issues/6
 # @ echo -e "Installing poetry-plugin: poetry-release."
 # - bin/poetry self add poetry-release
+
+.PHONY: install-dotenv
+install-dotenv:
+	@echo -e "Copying .env.template to .env" ;\
+	cp -n .env.template .env ;\
+	echo "Please review the config in .env"
+	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
+
 
 .PHONY: install-symlinks
 install-symlinks:
