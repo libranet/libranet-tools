@@ -7,7 +7,7 @@ CMD=$(realpath bin/oh-my-posh)
 BASE_DIR := $(CURDIR)
 
 .PHONY: install
-install: create-dirs install-executable install-themes install-symlinks enable-bashrc enable-zshrc download-fonts
+install: create-dirs install-executable install-themes install-symlinks download-fonts
 
 
 .PHONY: update
