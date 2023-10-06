@@ -1,8 +1,8 @@
 # rust
 
-export CARGO_HOME=/opt/tools/rust/var/cargo
+export CARGO_HOME=__CARGO_HOME__
 
-export RUSTUP_HOME=/opt/tools/rust/var/rustup
+export RUSTUP_HOME=__RUSTUP_HOME__
 
 # ensure add directories to PATH once
 # if ! [[ "$PATH" =~ "$CARGO_HOME/bin" ]]; then

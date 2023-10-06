@@ -19,31 +19,9 @@
 
 #   - Symlinks are always files, even if they point to a dir. So never put a / at the end.
 
-env
 
-rustup/
+# generated from template
+etc/bashrc
 
-# archived files
-# /_archive/
-
-# # dev-symlinks to .venv to make bin/python work
-# bin
-# lib
-# lib64
-# pyvenv.cfg
-# share
-
-# # exclude actual virtual-environment
-# /.venv/
-
-# # .env can contain secrets
-# /.env
-
-# # exclude git-cloned dirs
-# repo
-
-# # exclude toplevel var-dir
-# /var/
-
-# # excluded generated python-files Byte-compiled / optimized / DLL files
-# __pycache__/
+# exclude toplevel var-dir
+/var/

@@ -1,4 +1,0 @@
-# rust
-export CARGO_HOME=/opt/tools/rust
-export RUSTUP_HOME=/opt/tools/rust/rustup
-export PATH="$CARGO_HOME/bin:$PATH"
