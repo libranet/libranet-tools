@@ -21,7 +21,6 @@ update: upgrade-pip install-packages
 
 .PHONY: create-venv
 create-venv:
-	# - PYENV_VERSION=${PYTHON_VERSION} python -m venv .
 	- python3 -m venv .
 
 

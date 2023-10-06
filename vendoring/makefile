@@ -1,7 +1,6 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
 CMD=$(realpath bin/vendoring)
 
 
@@ -20,7 +19,7 @@ update: upgrade-pip install-packages
 
 .PHONY: create-venv
 create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+	- python3 -m venv .
 
 
 .PHONY: upgrade-pip
