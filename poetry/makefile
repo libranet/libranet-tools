@@ -22,7 +22,7 @@ update: upgrade-pip install-packages poetry-update
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/cache
+	- mkdir -p var/cache/poetry
 	- mkdir -p var/tmp
 
 
