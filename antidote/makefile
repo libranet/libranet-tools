@@ -26,6 +26,7 @@ create-dirs:
 .PHONY: update
 update:
 	- cd var/repo && git pull
+	- bin/antidote update
 
 
 .PHONY: clone-repo
