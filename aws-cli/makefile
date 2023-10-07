@@ -10,7 +10,6 @@ THIS_DIR=$(realpath .)
 .PHONY: clean
 clean:
 	- rm -fr bin 
-	- rm -fr releases
 	- rm -fr var
 
 
@@ -18,18 +17,18 @@ clean:
 install: create-dirs download-and-install install-symlinks
 
 
+.PHONY: create-dirs
+create-dirs:
+	- mkdir -p bin
+	- mkdir -p var/releases
+	- mkdir -p var/tmp
+
+
 .PHONY: download-and-install
 download-and-install:
 	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "var/tmp/awscliv2.zip"
 	unzip var/tmp/awscliv2.zip -d var/tmp
-	var/tmp/aws/install --bin-dir ${THIS_DIR}/bin --install-dir ${THIS_DIR}/releases --update
-
-
-.PHONY: create-dirs
-create-dirs:
-	- mkdir -p var/tmp
-	- mkdir -p bin
-	- mkdir -p releases
+	var/tmp/aws/install --bin-dir ${THIS_DIR}/bin --install-dir ${THIS_DIR}/var/releases --update
 
 
 .PHONY: update
