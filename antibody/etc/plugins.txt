@@ -1,0 +1,19 @@
+# This is a comment.
+# This file is managed manually by Wouter.
+# After updating this file, you need to execute:
+#   > bin/update-antibody-zsh-plugins.sh
+#   > antibody bundle < ~/.config/zsh/plugins.txt  > ~/.config/zsh/plugins.zsh
+
+
+# python-based  causes sitecustomize to run twice
+# djui/alias-tips
+
+robbyrussell/oh-my-zsh path:lib
+robbyrussell/oh-my-zsh path:themes/robbyrussell.zsh-theme
+
+# https://github.com/romkatv/powerlevel10k#antibody
+romkatv/powerlevel10k
+
+zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting

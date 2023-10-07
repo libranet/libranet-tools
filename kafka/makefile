@@ -3,9 +3,9 @@
 
 # https://kafka.apache.org/documentation.html 
 
-KAFKA_VERSION=4.4.19
-URL="https://dlcdn.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz"
-
+SCALA_VERSION=2.13
+KAFKA_VERSION=3.5.1
+URL="https://downloads.apache.org/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz"
 
 .PHONY: install
 install: create-dirs download-kafka make-instance make-symlinks
@@ -21,21 +21,21 @@ create-dirs:
 
 .PHONY: download-kafka
 download-kafka:
-	- wget --no-clobber ${URL} -O var/downloads/neo4j-community-${KAFKA_VERSION}-unix.tar.gz
-	- cd var/downloads/ && tar -xzf neo4j-community-${KAFKA_VERSION}-unix.tar.gz
+	curl -sSf ${URL} --output var/downloads/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz
+	- cd var/downloads/ && tar -xzf kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz
 
 
 .PHONY: make-instance
 make-instance:
-	- mv var/downloads/neo4j-community-${KAFKA_VERSION} var/instances/${KAFKA_VERSION}
+#	- mv var/downloads/neo4j-community-${KAFKA_VERSION} var/instances/${KAFKA_VERSION}
 
 
 .PHONY: make-symlinks
 make-symlinks:
-	- cd var/instances && ln -fs ${KAFKA_VERSION} current
-	- ln -fs var/instances/current/bin bin
-	- ln -fs var/instances/current/conf etc
-	- cd var && ln -fs instances/current/logs log
+#	- cd var/instances && ln -fs ${KAFKA_VERSION} current
+#	- ln -fs var/instances/current/bin bin
+#	- ln -fs var/instances/current/conf etc
+#	- cd var && ln -fs instances/current/logs log
 
 	# @echo -e "Create symlinks in ${HOME}/bin/"
 	# - cd ~/bin  && ln -fs $(realpath var/instances/${KAFKA_VERSION}/bin/neo4j)
