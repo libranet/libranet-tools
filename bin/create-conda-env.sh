@@ -4,14 +4,14 @@ set -e  # failing commands cause the shell script to exit immediately
 
 # get parameters from the input
 ENV_NAME=${1}
-PYTHON=${2:-3.7}   # set default python-version to 3.7
+PYTHON=${2:-3.11}   # set default python-version to 3.11
 
 
 function help_() {  # don't shadow help-builtin
     echo "Usage:"
     echo "    >>> $0 <env-name> <python-version>"
     echo "Example:"
-    echo "    >>> $0 b2c2 3.7"
+    echo "    >>> $0 project-foo 3.11"
     echo ""
     echo "You need to provide an env-name for your new conda-environment."
     exit
@@ -51,6 +51,7 @@ function create_dir_structure() {
     echo -e "Creating basic directory-structure.\n"
     mkdir -p $ENV_DIR/etc
     mkdir -p $ENV_DIR/src
+    mkdir -p $ENV_DIR/var/cache
     mkdir -p $ENV_DIR/var/log
     mkdir -p $ENV_DIR/var/run
     mkdir -p $ENV_DIR/var/tmp

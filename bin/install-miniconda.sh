@@ -24,27 +24,25 @@
 #       cache-pip/   # cached pip-packages
 
 # set -x  # enable for verbose output
-set -e  # failing commands cause the shell script to exit immediately
+set -e # failing commands cause the shell script to exit immediately
 
 CANONICAL_SCRIPT_DIR=$(readlink -f "$(dirname "$(readlink -f "$0")")")
 MINICONDA_INSTALLER=$(mktemp -t miniconda3-latest-linux-x86_64.sh-XXXXXXXXXX)
 MINICONDA_DOWNLOAD_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
 NOW=$(date +"%Y-%m-%d %H:%M:S")
 
-A=1   # current step-number
-B=12  # total number of steps
+A=1  # current step-number
+B=12 # total number of steps
 
+check_64bit() {
+    ARCHITECTURE=$(uname -m)
 
-check_64bit () {
-  ARCHITECTURE=$(uname -m)
-
-  if [[ "$ARCHITECTURE" == "x86_64" ]]; then
-      :  # pass in bash
-  else
-      echo -e "Architecture $ARCHITECTURE not supported. We expect x86_64"
-  fi
+    if [[ "$ARCHITECTURE" == "x86_64" ]]; then
+        : # pass in bash
+    else
+        echo -e "Architecture $ARCHITECTURE not supported. We expect x86_64"
+    fi
 }
-
 
 check_required_executables() {
     check_ok
@@ -54,7 +52,7 @@ check_required_executables() {
     echo -e ""
     for EXECUTABLE in "${REQUIRED_EXECUTABLES[@]}"; do
         if hash "$EXECUTABLE" 2>/dev/null; then
-            :  # pass in bash
+            : # pass in bash
         else
             echo -e "Executable $EXECUTABLE not found on PATH."
             MISSING=true
@@ -68,7 +66,6 @@ check_required_executables() {
     fi
 }
 
-
 check_args() {
     check_ok
     if [[ "$#" -eq 0 ]]; then
@@ -81,7 +78,6 @@ check_args() {
     fi
     PREFIX=$(realpath -s "$1")
 }
-
 
 check_for_active_conda_env() {
     check_ok
@@ -98,7 +94,6 @@ check_for_active_conda_env() {
         exit 1
     fi
 }
-
 
 check_path() {
     check_ok
@@ -118,7 +113,6 @@ check_path() {
     fi
 }
 
-
 create_prefix_dir() {
     check_ok
 
@@ -128,12 +122,11 @@ create_prefix_dir() {
         echo -e "\nStep $A/$B: Creating new directory $PREFIX."
         mkdir -p "$PREFIX"
     fi
-    ((A=A+1))
+    ((A = A + 1))
 
 }
 
-
-create_dir_home_bin(){
+create_dir_home_bin() {
     check_ok
     BIN_DIR="$HOME/bin"
 
@@ -143,10 +136,9 @@ create_dir_home_bin(){
         echo -e "\nStep $A/$B: Creating new directory $BIN_DIR."
         mkdir -p "$BIN_DIR"
     fi
-    ((A=A+1))
+    ((A = A + 1))
 
 }
-
 
 download_miniconda() {
     check_ok
@@ -154,10 +146,9 @@ download_miniconda() {
     echo -e "This might take a while.\n"
     # curl --insecure "$MINICONDA_DOWNLOAD_URL" --output "$MINICONDA_INSTALLER"
     curl "$MINICONDA_DOWNLOAD_URL" --output "$MINICONDA_INSTALLER"
-    ((A=A+1))
+    ((A = A + 1))
 
 }
-
 
 install_miniconda() {
     check_ok
@@ -165,18 +156,17 @@ install_miniconda() {
     chmod u+x "$MINICONDA_INSTALLER"
     bash "$MINICONDA_INSTALLER" -b -u -p "$PREFIX"
     mv "$MINICONDA_INSTALLER" "$PREFIX/bin/miniconda3-latest-linux-x86_64.sh"
-    ((A=A+1))
+    ((A = A + 1))
 
 }
 
-
-create_condarc(){
+create_condarc() {
     check_ok
     echo -e "\nStep $A/$B: Generating $PREFIX/condarc"
-    ((A=A+1))
+    ((A = A + 1))
 
-   # do not quote END_OF_FILE to allow variable-substitution
-   cat > "$PREFIX/condarc" << END_OF_FILE
+    # do not quote END_OF_FILE to allow variable-substitution
+    cat >"$PREFIX/condarc" <<END_OF_FILE
 # This is a comment.
 # For more information about this file see:
 # https://conda.io/docs/user-guide/configuration/use-condarc.html
@@ -200,17 +190,16 @@ pkgs_dirs:
 END_OF_FILE
 }
 
-
 create_pip_config() {
     check_ok
     echo -e "\nStep $A/$B: Generating $PREFIX/pip.conf"
-    ((A=A+1))
+    ((A = A + 1))
 
     echo -e "\tCreating cache-dir $PREFIX/var/cache-pip"
     mkdir -p "$PREFIX/var/cache-pip"
 
-   # do not quote END_OF_FILE to allow variable-substitution
-   cat > "$PREFIX/pip.conf" << END_OF_FILE
+    # do not quote END_OF_FILE to allow variable-substitution
+    cat >"$PREFIX/pip.conf" <<END_OF_FILE
 # This is a comment.
 #
 # For more information, please see:
@@ -243,7 +232,6 @@ timeout = 10
 END_OF_FILE
 }
 
-
 #create_symlinks(){  # too naive implementation
 #    check_ok
 #    echo -e "\nStep $1/$2: Creating symlinks in $HOME/bin/conda"
@@ -254,17 +242,17 @@ END_OF_FILE
 #    done
 #}
 
-create_safe_symlinks(){
+create_safe_symlinks() {
     check_ok
     echo -e "\nStep $A/$B: Creating symlinks in $HOME/bin/"
-    ((A=A+1))
-    FILES=("conda" "conda-env" "activate" "deactivate", "mamba", "mamba-package")
+    ((A = A + 1))
+    FILES=("conda" "conda-env" "activate" "deactivate", "mamba", "mamba-package", "micromamba")
 
     for F in "${FILES[@]}"; do
 
-        TARGET_FILENAME="$HOME/bin/$F"   # /home/<user>/bin/foo.sh
+        TARGET_FILENAME="$HOME/bin/$F" # /home/<user>/bin/foo.sh
 
-        if [[ ! -f "$TARGET_FILENAME" ]] ; then
+        if [[ ! -f "$TARGET_FILENAME" ]]; then
             # if the target-symlink does not yet exist, just create it.
             echo -e "          Creating symlink $TARGET_FILENAME, pointing to $PREFIX/bin/$F"
             ln -sf "$PREFIX/bin/$F" "$TARGET_FILENAME"
@@ -272,24 +260,24 @@ create_safe_symlinks(){
 
         else
             # if the target-symlink does already exist, do not overwrite, pick another available symlink-name
-            TARGET_DIR=$(dirname "$TARGET_FILENAME")       # /home/<user>/bin/
-            BASENAME=$(basename -- "$TARGET_FILENAME")     # foo.sh
-            EXT="${BASENAME##*}"         # .sh
+            TARGET_DIR=$(dirname "$TARGET_FILENAME")   # /home/<user>/bin/
+            BASENAME=$(basename -- "$TARGET_FILENAME") # foo.sh
+            EXT="${BASENAME##*}"                       # .sh
 
             # cfr https://unix.stackexchange.com/questions/253524/dirname-and-basename-vs-parameter-expansion
             case ${BASENAME##*/} in
-                (?*.*) EXT=".${BASENAME##*.}";;  # foo.xyz
-                (*) EXT="";;                       # foo, without extension
+            ?*.*) EXT=".${BASENAME##*.}" ;; # foo.xyz
+            *) EXT="" ;;                    # foo, without extension
             esac
 
-            BASENAME="${BASENAME%.*}"            # foo.
+            BASENAME="${BASENAME%.*}" # foo.
 
             i=""
-            if [[ -e ${TARGET_DIR}/${BASENAME}${EXT} ]] ; then
+            if [[ -e ${TARGET_DIR}/${BASENAME}${EXT} ]]; then
                 i=2
-                while [[ -e ${TARGET_DIR}/${BASENAME}-${i}${EXT} ]] ; do
-#                    echo -e "          There already exists a file $TARGET_DIR/$fBASENAME-$i$EXT"
-                    (( i++ ))
+                while [[ -e ${TARGET_DIR}/${BASENAME}-${i}${EXT} ]]; do
+                    #                    echo -e "          There already exists a file $TARGET_DIR/$fBASENAME-$i$EXT"
+                    ((i++))
                 done
             fi
             NEW_TARGET=${TARGET_DIR}/${BASENAME}-${i}${EXT}
@@ -303,35 +291,33 @@ create_safe_symlinks(){
     done
 }
 
-
 update_conda_itself() {
     check_ok
     echo -e "\nStep $A/$B: Updating the conda-package itself via 'conda update -n base -c defaults conda'"
     "$PREFIX/bin/conda" update -n base -c defaults conda --yes
-    ((A=A+1))
+    ((A = A + 1))
 }
-
 
 update_conda_packages() {
     check_ok
     echo -e "\nStep $A/$B: Updating the other conda-packages via 'conda update --all'"
     "$PREFIX/bin/conda" update --all --yes
-    ((A=A+1))
+    ((A = A + 1))
 }
-
 
 install_conda_packages() {
     check_ok
     echo -e "\nStep $A/$B: Installing conda-packages in the base-environment"
     "$PREFIX/bin/conda" install conda-build --name base --yes
     "$PREFIX/bin/conda" install mamba --name base --channel conda-forge --yes
-    ((A=A+1))
+    "$PREFIX/bin/conda" install micromamba --name base --channel conda-forge --yes
+    ((A = A + 1))
 }
 
 copy_helper_scripts() {
     check_ok
     echo -e "\nStep $A/$B: Copying helper-scripts from $CANONICAL_SCRIPT_DIR to $HOME/bin/"
-    ((A=A+1))
+    ((A = A + 1))
 
     SCRIPTS=(create-miniconda-env.sh)
     for SCRIPT in "${SCRIPTS[@]}"; do
@@ -346,7 +332,6 @@ copy_helper_scripts() {
     done
 }
 
-
 add_to_bashrc() {
     echo -e ""
     echo -e "Step $A/$B: Adding following to ~/.bashrc:"
@@ -360,11 +345,10 @@ add_to_bashrc() {
         echo -e "export MINICONDA_PREFIX=\"$PREFIX\""
         echo -e "alias sa=\"source $PREFIX/bin/activate\"   # could shadow /usr/sbin/sa"
         echo -e "alias sd=\"source $PREFIX/bin/deactivate\""
-    } >> ~/.bashrc
-    ((A=A+1))
+    } >>~/.bashrc
+    ((A = A + 1))
 
 }
-
 
 print_final_message() {
     echo -e ""
@@ -376,7 +360,6 @@ print_final_message() {
     echo -e "\n\n"
 }
 
-
 check_ok() {
     if [[ "$?" -ne "0" ]]; then
         echo -e ""
@@ -384,7 +367,6 @@ check_ok() {
         exit $?
     fi
 }
-
 
 # start main-script
 trap check_ok EXIT

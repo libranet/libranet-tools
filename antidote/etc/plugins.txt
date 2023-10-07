@@ -4,6 +4,7 @@
 #   > bin/update-antibody-zsh-plugins.sh
 #   > antibody bundle < ~/.config/zsh/plugins.txt  > ~/.config/zsh/plugins.zsh
 
+# https://github.com/unixorn/awesome-zsh-plugins
 
 # python-based  causes sitecustomize to run twice
 # djui/alias-tips
@@ -16,4 +17,9 @@ romkatv/powerlevel10k
 
 zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
-zsh-users/zsh-syntax-highlighting
+
+# zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
+
+# https://github.com/fourdim/zsh-poetry
+fourdim/zsh-poetry

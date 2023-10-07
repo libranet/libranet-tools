@@ -28,7 +28,6 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	# - PYENV_VERSION=${PYTHON_VERSION} python -m venv .
 	# pyenv global 3.11.5
 	- python3 -m venv .
 
@@ -52,21 +51,21 @@ poetry-update:
 .PHONY: install-extensions
 install-extensions:
 
-    # see https://pypi.org/project/poetry-dynamic-versioning/
-	@ echo -e "Installing poetry-plugin: poetry-dynamic-versioning."
-	- bin/poetry self add "poetry-dynamic-versioning[plugin]"
+ 	# see https://pypi.org/project/poetry-dynamic-versioning/
+	# @ echo -e "Installing poetry-plugin: poetry-dynamic-versioning."
+	# - bin/poetry self add "poetry-dynamic-versioning[plugin]"
 
-    # see https://github.com/python-poetry/poetry-plugin-export
-	@ echo -e "Installing poetry-plugin: poetry-plugin-export."
-	- bin/poetry self add poetry-plugin-export
+	# see https://github.com/python-poetry/poetry-plugin-export
+	#@ echo -e "Installing poetry-plugin: poetry-plugin-export."
+	#- bin/poetry self add poetry-plugin-export
 
-    # https://github.com/madkinsz/poetry-relax
-	@ echo -e "Installing poetry-plugin: poetry-relax."
-	- bin/poetry self add poetry-relax
+	# https://github.com/madkinsz/poetry-relax
+	#@ echo -e "Installing poetry-plugin: poetry-relax."
+	#- bin/poetry self add poetry-relax
 
-    # see https://github.com/tiangolo/poetry-version-plugin
-	@ echo -e "Installing poetry-plugin: poetry-version-plugin."
-	- bin/poetry self add poetry-version-plugin
+	# see https://github.com/tiangolo/poetry-version-plugin
+	# @ echo -e "Installing poetry-plugin: poetry-version-plugin."
+	# - bin/poetry self add poetry-version-plugin
 
 
 # see https://github.com/topenkoff/poetry-release
@@ -87,7 +86,7 @@ install-dotenv:
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
-	@ && ln -sf ~/.config/pypoetry etc
+	# @ cd ~/bin && ln -sf ~/.config/pypoetry etc
 
 
 .PHONY: check

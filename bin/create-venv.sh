@@ -3,20 +3,18 @@
 
 # get parameters from the input
 ENV_NAME=${1}
-V310=`~/bin/pyenv versions --bare |grep '3.10'`
-PYTHON_VERSION=${2:-$V310}   # set default python-version to 3.10
-
+V311=$(~/bin/pyenv versions --bare | grep '3.11')
+PYTHON_VERSION=${2:-$V311} # set default python-version to 3.11
 
 function help() {
     echo "Usage:"
     echo "    >>> $0 <env-name> <python-version>"
     echo "Example:"
-    echo "    >>> $0 osn 3.10"
+    echo "    >>> $0 project-foo 3.11"
     echo ""
     echo "You need to provide an env-name for your new pyenv-environment."
     exit
 }
-
 
 function check_pyenv_executable() {
     if [ ! -f "$HOME/bin/pyenv" ]; then
@@ -30,7 +28,6 @@ function check_pyenv_executable() {
     fi
 }
 
-
 function create_pyenv() {
     # "$HOME/bin/pyenv" create --yes python="$PYTHON" -n "$ENV_NAME"
     PYENV_VERSION=${PYTHON_VERSION} python -m venv "$ENV_NAME"
@@ -43,9 +40,8 @@ function create_pyenv() {
 
 }
 
-
-function on_exit () {
-    if [ "$?" != "0" ] ; then
+function on_exit() {
+    if [ "$?" != "0" ]; then
         echo "There were some failures, please check the logfile or output above."
     else
         echo "All went fine."
@@ -53,7 +49,6 @@ function on_exit () {
     echo
     exit $?
 }
-
 
 # start main program
 trap on_exit EXIT
