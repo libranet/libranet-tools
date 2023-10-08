@@ -33,8 +33,6 @@ download-installer:
 
 .PHONY: run-installer
 run-installer:
-	TMPDIR := $(shell readlink -f var/tmp)
-	- echo "Using TMPDIR: $(TMPDIR)"
 	- bin/install-starship.sh --bin-dir bin --yes --verbose
 
 
@@ -42,4 +40,3 @@ run-installer:
 install-symlinks:
 	@ echo -e "Symlink $(realpath bin/starhip) to ${HOME}/bin/"
 	- cd ~/bin && ln -sf $(realpath bin/starship)
-

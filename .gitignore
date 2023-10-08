@@ -36,6 +36,10 @@ _archive/
 # .env-files can contain secrets
 .env
 
+# exclude older files
+*.old
+*-old
+
 # exclude git-cloned dirs
 repo
 

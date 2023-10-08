@@ -9,7 +9,6 @@
 SED=`command -v gsed || command -v sed`
 
 CMD=$(realpath bin/semgrep)
-PYTHON_VERSION=`pyenv versions --bare |grep '3.11' | tail -n 1`
 
 
 .PHONY: clean
@@ -28,7 +27,7 @@ update: upgrade-pip install-packages
 
 .PHONY: create-venv
 create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+	- python3 -m venv .
 
 
 .PHONY: create-dirs

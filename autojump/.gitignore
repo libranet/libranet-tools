@@ -1,0 +1,7 @@
+
+
+# exclde generated dirs
+/etc/profile.d/
+/functions/
+/share/
+

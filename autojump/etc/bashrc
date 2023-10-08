@@ -1,0 +1,3 @@
+  [[ -s /opt/tools/autojump/etc/profile.d/autojump.sh ]] && source /opt/tools/autojump/etc/profile.d/autojump.sh
+
+

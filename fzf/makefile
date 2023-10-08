@@ -5,25 +5,40 @@
 
 THIS_DIR=$(realpath .)
 
+.PHONY: clean
+clean:
+	- rm -fr bin
+	- rm -fr var
+
 .PHONY: install
-install: checkout-repo install-fzf create-symlinks move-dotfiles
+install: create-dirs clone-repo install-fzf create-symlinks move-dotfiles
+
+
+.PHONY: create-dirs
+create-dirs:
+	- mkdir -p bin
+	- mkdir -p var
+
+
+.PHONY: clone-repo
+clone-repo:
+	- git clone --depth 1 https://github.com/junegunn/fzf.git var/repo || git pull
 
 
 .PHONY: install-fzf
 install-fzf:
-	- cd repo && ./install
+	- cd var/repo && ./install
 
 
 .PHONY: update
 update:
-	- cd repo && git pull && ./install
+	- cd var/repo && git pull && ./install
 
 
 .PHONY: create-symlinks
 create-symlinks:
-	- ln -sf repo/bin bin
-	- @ cd ~/bin && ln -sf ${THIS_DIR}/repo/bin/fzf
-	- @ cd ~/bin && ln -sf ${THIS_DIR}/repo/bin/fzf-tmux
+	- @ cd ~/bin && ln -sf ${THIS_DIR}/var/repo/bin/fzf
+	- @ cd ~/bin && ln -sf ${THIS_DIR}/var/repo/bin/fzf-tmux
 
 
 .PHONY: move-dotfiles
