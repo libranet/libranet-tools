@@ -34,7 +34,7 @@ install: install-rpm-packages create-dirs install-pyenv update-pyenv install-plu
 install-rpm-packages:
 	# - for i in $(cat etc/rpm.txt);do sudo dnf install $i -y; done	
 	# - for i in $$(grep -vE '^\s*(#|$)' etc/rpm.txt); do sudo dnf install "$$i" -y; done
-	- ../bin/install-rpm.sh etc/rpm.txt
+	# - ../bin/install-rpm.sh etc/rpm.txt
 
 
 .PHONY: install-pyenv
