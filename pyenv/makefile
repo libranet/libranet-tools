@@ -32,7 +32,7 @@ install: install-rpm-packages create-dirs install-pyenv update-pyenv install-plu
 
 .PHONY: install-rpm-packages
 install-rpm-packages:
-	# - for i in $(cat etc/rpm.txt);do sudo dnf install $i -y; done	
+	# - for i in $(cat etc/rpm.txt);do sudo dnf install $i -y; done
 	# - for i in $$(grep -vE '^\s*(#|$)' etc/rpm.txt); do sudo dnf install "$$i" -y; done
 	# - ../bin/install-rpm.sh etc/rpm.txt
 
@@ -40,12 +40,13 @@ install-rpm-packages:
 .PHONY: install-pyenv
 install-pyenv:
 	# curl https://pyenv.run | bash
-	curl -s -S -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+	curl -s -S -L -f https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 
 
 .PHONY: update-pyenv
 update-pyenv:
 	${CMD} update
+
 
 .PHONY: update
 update: update-pyenv

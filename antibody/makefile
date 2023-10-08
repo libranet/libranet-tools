@@ -31,7 +31,7 @@ update: install
 
 .PHONY: download-installer
 download-installer:
-	- curl -sfL https://git.io/antibody -o bin/install-antibody.sh
+	- curl -fsLS https://git.io/antibody -o bin/install-antibody.sh
 	- chmod u+x bin/install-antibody.sh
 
 

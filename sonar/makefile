@@ -17,7 +17,8 @@ create-dirs:
 
 .PHONY: download
 download:
-	curl --silent ${URL} --output "var/downloads/${VERSION}.zip"
+	# curl ${URL} --silent --show-error --location --fail --output "var/downloads/${VERSION}.zip"
+	curl ${URL} -sSLf --output "var/downloads/${VERSION}.zip"
 
 
 .PHONY: unzip

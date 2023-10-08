@@ -29,7 +29,7 @@ create-dirs:
 .PHONY: download
 download:
 	@ echo -e "Download ${DOWNLOAD_URL} to bin/hadolint"
-	@ curl -S ${DOWNLOAD_URL} --output bin/hadolint
+	curl -sSLf ${DOWNLOAD_URL} --output bin/hadolint
 	@ chmod u+x bin/hadolint
 
 

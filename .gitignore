@@ -19,17 +19,18 @@
 
 #   - Symlinks are always files, even if they point to a dir. So never put a / at the end.
 
-# archived files
-/_archive/
+# archive-folders
+_archive/
 
-# # dev-symlinks to .venv to make bin/python work
-bin
-lib
-lib64
-pyvenv.cfg
-share
+# dev-symlinks to .venv to make bin/python work
+*/bin
+*/include
+*/lib
+*/lib64
+*/pyvenv.cfg
+*/share
 
-# exclude actual virtual-environment
+# virtual-environment
 /.venv/
 
 # .env-files can contain secrets

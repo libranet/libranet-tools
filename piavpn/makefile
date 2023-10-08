@@ -30,14 +30,14 @@ update:
 
 .PHONY: download-installer
 download-installer:
-	- curl -sS ${DOWNLOAD_URL} > install-pia.run
-	- chmod u+x install-pia.run
+	- curl -sSLf ${DOWNLOAD_URL} --output bin/install-pia.run
+	- chmod u+x bin/install-pia.run
 
 
 .PHONY: run-installer
 run-installer:
 	@ echo -e "Using TMPDIR: ${TMPDIR}"
-	./install-pia.run --accept --confirm --keep --target var/piavpn
+	bin/install-pia.run --accept --confirm --keep --target var/piavpn
 
 
 .PHONY: update-pia

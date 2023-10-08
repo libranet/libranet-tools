@@ -38,7 +38,7 @@ update: update-rust
 
 .PHONY: download-installer
 download-installer:
-	- curl -sS https://sh.rustup.rs > ${CARGO_HOME}/bin/install-rust.sh
+	- curl -fsLS https://sh.rustup.rs --output ${CARGO_HOME}/bin/install-rust.sh
 	- chmod u+x ${CARGO_HOME}/bin/install-rust.sh
 
 

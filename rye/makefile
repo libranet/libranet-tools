@@ -5,11 +5,11 @@
 .ONESHELL:
 
 .PHONY: install
-install: 
-	export RYE_HOME=$(realpath .) 
-	export RYE_VERSION='latest' 
-	export RYE_INSTALL_OPTION='--yes' 
-	curl -sSf https://rye-up.com/get | bash
+install:
+	export RYE_HOME=$(realpath .)
+	export RYE_VERSION='latest'
+	export RYE_INSTALL_OPTION='--yes'
+	curl -fsLS https://rye-up.com/get | bash
 
 
 .PHONY: update
@@ -19,6 +19,6 @@ update:
 
 .PHONY: install-symlinks
 install-symlinks:
-	export RYE_HOME=$(realpath .) 
+	export RYE_HOME=$(realpath .)
 	@ echo -e "Symlink ${RYE_HOME}/shims/rye to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${RYE_HOME}/shims/rye

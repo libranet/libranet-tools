@@ -12,7 +12,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs download-installer run-installer install-symlinks 
+install: create-dirs download-installer run-installer install-symlinks
 
 
 .PHONY: update
@@ -27,7 +27,7 @@ create-dirs:
 
 .PHONY: download-installer
 download-installer:
-	- curl -sS https://starship.rs/install.sh > bin/install-starship.sh 
+	- curl -sSLf https://starship.rs/install.sh > bin/install-starship.sh
 	- chmod u+x bin/install-starship.sh
 
 
@@ -36,7 +36,7 @@ run-installer:
 	TMPDIR := $(shell readlink -f var/tmp)
 	- echo "Using TMPDIR: $(TMPDIR)"
 	- bin/install-starship.sh --bin-dir bin --yes --verbose
-	
+
 
 .PHONY: install-symlinks
 install-symlinks:
