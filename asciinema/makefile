@@ -2,7 +2,7 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 
 SED=`command -v gsed || command -v sed`
-CMD=$(realpath bin/asciiinema)
+CMD=$(realpath bin/asciinema)
 
 
 .PHONY: clean
