@@ -1,0 +1,27 @@
+# This is a comment.
+# file-syntax:
+#   - indent with 4 spaces
+#   - sort keys alphabetically
+
+# For more information about this file see:
+# https://conda.io/docs/user-guide/configuration/use-condarc.html
+
+add_pip_as_python_dependency: True  # default is True
+
+auto_update_conda: False  # default is True
+
+always_yes: False  # default is False
+
+channels:
+    - defaults
+    - conda-forge
+
+envs_dirs:
+    - __CWD__/envs
+
+pkgs_dirs:
+    - __CDW__/var/cache
+
+show_channel_urls: True  # default is False
+
+ssl_verify: False

@@ -1,0 +1,29 @@
+# This is a comment.
+#
+# For more information, please see:
+#   - http://docs.python-guide.org/en/latest/dev/pip-virtualenv/
+#   - https://pip.pypa.io/en/stable/user_guide/#config-file
+#
+# Config-files can be located in:
+#   - /etc/pip.conf
+#   - ~/.config/pip/pip.conf (~/./pip/pip.conf is deprecated)
+#   - /opt/conda/envs/<env-name>/pip.conf
+
+[global]
+# index = https://nexus..../repository/pypi-all/pypi
+# index-url = https://nexus.../repository/pypi-all/simple
+# extra-index-url = https://pypi.org/simple
+
+
+# cfr. https://github.com/pypa/pip/issues/2850
+cache-dir = /opt/conda/var/cache-pip
+
+timeout = 30
+
+trusted-host =
+    pypi.org
+    files.pythonhosted.org
+
+
+[freeze]
+timeout = 10
