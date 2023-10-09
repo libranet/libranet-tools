@@ -34,25 +34,31 @@ install: create-dirs download-jenkins install-symlinks
 .PHONY: create-dirs  ## create dirs
 create-dirs:
 	@ mkdir -p bin
+	@ mkdir -p var/releases
 	@ mkdir -p var/tmp
 
 
 .PHONY: download-jenkins  ## download jenkins-warfile
 download-jenkins:
-	@ echo -e "\nDownloading ${DOWNLOAD_URL} to var:\n"
-	curl -SLf ${DOWNLOAD_URL} --output var/${FILENAME}
-	@ chmod u+x var/${FILENAME}
+	@ echo -e "\nDownloading jenkins:\n"
+	@ mkdir -p var/releases/${VERSION}
+	curl -SLf ${DOWNLOAD_URL} --output var/releases/${VERSION}/${FILENAME}
+	@ chmod u+x var/releases/${VERSION}/${FILENAME}
 
 
 .PHONY: install-symlinks  ##install symlinks
 install-symlinks:
-#	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
-	@ cd ~/bin && ln -sf ${CMD} jenkins
+	@ ln -s var/releases/${VERSION}/${FILENAME} jenkins.war
 
 
 .PHONY: start
 start:
 	java -jar var/jenkins.war
+
+
+.PHONY: jenkins-help
+jenkins-help:
+	java -jar jenkins.war --help
 
 
 .PHONY: open-browser

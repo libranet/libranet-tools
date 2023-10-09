@@ -1,0 +1,4 @@
+
+
+# ignore toplevel symlink 
+/jenkins.war
