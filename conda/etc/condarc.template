@@ -24,4 +24,5 @@ pkgs_dirs:
 
 show_channel_urls: True  # default is False
 
-ssl_verify: False
+# ssl_verify: False
+ssl_verify: true
