@@ -1,0 +1,3 @@
+# https://www.jenkins.io/doc/book/installing/war-file/
+# https://docs.cloudbees.com/docs/cloudbees-ci/latest/backup-restore/jenkins-home
+export JENKINS_HOME="/opt/tools/jenkins/var/home"
