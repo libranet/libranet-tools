@@ -48,6 +48,7 @@ install:  \
 	download-installer \
 	install-miniconda \
 	install-dotenv \
+	install-pipconf \
 	install-condarc \
 	install-bashrc \
 	install-pip-packages \
@@ -101,8 +102,8 @@ install-miniconda:
 install-dotenv:
 	@ echo -e "Copying .env.template to .env" ;\
 	cp -n .env.template .env ;\
-	@ echo "Please review the config in .env"
-	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	echo "Please review the config in .env" ;\
+	echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
@@ -110,8 +111,8 @@ install-dotenv:
 install-condarc:
 	@ echo -e "Copying etc/condarc.template to etc/condarc" ;\
 	cp -n etc/condarc.template etc/condarc ;\
-	echo "Please review the config in etc/condarc."
-	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	echo "Please review the config in etc/condarc." ;\
+	echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/condarc
 
 
@@ -119,8 +120,8 @@ install-condarc:
 install-pipconf:
 	@ echo -e "Copying etc/pip.conf.template to etc/pip.conf" ;\
 	cp -n etc/pip.conf.template etc/pip.conf ;\
-	echo "Please review the config in etc/pip.conf."
-	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	echo "Please review the config in etc/pip.conf." ;\
+	echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/pip.conf
 
 
@@ -129,7 +130,7 @@ install-bashrc:
 	@ echo -e "Copying etc/bashrc.template to etc/bashrc" ;\
 	cp -n etc/bashrc.template etc/bashrc ;\
 	echo "Please review the config in etc/bashrc."
-	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/bashrc
 
 

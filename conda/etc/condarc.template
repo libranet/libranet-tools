@@ -20,7 +20,7 @@ envs_dirs:
     - __CWD__/envs
 
 pkgs_dirs:
-    - __CDW__/var/cache
+    - __CWD__/var/cache
 
 show_channel_urls: True  # default is False
 
