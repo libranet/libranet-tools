@@ -1,0 +1,8 @@
+
+
+atk
+at-spi2-atk
+cups
+libdrm
+gtk3
+nss
