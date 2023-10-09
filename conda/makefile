@@ -15,7 +15,30 @@ export TMP := var/tmp
 
 .PHONY: clean
 clean:
+	@ echo -e "Removing all conda-dirs except envs-dir"
 	- rm -fr var
+	- rm -fr \
+		bin \
+		cmake \
+		compiler_compat \
+		condabin \
+		conda-meta \
+		include \
+		lib \
+		man \
+		pkgs \
+		sbin \
+		share \
+		shell \
+		ssl \
+		x86_64-conda_cos7-linux-gnu \
+		x86_64-conda-linux-gnu \
+		LICENSE.txt  \
+		etc/fish \
+		etc/profile.d \
+		etc/bashrc \
+		etc/pip.conf \
+		etc/condarc
 
 
 .PHONY: install
@@ -24,13 +47,13 @@ install:  \
 	create-dirs \
 	download-installer \
 	install-miniconda \
-	update-conda-self \
 	install-dotenv \
 	install-condarc \
 	install-bashrc \
+	install-pip-packages \
+	update-conda-self \
 	update-conda-packages \
 	install-conda-packages \
-	install-pip-packages \
 	install-symlinks
 
 
@@ -50,14 +73,13 @@ check-64bit:
 
 .PHONY: create-dirs
 create-dirs:
-	# - mkdir -p ~/bin
-	- mkdir -p bin
-	- mkdir -p etc
-	- mkdir -p var/cache
-	- mkdir -p var/cache-pip
-	- mkdir -p var/downloads
-	- mkdir -p var/log
-	- mkdir -p var/tmp
+	@ mkdir -p bin
+	@ mkdir -p etc
+	@ mkdir -p var/cache
+	@ mkdir -p var/cache-pip
+	@ mkdir -p var/downloads
+	@ mkdir -p var/log
+	@ mkdir -p var/tmp
 	
 
 .PHONY: download-installer
@@ -70,45 +92,51 @@ download-installer:
 .PHONY: install-miniconda
 install-miniconda:
 	@ echo -e "\nInstalling miniconda in ${PREFIX}"
-	chmod u+x var/downloads/${MINICONDA_INSTALLER}
+	@ chmod u+x var/downloads/${MINICONDA_INSTALLER}
 	bash "var/downloads/${MINICONDA_INSTALLER}" -b -u -p ${PREFIX}
-	mv var/downloads/${MINICONDA_INSTALLER} ${PREFIX}/bin/miniconda3-latest-linux-x86_64-{DATE}.sh
+	@ mv var/downloads/${MINICONDA_INSTALLER} ${PREFIX}/bin/miniconda3-latest-linux-x86_64-{DATE}.sh
 
 
 .PHONY: install-dotenv
 install-dotenv:
-	@echo -e "Copying .env.template to .env" ;\
+	@ echo -e "Copying .env.template to .env" ;\
 	cp -n .env.template .env ;\
-	echo "Please review the config in .env"
-	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	@ echo "Please review the config in .env"
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
 .PHONY: install-condarc
 install-condarc:
-	@echo -e "Copying etc/condarc.template to etc/condarc" ;\
+	@ echo -e "Copying etc/condarc.template to etc/condarc" ;\
 	cp -n etc/condarc.template etc/condarc ;\
 	echo "Please review the config in etc/condarc."
-	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/condarc
 
 
 .PHONY: install-pipconf
 install-pipconf:
-	@echo -e "Copying etc/pip.conf.template to etc/pip.conf" ;\
+	@ echo -e "Copying etc/pip.conf.template to etc/pip.conf" ;\
 	cp -n etc/pip.conf.template etc/pip.conf ;\
 	echo "Please review the config in etc/pip.conf."
-	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/pip.conf
 
 
 .PHONY: install-bashrc
 install-bashrc:
-	@echo -e "Copying etc/bashrc.template to etc/bashrc" ;\
+	@ echo -e "Copying etc/bashrc.template to etc/bashrc" ;\
 	cp -n etc/bashrc.template etc/bashrc ;\
 	echo "Please review the config in etc/bashrc."
-	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/bashrc
+
+
+.PHONY: install-pip-packages
+install-pip-packages:
+	bin/pip install --upgrade autoread-dotenv
+	# bin/pip install --upgrade conda-xdgpatch
 
 
 .PHONY: update-conda-self
@@ -120,19 +148,17 @@ update-conda-self:
 .PHONY: update-conda-packages
 update-conda-packages:
 	@ echo -e "\n: Updating the conda-packages"
-	bin/conda" update --all --yes
+	bin/conda update --all --yes
 
 
 .PHONY: install-conda-packages
 install-conda-packages:
 	@ echo -e "\nInstalling conda-packages in the base-environment"
-	bin/conda" install conda-build --name base --yes
-	bin/conda" install mamba --name base --channel conda-forge --yes
-	bin/conda" install micromamba --name base --channel conda-forge --yes
+	bin/conda install conda-build --name base --yes
+	bin/conda install mamba --name base --channel conda-forge --yes
+	bin/conda install micromamba --name base --channel conda-forge --yes
 
 
-.PHONY: install-pip-packages
-install-pip-packages:
 
 
 .PHONY: install-symlinks
