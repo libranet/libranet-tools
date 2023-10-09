@@ -17,6 +17,6 @@ LICENSE.txt
 
 bin/
 !bin/create-conda-env.sh
-etc/
+etc/*
 !etc/*.template
 var/
