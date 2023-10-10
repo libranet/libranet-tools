@@ -21,6 +21,7 @@ update: upgrade-pip install-packages
 
 .PHONY: create-dirs
 create-dirs:
+	- mkdir -p etc
 	- mkdir -p var/cache
 	- mkdir -p var/tmp
 
