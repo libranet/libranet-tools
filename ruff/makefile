@@ -11,11 +11,11 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks status
 
 
 .PHONY: update
-update: upgrade-pip install-packages
+update: upgrade-pip install-packages status
 
 
 .PHONY: create-dirs
@@ -44,3 +44,8 @@ install-packages:
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
+
+
+.PHONY: status
+status:
+	@ echo -e "\nAll steps succesfully executed.\n"
