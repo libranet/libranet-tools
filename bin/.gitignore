@@ -17,6 +17,8 @@ aws_completer
 az
 black
 bpytop
+conda
+conda-env
 cookiecutter
 cruft
 flake8

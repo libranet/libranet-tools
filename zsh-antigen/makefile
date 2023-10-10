@@ -19,9 +19,9 @@ update: create-dirs update-repo install-symlinks
 create-dirs:
 	- mkdir -p etc
 	- mkdir -p var
+	- mkdir -p var/cache
 	- mkdir -p var/home
 	- mkdir -p var/log
-	- mkdir -p var/cache
 
 
 .PHONY: clone-repo
