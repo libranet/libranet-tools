@@ -23,7 +23,8 @@ create-dirs:
 
 .PHONY: clone-repo
 clone-repo:
-	- git clone https://github.com/wting/autojump.git var/repo || git pull
+	# - git clone https://github.com/wting/autojump.git var/repo || git pull
+	- git clone https://github.com/woutervh/autojump.git var/repo || git pull
 
 
 .PHONY: install-autojump
