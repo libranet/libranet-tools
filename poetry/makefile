@@ -8,8 +8,8 @@ CMD=$(realpath bin/poetry)
 
 .PHONY: clean
 clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg
-	- rm -fr var
+	@ rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr var
 
 
 .PHONY: install
@@ -22,8 +22,8 @@ update: upgrade-pip install-packages poetry-update
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/cache/poetry
-	- mkdir -p var/tmp
+	@ mkdir -p var/cache/poetry
+	@ mkdir -p var/tmp
 
 
 .PHONY: create-venv
@@ -75,10 +75,10 @@ install-extensions:
 
 .PHONY: install-dotenv
 install-dotenv:
-	@echo -e "Copying .env.template to .env" ;\
-	cp -n .env.template .env ;\
-	echo "Please review the config in .env"
-	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	@ echo -e "Copying .env.template to .env" ;\
+	@ cp -n .env.template .env ;\
+	@ echo "Please review the config in .env"
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
