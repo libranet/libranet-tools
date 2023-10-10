@@ -5,13 +5,12 @@
 # https://www.cyberciti.biz/open-source/command-line-hacks/bpytop-awesome-linux-macos-and-freebsd-resource-monitor/
 
 CMD=$(realpath bin/bpytop)
-PYTHON_VERSION=`pyenv versions --bare |grep '3.11' | tail -n 1`
 
 
 .PHONY: clean
 clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg
-	- rm -fr var
+	@ rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr var
 
 
 .PHONY: install
@@ -24,14 +23,14 @@ update: upgrade-pip install-packages
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p etc
-	- mkdir -p etc/themes
-	- mkdir -p var/cache
+	@ mkdir -p etc
+	@ mkdir -p etc/themes
+	@ mkdir -p var/cache
 
 
 .PHONY: create-venv
 create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+	- python3 -m venv .
 
 
 .PHONY: upgrade-pip
@@ -48,4 +47,4 @@ install-packages:
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
-	- ln -s ~/.config/bpytop etc
+	@ ln -s ~/.config/bpytop etc

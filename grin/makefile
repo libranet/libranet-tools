@@ -6,8 +6,8 @@ CMD=$(realpath bin/grin)
 
 .PHONY: clean
 clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg
-	- rm -fr var
+	@ rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr var
 
 
 .PHONY: install
@@ -20,7 +20,7 @@ update: upgrade-pip install-packages
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/cache
+	@ mkdir -p var/cache
 
 
 .PHONY: create-venv

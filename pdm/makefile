@@ -3,7 +3,6 @@
 
 # see https://github.com/pdm-project/awesome-pdm
 
-PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
 CMD=$(realpath bin/pdm)
 
 
@@ -29,7 +28,7 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+	- python3 -m venv .
 
 
 .PHONY: upgrade-pip
