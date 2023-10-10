@@ -1,33 +1,33 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-# see https://github.com/cpbotha/xdg-open-wsl
-CMD=$(realpath bin/xdg-open)
-export TMP=$(realpath var/tmp)
+SED=`command -v gsed || command -v sed`
+CMD=$(realpath bin/dotenv-linter)
 
 
 .PHONY: clean
 clean:
 	- rm -fr bin include lib lib64 pyvenv.cfg
+	- rm -fr var
 
 
 .PHONY: install
-install: create-venv upgrade-pip install-packages install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks
 
 
 .PHONY: update
 update: upgrade-pip install-packages
 
 
-.PHONY: create-venv
-create-venv:
-	-python3 -m venv .
-
-
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/src
+	- mkdir -p var/cache
 	- mkdir -p var/tmp
+
+
+.PHONY: create-venv
+create-venv:
+	- python3 -m venv .
 
 
 .PHONY: upgrade-pip
@@ -37,8 +37,7 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	# - bin/pip install --upgrade xdg-open-wsl  # not on pypi
-	- bin/pip install --upgrade git+https://github.com/woutervh/xdg-open-wsl.git@master
+	- bin/pip install --upgrade dotenv-linter
 
 
 .PHONY: install-symlinks
