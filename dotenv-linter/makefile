@@ -12,7 +12,8 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks
+# install: create-dirs create-venv upgrade-pip install-packages install-symlinks
+install: create-dirs install-cargo-packages install-symlinks
 
 
 .PHONY: update
@@ -25,20 +26,9 @@ create-dirs:
 	- mkdir -p var/tmp
 
 
-.PHONY: create-venv
-create-venv:
-	- python3 -m venv .
-
-
-.PHONY: upgrade-pip
-install:
-	- bin/python -m pip install --upgrade pip
-
-
-.PHONY: install-packages
-install-packages:
-	- bin/pip install --upgrade dotenv-linter
-
+.PHONY: install-cargo-packages
+install-cargo-packages:
+	- cargo install dotenv-linter
 
 .PHONY: install-symlinks
 install-symlinks:

@@ -30,8 +30,8 @@ _archive/
 */pyvenv.cfg
 */share
 
-# virtual-environment
-/.venv/
+# virtual-environments
+.venv/
 
 # .env-files can contain secrets
 .env
