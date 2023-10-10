@@ -9,6 +9,7 @@ PREFIX=$(realpath .)
 NOW=$(date +"%Y-%m-%d %H:%M:S")
 SED=`command -v gsed || command -v sed`
 
+CUDA_CACHE_PATH=${PREFIX}var/cache/nv  # default to ~/.nv
 
 export TMP := var/tmp
 
@@ -77,7 +78,9 @@ create-dirs:
 	@ mkdir -p bin
 	@ mkdir -p etc
 	@ mkdir -p var/cache
-	@ mkdir -p var/cache-pip
+	@ mkdir -p var/cache/conda
+	@ mkdir -p var/cache/nv
+	@ mkdir -p var/cache/pip
 	@ mkdir -p var/downloads
 	@ mkdir -p var/log
 	@ mkdir -p var/tmp
@@ -85,14 +88,14 @@ create-dirs:
 
 .PHONY: download-installer
 download-installer:
-	@ echo -e "\nDownloading miniconda-installer for 64bit-linux in ${MINICONDA_INSTALLER}."
+	@ echo -e "\nDownloading miniconda-installer for 64bit-linux."
 	@ echo -e "This might take a while.\n"
 	curl -SfL ${MINICONDA_DOWNLOAD_URL} --output var/downloads/${MINICONDA_INSTALLER}
 
 
 .PHONY: install-miniconda
 install-miniconda:
-	@ echo -e "\nInstalling miniconda in ${PREFIX}"
+	@ echo -e "\nInstalling miniconda in ${PREFIX}\n"
 	@ chmod u+x var/downloads/${MINICONDA_INSTALLER}
 	bash "var/downloads/${MINICONDA_INSTALLER}" -b -u -p ${PREFIX}
 	@ mv var/downloads/${MINICONDA_INSTALLER} ${PREFIX}/bin/miniconda3-latest-linux-x86_64-{DATE}.sh
@@ -156,10 +159,12 @@ update-conda-packages:
 install-conda-packages:
 	@ echo -e "\nInstalling conda-packages in the base-environment"
 	bin/conda install conda-build --name base --yes
+
+
+.PHONY: install-mamba
+install-mamba:
 	bin/conda install mamba --name base --channel conda-forge --yes
 	bin/conda install micromamba --name base --channel conda-forge --yes
-
-
 
 
 .PHONY: install-symlinks
@@ -167,7 +172,7 @@ install-symlinks:
 	cd ~/bin && ln -sf $(realpath bin/conda)
 	cd ~/bin && ln -sf $(realpath bin/conda-env)
 	cd ~/bin && ln -sf $(realpath bin/mamba)
-	cd ~/bin && ln -sf $(realpath bin/mamba-package)
-	cd ~/bin && ln -sf $(realpath bin/micromamba)
+	# cd ~/bin && ln -sf $(realpath bin/mamba-package)
+	# cd ~/bin && ln -sf $(realpath bin/micromamba)
 	# cd ~/bin && ln -sf $(realpath bin/activate)
 	# cd ~/bin && ln -sf $(realpath bin/deactivate)
