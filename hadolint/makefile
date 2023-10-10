@@ -12,8 +12,8 @@ DOWNLOAD_URL=https://github.com/hadolint/hadolint/releases/download/v2.12.0/hado
 
 .PHONY: clean
 clean:
-	- rm -fr bin
-	- rm -fr var
+	@ rm -fr bin
+	@ rm -fr var
 
 
 .PHONY: install
@@ -28,7 +28,7 @@ create-dirs:
 
 .PHONY: download
 download:
-	@ echo -e "Download ${DOWNLOAD_URL} to bin/hadolint"
+	@ echo -e "Downloading ${DOWNLOAD_URL} to bin/hadolint"
 	curl -sSLf ${DOWNLOAD_URL} --output bin/hadolint
 	@ chmod u+x bin/hadolint
 
