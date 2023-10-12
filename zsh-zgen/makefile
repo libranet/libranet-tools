@@ -3,8 +3,8 @@
 
 .PHONY: clean
 clean:
-	- rm -fr etc
-	- rm -fr var
+	@ rm -fr etc
+	@ rm -fr var
 
 
 .PHONY: install
@@ -17,8 +17,8 @@ update: create-dirs update-repo install-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p etc
-	- mkdir -p var
+	@ mkdir -p etc
+	@ mkdir -p var
 
 
 .PHONY: clone-repo
@@ -28,10 +28,10 @@ clone-repo:
 
 .PHONY: update-repo
 update-repo:
-	- cd var/repo && git pull
+	@ cd var/repo && git pull
 
 
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink $(realpath var/repo/zgen.zsh) to etc/zgen.zsh"
-	- cd etc && ln -sf $(realpath var/repo/zgen.zsh)
+	@ cd etc && ln -sf $(realpath var/repo/zgen.zsh)

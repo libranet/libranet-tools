@@ -1,13 +1,11 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
-
 
 .PHONY: clean
 clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg
-	- rm -fr var
+	@ rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr var
 
 
 .PHONY: install
@@ -20,14 +18,14 @@ update: upgrade-pip install-packages
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/cache
-	- mkdir -p var/log
-	- mkdir -p var/tmp
+	@ mkdir -p var/cache
+	@ mkdir -p var/log
+	@ mkdir -p var/tmp
 
 
 .PHONY: create-venv
 create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+	- python3 -m venv .
 
 
 .PHONY: upgrade-pip

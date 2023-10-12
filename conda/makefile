@@ -103,38 +103,38 @@ install-miniconda:
 
 .PHONY: install-dotenv
 install-dotenv:
-	@ echo -e "Copying .env.template to .env" ;\
-	cp -n .env.template .env ;\
-	echo "Please review the config in .env" ;\
-	echo -e "Replacing string __CWD__ -> $(PWD)" ;\
-	$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
+	@ echo -e "Copying .env.template to .env" 
+	@ cp -n .env.template .env 
+	@ echo "Please review the config in .env" 
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" 
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
 .PHONY: install-condarc
 install-condarc:
-	@ echo -e "Copying etc/condarc.template to etc/condarc" ;\
-	cp -n etc/condarc.template etc/condarc ;\
-	echo "Please review the config in etc/condarc." ;\
-	echo -e "Replacing string __CWD__ -> $(PWD)" ;\
-	$(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/condarc
+	@ echo -e "Copying etc/condarc.template to etc/condarc" 
+	@ cp -n etc/condarc.template etc/condarc 
+	@ echo "Please review the config in etc/condarc." 
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" 
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' etc/condarc
 
 
 .PHONY: install-pipconf
 install-pipconf:
-	@ echo -e "Copying etc/pip.conf.template to etc/pip.conf" ;\
-	cp -n etc/pip.conf.template etc/pip.conf ;\
-	echo "Please review the config in etc/pip.conf." ;\
-	echo -e "Replacing string __CWD__ -> $(PWD)" ;\
-	$(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/pip.conf
+	@ echo -e "Copying etc/pip.conf.template to etc/pip.conf" 
+	@ cp -n etc/pip.conf.template etc/pip.conf 
+	@ echo "Please review the config in etc/pip.conf." 
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" 
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/pip.conf
 
 
 .PHONY: install-bashrc
 install-bashrc:
-	@ echo -e "Copying etc/bashrc.template to etc/bashrc" ;\
-	cp -n etc/bashrc.template etc/bashrc ;\
-	echo "Please review the config in etc/bashrc."
-	echo -e "Replacing string __CWD__ -> $(PWD)" ;\
-	$(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/bashrc
+	@ echo -e "Copying etc/bashrc.template to etc/bashrc" 
+	@ cp -n etc/bashrc.template etc/bashrc 
+	@ echo "Please review the config in etc/bashrc."
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" 
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/bashrc
 
 
 .PHONY: install-pip-packages
@@ -169,9 +169,9 @@ install-mamba:
 
 .PHONY: install-symlinks
 install-symlinks:
-	cd ~/bin && ln -sf $(realpath bin/conda)
-	cd ~/bin && ln -sf $(realpath bin/conda-env)
-	cd ~/bin && ln -sf $(realpath bin/mamba)
+	@ cd ~/bin && ln -sf $(realpath bin/conda)
+	@ cd ~/bin && ln -sf $(realpath bin/conda-env)
+	@ cd ~/bin && ln -sf $(realpath bin/mamba)
 	# cd ~/bin && ln -sf $(realpath bin/mamba-package)
 	# cd ~/bin && ln -sf $(realpath bin/micromamba)
 	# cd ~/bin && ln -sf $(realpath bin/activate)

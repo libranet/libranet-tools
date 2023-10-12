@@ -19,8 +19,19 @@ install: create-dirs create-venv upgrade-pip install-packages install-dotenv ins
 update: upgrade-pip install-packages
 
 
+.PHONY: revert
+revert:
+	- bin/python -m pip install -r etc/requirements.txt
+
+
+.PHONY: freeze
+freeze:
+	- bin/python -m pip freeze > etc/requirements.txt
+
+
 .PHONY: create-dirs
 create-dirs:
+	- mkdir -p etc
 	- mkdir -p var/cache
 	- mkdir -p var/tmp
 
@@ -32,6 +43,7 @@ create-venv:
 
 .PHONY: upgrade-pip
 install:
+	- bin/python -m pip freeze > etc/requirements.txt
 	- bin/python -m pip install --upgrade pip
 
 

@@ -53,7 +53,9 @@ ruff
 semgrep
 sphinx-build
 starship
+supervisord
 twine
+vault
 virtualenv
 xdg-ninja.sh
 xdg-open

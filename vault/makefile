@@ -9,8 +9,8 @@ URL="https://releases.hashicorp.com/vault/${VERSION}/vault_${VERSION}_linux_amd6
 
 .PHONY: clean
 clean:
-	- rm -fr bin
-	- rm -fr var
+	@ rm -fr bin
+	@ rm -fr var
 
 
 .PHONY: install
@@ -19,10 +19,10 @@ install: create-dirs download-vault unzip-vault make-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p bin
-	- mkdir -p var
-	- mkdir -p var/downloads
-	- mkdir -p var/tmp
+	@ mkdir -p bin
+	@ mkdir -p var
+	@ mkdir -p var/downloads
+	@ mkdir -p var/tmp
 
 
 .PHONY: download-vault
@@ -32,12 +32,12 @@ download-vault:
 
 .PHONY: unzip-vault
 unzip-vault:
-	- unzip var/downloads/vault-${VERSION}.zip -d bin/
+	@ unzip var/downloads/vault-${VERSION}.zip -d bin/
 
 
 .PHONY: make-symlinks
 make-symlinks:
-	- cd ~/bin  && ln -fs $(realpath bin/vault)
+	@ cd ~/bin  && ln -fs $(realpath bin/vault)
 
 
 .PHONY: start-server-dev
