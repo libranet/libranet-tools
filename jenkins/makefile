@@ -34,6 +34,7 @@ install: create-dirs download-jenkins install-symlinks
 .PHONY: create-dirs  ## create dirs
 create-dirs:
 	@ mkdir -p bin
+	@ mkdir -p var/home
 	@ mkdir -p var/releases
 	@ mkdir -p var/tmp
 

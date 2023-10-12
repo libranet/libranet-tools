@@ -1,0 +1,17 @@
+# source this file in your bashrc/zshrc
+
+THIS_DIR=$(readlink -f $(dirname $(readlink -f $0)))
+PARENT_DIR=$(realpath -m "${THIS_DIR}/..")
+
+export CARGO_HOME=${PARENT_DIR}/etc/var/cargo
+
+export RUSTUP_HOME=${PARENT_DIR}/var/rustup
+
+# ensure add directories to PATH once
+# if ! [[ "$PATH" =~ "$CARGO_HOME/bin" ]]; then
+#     export PATH="$CARGO_HOME/bin:$PATH"
+# fi
+
+if [ -f "${CARGO_HOME}/env" ]; then
+    source "${CARGO_HOME}/env"
+fi

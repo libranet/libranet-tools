@@ -1,0 +1,11 @@
+# miniconda 
+# source this file in your bashrc/zshrc
+
+THIS_DIR=$(readlink -f $(dirname $(readlink -f $0)))
+PARENT_DIR=$(realpath -m "${THIS_DIR}/..")
+
+export MINICONDA_PREFIX="${PARENT_DIR}"
+
+# we already defined aliases for sa/sd for regular virtualenvs
+alias csa="source ${MINICONDA_PREFIX}/bin/activate"   # could shadow /usr/sbin/sa"
+alias csd="source ${MINICONDA_PREFIX}/bin/deactivate"

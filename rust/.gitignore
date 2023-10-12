@@ -21,7 +21,7 @@
 
 
 # generated from template
-etc/bashrc
+# etc/bashrc
 
 # exclude toplevel var-dir
 /var/

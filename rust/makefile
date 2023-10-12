@@ -21,7 +21,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs download-installer run-installer install-dotenv install-symlinks
+install: create-dirs download-installer run-installer install-symlinks
 
 
 .PHONY: create-dirs

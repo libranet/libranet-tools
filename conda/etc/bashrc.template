@@ -1,7 +1,0 @@
-
-
-# miniconda 
-export MINICONDA_PREFIX="__CWD__"
-
-alias sa="source __CWD__/bin/activate"   # could shadow /usr/sbin/sa"
-alias sd="source __CWD__/bin/deactivate"

@@ -37,7 +37,6 @@ clean:
 		LICENSE.txt  \
 		etc/fish \
 		etc/profile.d \
-		etc/bashrc \
 		etc/pip.conf \
 		etc/condarc
 
@@ -51,7 +50,6 @@ install:  \
 	install-dotenv \
 	install-pipconf \
 	install-condarc \
-	install-bashrc \
 	install-pip-packages \
 	update-conda-self \
 	update-conda-packages \
@@ -126,15 +124,6 @@ install-pipconf:
 	@ echo "Please review the config in etc/pip.conf." 
 	@ echo -e "Replacing string __CWD__ -> $(PWD)" 
 	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/pip.conf
-
-
-.PHONY: install-bashrc
-install-bashrc:
-	@ echo -e "Copying etc/bashrc.template to etc/bashrc" 
-	@ cp -n etc/bashrc.template etc/bashrc 
-	@ echo "Please review the config in etc/bashrc."
-	@ echo -e "Replacing string __CWD__ -> $(PWD)" 
-	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/bashrc
 
 
 .PHONY: install-pip-packages

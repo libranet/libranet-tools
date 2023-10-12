@@ -11,6 +11,8 @@
 # .PHONY: clean
 # clean:
 # 	- rm -fr bin include lib lib64 pyvenv.cfg
+VERSION=1.6.1
+URL=https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip
 
 
 .PHONY: install

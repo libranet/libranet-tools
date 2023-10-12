@@ -15,6 +15,10 @@ command -v oh-my-posh >/dev/null || export PATH="$BASE_DIR/bin:$PATH"
 # New-Alias -Name 'Set-PoshContext' -Value 'Set-EnvName' -Scope Global -Force
 
 # see https://ohmyposh.dev/docs/installation/prompt
-eval "$(oh-my-posh init zsh)"
+# eval "$(oh-my-posh init zsh)"
+#echo -e "loading  ${TOOLS_DIR}/etc/"
+#eval "$(oh-my-posh init zsh --config /opt/tools/oh-my-posh/etc/aliens.omp.json)"
+eval "$(oh-my-posh init zsh --config ${TOOLS_DIR}/oh-my-posh/etc/aliens.omp.json)"
+
 # eval "$(oh-my-posh init zsh --config /opt/tools/oh-my-posh/etc/wvh.omp.json)"
 
