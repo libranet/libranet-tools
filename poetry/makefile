@@ -28,7 +28,6 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	# pyenv global 3.11.5
 	- python3 -m venv .
 
 
