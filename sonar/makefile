@@ -11,8 +11,8 @@ install: create-dirs download unzip install-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var
-	- mkdir -p var/downloads
+	@ mkdir -p var
+	@ mkdir -p var/downloads
 
 
 .PHONY: download

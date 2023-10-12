@@ -16,12 +16,12 @@ update: install-executable
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p bin
-	- mkdir -p etc
-	- mkdir -p var
-	- mkdir -p var/tmp
+	@ mkdir -p bin
+	@ mkdir -p etc
+	@ mkdir -p var
+	@ mkdir -p var/tmp
     # avoid files like ~/omp.cache because cache-dir did not exist.
-	- mkdir -p ~/.cache/oh-my-posh  
+	@ mkdir -p ~/.cache/oh-my-posh
 
 
 .PHONY: install-executable
@@ -32,7 +32,7 @@ create-dirs:
 
 
 .PHONY: install-themes
-install-themes: 
+install-themes:
 	# install themes
 	mkdir -p var/themes
 	wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O  var/tmp/themes.zip
@@ -47,15 +47,15 @@ install-symlinks:
 
 
 .PHONY: enable-bashrc
-enable-bashrc: 
+enable-bashrc:
 	echo -e '\n\nsource ${BASE_DIR}/etc/bashrc' >> ~/.bashrc
 
 
 .PHONY: enable-zshrc
-enable-zshrc: 
+enable-zshrc:
 	echo -e '\n\nsource ${BASE_DIR}/etc/zshrc' >> ~/.zshrc
 
 
 .PHONY: download-fonts
-download-fonts: 
+download-fonts:
 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip -P var/tmp

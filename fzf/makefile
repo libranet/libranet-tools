@@ -16,8 +16,8 @@ install: create-dirs clone-repo install-fzf create-symlinks move-dotfiles
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p bin
-	- mkdir -p var
+	@ mkdir -p bin
+	@ mkdir -p var
 
 
 .PHONY: clone-repo

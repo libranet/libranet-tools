@@ -19,9 +19,9 @@ install: create-dirs download-and-install install-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p bin
-	- mkdir -p var/releases
-	- mkdir -p var/tmp
+	@ mkdir -p bin
+	@ mkdir -p var/releases
+	@ mkdir -p var/tmp
 
 
 .PHONY: download-and-install

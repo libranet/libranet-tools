@@ -22,7 +22,7 @@ update: upgrade-pip upgrade-wheel install-packages
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/cache
+	@ mkdir -p var/cache
 
 
 .PHONY: create-venv
@@ -51,3 +51,8 @@ install-symlinks:
 	- cd ~/bin && ln -sf $(realpath bin/httpie)
 	- cd ~/bin && ln -sf $(realpath bin/http)
 	- cd ~/bin && ln -sf $(realpath bin/https)
+
+.PHONY: check
+check:
+	@ echo -e "\nCurrent version is:"
+	- bin/httpie --version

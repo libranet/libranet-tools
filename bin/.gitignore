@@ -17,6 +17,7 @@ aws_completer
 az
 black
 bpytop
+checkmate
 conda
 conda-env
 cookiecutter
@@ -27,6 +28,7 @@ frogmouth
 fullrelease
 fzf
 fzf-tmux
+gitlab-runner
 glances
 grin
 hadolint
@@ -35,6 +37,7 @@ http
 httpie
 https
 isort
+just
 locust
 longtest
 oh-my-posh
@@ -50,6 +53,7 @@ pyroma
 pysemgrep
 release
 ruff
+shellcheck
 semgrep
 sphinx-build
 starship

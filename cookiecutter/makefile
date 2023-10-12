@@ -25,9 +25,9 @@ create-venv:
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p etc
-	- mkdir -p var/cache
-	- mkdir -p var/tmp
+	@ mkdir -p etc
+	@ mkdir -p var/cache
+	@ mkdir -p var/tmp
 
 
 .PHONY: upgrade-pip
@@ -56,3 +56,9 @@ install-symlinks:
 
 	@ echo -e "Symlink $(realpath bin/cruft) to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf $(realpath bin/cruft)
+
+
+.PHONY: check
+check:
+	@ echo -e "\nCurrent version is:"
+	- bin/cookiecutter --version

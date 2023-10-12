@@ -20,8 +20,8 @@ install: create-dirs download-installer run-installer install-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/piavpn
-	- mkdir -p var/tmp
+	@ mkdir -p var/piavpn
+	@ mkdir -p var/tmp
 
 
 .PHONY: update

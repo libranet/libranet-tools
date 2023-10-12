@@ -17,8 +17,8 @@ update: create-dirs update-repo install-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p bin
-	- mkdir -p var
+	@ mkdir -p bin
+	@ mkdir -p var
 
 
 .PHONY: clone-repo

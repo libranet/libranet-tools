@@ -42,3 +42,9 @@ install-packages:
 install-symlinks:
 	@ echo -e "Symlink $(realpath bin/pre-commit) to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf $(realpath bin/pre-commit)
+
+
+.PHONY: check
+check:
+	@ echo -e "\nCurrent version is:"
+	@ bin/pre-commit --version

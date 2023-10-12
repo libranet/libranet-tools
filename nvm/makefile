@@ -23,11 +23,11 @@ install-nvm:
 .PHONY: create-dirs
 create-dirs:
 	# - mkdir -p etc
-	- mkdir -p bin
-	- mkdir -p repo
-	- mkdir -p var/cache
-	- mkdir -p var/repo
-	- mkdir -p var/tmp
+	@ mkdir -p bin
+	@ mkdir -p repo
+	@ mkdir -p var/cache
+	@ mkdir -p var/repo
+	@ mkdir -p var/tmp
 
 
 .PHONY: install-symlinks

@@ -13,21 +13,21 @@ install: create-dirs download install-symlinks
 
 .PHONY: update
 update:
-	- echo -e "Update not supported."
-	- echo -e "check new releases at https://github.com/github/codeql-action/releases/download"
+	@ echo -e "Update not supported."
+	@ echo -e "check new releases at https://github.com/github/codeql-action/releases/download"
 
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p bin
-	- mkdir -p etc
-	- mkdir -p var/downloads
+	@ mkdir -p bin
+	@ mkdir -p etc
+	@ mkdir -p var/downloads
 
 
 .PHONY: download
 download:
-	- wget https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.14.6/codeql-bundle-linux64.tar.gz -P var/downloads 
-	- tar xzf var/tmp/codeql-bundle-linux64.tar.gz 
+	- wget https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.14.6/codeql-bundle-linux64.tar.gz -P var/downloads
+	- tar xzf var/tmp/codeql-bundle-linux64.tar.gz
 
 
 # .PHONY: install-configfile

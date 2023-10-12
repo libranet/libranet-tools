@@ -22,8 +22,8 @@ install: create-dirs download-installer install-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p bin
-	- mkdir -p var/tmp
+	@ mkdir -p bin
+	@ mkdir -p var/tmp
 
 
 .PHONY: update

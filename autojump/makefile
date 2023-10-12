@@ -17,8 +17,8 @@ install: create-dirs clone-repo install-autojump create-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p etc/profile.d
-	- mkdir -p var
+	@ mkdir -p etc/profile.d
+	@ mkdir -p var
 
 
 .PHONY: clone-repo

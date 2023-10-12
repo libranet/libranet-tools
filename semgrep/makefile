@@ -32,9 +32,9 @@ create-venv:
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p etc
-	- mkdir -p var/cache
-	- mkdir -p var/log
+	@ mkdir -p etc
+	@ mkdir -p var/cache
+	@ mkdir -p var/log
 
 
 .PHONY: upgrade-pip

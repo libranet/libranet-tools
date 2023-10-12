@@ -20,7 +20,7 @@ update: upgrade-pip install-packages
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/cache
+	@ mkdir -p var/cache
 
 
 .PHONY: create-venv
@@ -42,3 +42,9 @@ install-packages:
 install-symlinks:
 	@ echo -e "Symlink $(realpath bin/isort) to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf $(realpath bin/isort)
+
+
+.PHONY: check
+check:
+	@ echo -e "\nCurrent version is:"
+	- bin/isort --version

@@ -26,6 +26,7 @@ create-dirs:
 	@ mkdir -p etc
 	@ mkdir -p etc/themes
 	@ mkdir -p var/cache
+	@ mkdir -p var/log
 
 
 .PHONY: create-venv

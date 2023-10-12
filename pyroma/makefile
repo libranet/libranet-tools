@@ -2,7 +2,6 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 
 CMD=$(realpath bin/pyroma)
-PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
 
 
 .PHONY: install
@@ -15,14 +14,14 @@ update: upgrade-pip install-packages
 
 .PHONY: create-venv
 create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+	- python# -m venv .
 
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/cache
-	- mkdir -p var/log
-	- mkdir -p var/tmp
+	@ mkdir -p var/cache
+	@ mkdir -p var/log
+	@ mkdir -p var/tmp
 
 
 .PHONY: upgrade-pip

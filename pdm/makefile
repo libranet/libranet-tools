@@ -22,8 +22,8 @@ update: upgrade-pip install-packages poetry-update
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/cache
-	- mkdir -p var/tmp
+	@ mkdir -p var/cache
+	@ mkdir -p var/tmp
 
 
 .PHONY: create-venv
@@ -50,3 +50,9 @@ poetry-update:
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
+
+
+.PHONY: check
+check:
+	@ echo -e "\nCurrent version is:"
+	@ bin/pdm --version

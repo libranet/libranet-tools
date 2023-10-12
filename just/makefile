@@ -5,6 +5,7 @@
 
 TMPDIR := $(realpath var/tmp)
 
+
 .PHONY: clean
 clean:
 	@ rm -fr bin
@@ -27,22 +28,23 @@ create-dirs:
 
 .PHONY: download-installer
 download-installer:
-	- curl -sSLf https://starship.rs/install.sh > bin/install-starship.sh
-	- chmod u+x bin/install-starship.sh
+	#- curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to ~/bin
+	- curl -sSLf https://just.systems/install.sh > bin/install-just.sh
+	@ chmod u+x bin/install-just.sh
 
 
 .PHONY: run-installer
 run-installer:
-	- bin/install-starship.sh --bin-dir bin --yes --verbose
+	- bin/install-just.sh --to $(realpath bin) --target $(realpath var)
 
 
 .PHONY: install-symlinks
 install-symlinks:
-	@ echo -e "Symlink $(realpath bin/starhip) to ${HOME}/bin/"
-	- cd ~/bin && ln -sf $(realpath bin/starship)
+	@ echo -e "Symlink $(realpath bin/just) to ${HOME}/bin/"
+	- cd ~/bin && ln -sf $(realpath bin/just)
 
 
 .PHONY: check
 check:
 	@ echo -e "\nCurrent version is:"
-	- bin/starship --version
+	- bin/just --version

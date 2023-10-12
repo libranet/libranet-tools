@@ -1,7 +1,7 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-# https://kafka.apache.org/documentation.html 
+# https://kafka.apache.org/documentation.html
 
 SCALA_VERSION=2.13
 KAFKA_VERSION=3.5.1
@@ -13,10 +13,10 @@ install: create-dirs download-kafka make-instance make-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var
-	- mkdir -p var/downloads
-	- mkdir -p var/instances
-	- mkdir -p var/tmp
+	@ mkdir -p var
+	@ mkdir -p var/downloads
+	@ mkdir -p var/instances
+	@ mkdir -p var/tmp
 
 
 .PHONY: download-kafka

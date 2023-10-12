@@ -1,0 +1,34 @@
+# https://docs.gitlab.com/runner/configuration/
+
+concurrent = 2
+check_interval = 0
+# log_level=debug
+
+
+[session_server]
+  session_timeout = 1800
+
+
+[[runners]]
+
+  name = "libranet-1"
+  executor = "docker"
+  url = "https://gitlab.com/"
+  
+  [runners.custom_build_dir]
+  
+  [runners.cache]
+      [runners.cache.s3]
+      [runners.cache.gcs]
+      [runners.cache.azure]
+  
+  [runners.docker]
+      disable_entrypoint_overwrite = false
+      disable_cache = false
+      image = "docker:stable"
+      oom_kill_disable = false
+      privileged = true
+      shm_size = 0
+      tls_verify = false
+      volumes = ["/certs/client", "/cache"]
+

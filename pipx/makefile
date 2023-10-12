@@ -20,8 +20,8 @@ update: upgrade-pip install-packages
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var/cache
-	- mkdir -p var/tmp
+	@ mkdir -p var/cache
+	@ mkdir -p var/tmp
 
 
 .PHONY: create-venv

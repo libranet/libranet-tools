@@ -13,10 +13,10 @@ install: create-dirs download-neo4j download-apoc make-instance install-apoc mak
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p var
-	- mkdir -p var/downloads
-	- mkdir -p var/instances
-	- mkdir -p var/tmp
+	@ mkdir -p var
+	@ mkdir -p var/downloads
+	@ mkdir -p var/instances
+	@ mkdir -p var/tmp
 
 .PHONY: download-neo4j
 download-neo4j:

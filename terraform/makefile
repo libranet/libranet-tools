@@ -20,7 +20,7 @@ install: add-repo install-rpm install-autocomplete install-docs
 
 
 .PHONY: add-repo
-add-repo: 
+add-repo:
 	- sudo dnf check-update
 	- sudo dnf install -y dnf-plugins-core
 	- sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
@@ -44,5 +44,5 @@ install-docs:
 
 .PHONY: install-symlinks
 install-symlinks:
-	- mkdir -p bin
+	@ mkdir -p bin
 	- cd bin && ln -sf `which terraform`

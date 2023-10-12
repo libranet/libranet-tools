@@ -54,10 +54,10 @@ update: update-pyenv
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p bin
-	- mkdir -p etc
-	- mkdir -p var
-	- mkdir -p var/tmp
+	@ mkdir -p bin
+	@ mkdir -p etc
+	@ mkdir -p var
+	@ mkdir -p var/tmp
 
 
 .PHONY: install-symlinks

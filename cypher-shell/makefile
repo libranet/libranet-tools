@@ -14,11 +14,11 @@ install: create-dirs download unzip install-symlinks
 
 .PHONY: create-dirs
 create-dirs:
-	- mkdir -p bin
-	- mkdir -p etc
-	- mkdir -p var
-	- mkdir -p var/downloads
-	- mkdir -p var/instances
+	@ mkdir -p bin
+	@ mkdir -p etc
+	@ mkdir -p var
+	@ mkdir -p var/downloads
+	@ mkdir -p var/instances
 
 
 .PHONY: download
