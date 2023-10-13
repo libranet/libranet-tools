@@ -19,6 +19,7 @@ install: create-dirs clone-repo install-autojump create-symlinks
 create-dirs:
 	@ mkdir -p etc/profile.d
 	@ mkdir -p var
+	@ mkdir -p var/home
 
 
 .PHONY: clone-repo
@@ -30,7 +31,7 @@ clone-repo:
 .PHONY: install-autojump
 install-autojump:
 	# - cd var/repo && ./install.py --destdir ${THIS_DIR} -zshshare ${THIS_DIR}
-	- cd var/repo && ./install.py --destdir ${THIS_DIR}
+	- cd var/repo && ./install.py --destdir ${THIS_DIR}/var/home
 
 
 .PHONY: update
