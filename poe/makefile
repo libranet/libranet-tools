@@ -13,7 +13,7 @@
 SHELL := /bin/bash
 
 SED=`command -v gsed || command -v sed`
-CMD=$(realpath bin/black)
+CMD=$(realpath bin/poe)
 
 .PHONY: help
 help:
@@ -66,7 +66,7 @@ install:
 
 .PHONY: install-packages  ## install python-packages via pip
 install-packages:
-	- bin/pip install --upgrade black autoread-dotenv
+	- bin/pip install --upgrade poethepoet autoread-dotenv
 
 
 .PHONY: install-dotenv  ## generate .dotenv from template
