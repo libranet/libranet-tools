@@ -32,6 +32,7 @@ clean:
 create-dirs:
 	@ mkdir -p etc
 	@ mkdir -p var/cache
+	@ mkdir -p var/dowwnloads
 	@ mkdir -p var/tmp
 
 
