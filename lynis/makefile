@@ -19,6 +19,7 @@ install: create-dirs clone-repo create-symlinks
 create-dirs:
 	@ mkdir -p bin
 	@ mkdir -p var
+	@ mkdir -p var/log
 
 
 .PHONY: clone-repo
@@ -34,7 +35,8 @@ update:
 
 .PHONY: create-symlinks
 create-symlinks:
-	- @ cd bin && ln -sf ${THIS_DIR}/var/repo/lynis
+	@ cd bin && ln -sf ${THIS_DIR}/var/repo/lynis
+	@ cd ~/bin && ln -sf ${THIS_DIR}/var/repo/lynis
 
 
 .PHONY: audit

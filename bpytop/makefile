@@ -47,5 +47,6 @@ install-packages:
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
-	@ cd ~/bin && ln -sf ${CMD}
+	@ cd ~/bin && ln -sf ${CMD} bpytop
+	@ cd ~/bin && ln -sf ${CMD} btop
 	@ ln -s ~/.config/bpytop etc
