@@ -46,12 +46,12 @@ update: upgrade-pip install-packages check
 
 .PHONY: revert  ## revert to frozen requirements
 revert:
-	- bin/python -m pip install -r etc/requirements.txt
+	@ bin/python -m pip install -r etc/requirements.txt
 
 
 .PHONY: freeze  ## freeze current requirements
 freeze: create-dirs
-	- bin/python -m pip freeze > etc/requirements.txt
+	@ bin/python -m pip freeze > etc/requirements.txt
 
 
 .PHONY: create-venv  ## create a virtual python-environment
@@ -60,9 +60,9 @@ create-venv:
 
 
 .PHONY: upgrade-pip  ## upgrade pip itself
-install:
-	- bin/python -m pip freeze > etc/requirements.txt
-	- bin/python -m pip install --upgrade pip
+upgrade-pip:
+	@ bin/python -m pip freeze > etc/requirements.txt
+	@ bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages  ## install python-packages via pip

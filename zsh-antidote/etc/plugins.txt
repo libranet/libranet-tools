@@ -15,6 +15,8 @@ robbyrussell/oh-my-zsh path:themes/robbyrussell.zsh-theme
 # https://github.com/romkatv/powerlevel10k#antibody
 romkatv/powerlevel10k
 
+
+zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
 
@@ -23,3 +25,4 @@ zdharma-continuum/fast-syntax-highlighting
 
 # https://github.com/fourdim/zsh-poetry
 fourdim/zsh-poetry
+

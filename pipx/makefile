@@ -43,3 +43,9 @@ install-packages:
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
+
+
+.PHONY: check
+check:
+	@ echo -e "\nCurrent version is:"
+	@ bin/pipx --version

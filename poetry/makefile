@@ -90,4 +90,5 @@ install-symlinks:
 
 .PHONY: check
 check:
-	- bin/poetry --version
+	@ echo -e "\nCurrent version is:"
+	@ bin/poetry --version

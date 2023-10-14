@@ -20,7 +20,7 @@ update: upgrade-pip install-packages status
 
 .PHONY: create-dirs
 create-dirs:
-	@ mkdir -p var/cache
+	@ mkdir -p var/cache/ruff
 	@ mkdir -p var/log
 	@ mkdir -p var/tmp
 

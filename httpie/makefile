@@ -52,6 +52,7 @@ install-symlinks:
 	- cd ~/bin && ln -sf $(realpath bin/http)
 	- cd ~/bin && ln -sf $(realpath bin/https)
 
+
 .PHONY: check
 check:
 	@ echo -e "\nCurrent version is:"

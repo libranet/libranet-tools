@@ -58,3 +58,9 @@ install-symlinks:  create-dirs
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
 	@ cd var && ln -sf ~/.cache/glances log
+
+
+.PHONY: check
+check:
+	@ echo -e "\nCurrent version is:"
+	- bin/glances --version
