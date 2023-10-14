@@ -24,14 +24,12 @@ set -u # exit on unset variable
 READLINK=$(command -v greadlink || command -v readlink)
 
 # This script could be symlinked from another location.
-CANONICAL_SCRIPT_DIR=$(readlink -f $(dirname $(readlink -f $0)))
+CANONICAL_SCRIPT_DIR=$(readlink -f "$(dirname "$(readlink -f $"0")")")
 # PARENT_DIR=$(readlink -m ${CANONICAL_SCRIPT_DIR}/..)
 # PARENT_DIR=$(realpath -m "${CANONICAL_SCRIPT_DIR}/..")
 
-PARENT_DIR=$(${READLINK} -f $(dirname $(readlink -f $0)))
+PARENT_DIR=$(${READLINK} -f "$(dirname "$(readlink -f $"0")")")
 
-echo -e "Running script located in ${CANONICAL_SCRIPT_DIR}"
-echo -e "Parent-dir is ${PARENT_DIR}"
 
 function1() {
     echo -e "Running function1() from ${CANONICAL_SCRIPT_DIR}"
@@ -40,6 +38,7 @@ function1() {
 
 function2() {
     echo -e "Running function2()"
+    echo -e "Parent-dir is ${PARENT_DIR}"
 }
 
 ## main program

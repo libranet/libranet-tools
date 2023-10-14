@@ -1,3 +1,4 @@
+#!/bin/bash
 
 echo -e "Pulling ${DOTFILES_DIR}"
-cd ${DOTFILES_DIR} && git pull && cd -
+cd "${DOTFILES_DIR}" && git pull && cd -  || exit

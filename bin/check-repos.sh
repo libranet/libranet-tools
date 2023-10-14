@@ -11,7 +11,7 @@ DOTFILES_DIR="$HOME/.dotfiles"
 
 check_dotfiles () {
     echo -e "\nChecking git-status in ${DOTFILES_DIR}."
-    cd ${DOTFILES_DIR}
+    cd "${DOTFILES_DIR}"
     git status
     git pull --quiet
     # git commit -m 'update' .
@@ -21,7 +21,7 @@ check_dotfiles () {
 
 check_tools () {
     echo -e "Checking git-status in ${TOOLS_DIR}."
-    cd ${TOOLS_DIR}
+    cd "${TOOLS_DIR}"
     git status
     git pull --quiet
     # git commit -m 'update' .

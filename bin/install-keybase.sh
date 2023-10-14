@@ -1,8 +1,11 @@
+#!/bin/bash
+
 # see https://keybase.io/docs/the_app/install_linux
 #
 
 export GNUPGHOME="$HOME/.config/gnupg"
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 function update_rpms() {
     echo -e "Install rpm-packages for gpg & keybase."
@@ -13,8 +16,8 @@ function update_rpms() {
 
 function create_gnupg_config() {
     echo -e "Creating \$GNUPGHOME in ${GNUPGHOME}."
-    mkdir -p ${GNUPGHOME}
-    chmod 700 ${GNUPGHOME}
+    mkdir -p "${GNUPGHOME}"
+    chmod 700 "${GNUPGHOME}"
 }
 
 function import_gpg_from_keybase() {
@@ -30,8 +33,8 @@ function import_gpg_from_keybase() {
 }
 
 function configure_git() {
-    KEY_ID = $(gpg --list-keys --keyid-format long | awk '/pub/ {print $2}' | cut -c 17-30)
-    git config --global user.signingkey ${KEY_ID}
+    KEY_ID="$(gpg --list-keys --keyid-format long | awk '/pub/ {print $2}' | cut -c 17-30)"
+    git config --global user.signingkey "${KEY_ID}"
     git config --global commit.gpgsign true
 }
 

@@ -12,16 +12,16 @@ FROM=${1:-master}
 
 
 echo -e "== git checkout $FROM =="
-git checkout $FROM 
+git checkout "$FROM"
 
 
 echo -e "\n\n== git pull =="
-git pull 
+git pull
 
 
 echo -e "\n\n== git checkout - =="
-git checkout - 
+git checkout -
 
 
 echo -e "\n\n== git merge $FROM =="
-git merge $FROM
+git merge "$FROM"
