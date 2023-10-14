@@ -46,6 +46,7 @@ oh-my-posh
 os-update.sh
 pdm
 pipx
+poe
 poetry
 pre-commit
 prerelease
