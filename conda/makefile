@@ -149,8 +149,8 @@ install-mamba:
 install-symlinks:
 	@ cd ~/bin && ln -sf $(realpath bin/conda)
 	@ cd ~/bin && ln -sf $(realpath bin/conda-env)
-	@ cd ~/bin && ln -sf $(realpath bin/mamba)
-	
+
+# cd ~/bin && ln -sf $(realpath bin/mamba)
 # cd ~/bin && ln -sf $(realpath bin/mamba-package)
 # cd ~/bin && ln -sf $(realpath bin/micromamba)
 # cd ~/bin && ln -sf $(realpath bin/activate)
