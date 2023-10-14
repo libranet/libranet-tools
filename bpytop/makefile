@@ -6,6 +6,8 @@
 
 CMD=$(realpath bin/bpytop)
 
+TOOLS_DIR ?= ${HOME}
+BIN_DIR = ${TOOLS_DIR}/bin
 
 .PHONY: clean
 clean:
@@ -46,7 +48,7 @@ install-packages:
 
 .PHONY: install-symlinks
 install-symlinks:
-	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
-	@ cd ~/bin && ln -sf ${CMD} bpytop
-	@ cd ~/bin && ln -sf ${CMD} btop
-	@ ln -s ~/.config/bpytop etc
+	@ echo -e "Symlinking ${CMD} to ${BIN_DIR}"
+	@ cd ${BIN_DIR} && ln -sf ${CMD} bpytop
+	@ cd ${BIN_DIR} && ln -sf ${CMD} btop
+	@ ln -sf ~/.config/bpytop etc
