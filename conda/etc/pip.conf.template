@@ -16,7 +16,7 @@
 
 
 # cfr. https://github.com/pypa/pip/issues/2850
-cache-dir = /opt/conda/var/cache-pip
+cache-dir = __CWD__/var/cache/pip
 
 timeout = 30
 

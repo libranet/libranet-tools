@@ -2,7 +2,6 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 
 # CANONICAL_SCRIPT_DIR=$(readlink -f "$(dirname "$(readlink -f "$0")")")
-MINICONDA_INSTALLER=$(mktemp -t miniconda3-latest-linux-x86_64.sh-XXXXXXXXXX)
 MINICONDA_INSTALLER=Miniconda3-latest-Linux-x86_64.sh
 MINICONDA_DOWNLOAD_URL="https://repo.anaconda.com/miniconda/${MINICONDA_INSTALLER}"
 PREFIX=$(realpath .)
@@ -43,7 +42,6 @@ clean:
 
 .PHONY: install
 install:  \
-	check-64bit \
 	create-dirs \
 	download-installer \
 	install-miniconda \
@@ -59,16 +57,6 @@ install:  \
 
 .PHONY: update
 update: update-conda-self update-conda-packages
-
-
-.PHONY: check-64bit
-check-64bit:
-    ARCHITECTURE=$(shell uname -m); \
-    if [ "$$ARCHITECTURE" = "x86_64" ]; then \
-        :; \
-    else \
-        echo -e "Architecture ${ARCHITECTURE} not supported. We expect x86_64"; \
-    fi
 
 
 .PHONY: create-dirs
@@ -123,13 +111,14 @@ install-pipconf:
 	@ cp -n etc/pip.conf.template etc/pip.conf 
 	@ echo "Please review the config in etc/pip.conf." 
 	@ echo -e "Replacing string __CWD__ -> $(PWD)" 
-	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@'   etc/pip.conf
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' etc/pip.conf
+	@ ln -sf etc/pip.conf pip.conf
 
 
 .PHONY: install-pip-packages
 install-pip-packages:
 	bin/pip install --upgrade autoread-dotenv
-	# bin/pip install --upgrade conda-xdgpatch
+	bin/pip install --upgrade conda-xdgpatch
 
 
 .PHONY: update-conda-self
@@ -161,7 +150,8 @@ install-symlinks:
 	@ cd ~/bin && ln -sf $(realpath bin/conda)
 	@ cd ~/bin && ln -sf $(realpath bin/conda-env)
 	@ cd ~/bin && ln -sf $(realpath bin/mamba)
-	# cd ~/bin && ln -sf $(realpath bin/mamba-package)
-	# cd ~/bin && ln -sf $(realpath bin/micromamba)
-	# cd ~/bin && ln -sf $(realpath bin/activate)
-	# cd ~/bin && ln -sf $(realpath bin/deactivate)
+	
+# cd ~/bin && ln -sf $(realpath bin/mamba-package)
+# cd ~/bin && ln -sf $(realpath bin/micromamba)
+# cd ~/bin && ln -sf $(realpath bin/activate)
+# cd ~/bin && ln -sf $(realpath bin/deactivate)
