@@ -22,3 +22,6 @@ etc/*
 !etc/*.template
 !etc/bashrc
 var/
+
+# do not delete any instantiated conda-envs
+/envs
