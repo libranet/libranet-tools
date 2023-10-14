@@ -6,9 +6,9 @@ CMD=$(realpath bin/hadolint)
 SED=`command -v gsed || command -v sed`
 TMPDIR = $(shell readlink -f var/tmp)
 
-VERSION=v0.11.0
+VERSION=0.11.0
 FILENAME=git-credential-oauth_${VERSION}_linux_amd64.tar.gz
-DOWNLOAD_URL=https://github.com/hickford/git-credential-oauth/releases/download/${VERSION}/${FILENAME}
+DOWNLOAD_URL=https://github.com/hickford/git-credential-oauth/releases/download/v${VERSION}/${FILENAME}
 
 .PHONY: clean
 clean:
@@ -23,16 +23,16 @@ install: create-dirs download install-symlinks
 .PHONY: create-dirs
 create-dirs:
 	@ mkdir -p bin
+	@ mkdir -p var/downloads
 	@ mkdir -p var/tmp
 
 
 .PHONY: download
 download:
 	@ echo -e "Downloading ${DOWNLOAD_URL}:"
-	curl -sSLf ${DOWNLOAD_URL} --output var/downloads/${FILNAME}
+	curl -SLf ${DOWNLOAD_URL} --output var/downloads/${FILENAME}
 
 
 .PHONY: install-symlinks
 install-symlinks:
-#	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
-	@ cd ~/bin && ln -sf ${CMD} hadolint
+	@ cd ~/bin && ln -sf ${CMD} git-credential-oauth 
