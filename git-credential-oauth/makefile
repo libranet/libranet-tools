@@ -31,6 +31,7 @@ create-dirs:
 download:
 	@ echo -e "Downloading ${DOWNLOAD_URL}:"
 	curl -SLf ${DOWNLOAD_URL} --output var/downloads/${FILENAME}
+	@ tar xzf var/downloads/${FILENAME} --directory bin/ 
 
 
 .PHONY: install-symlinks
