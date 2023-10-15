@@ -43,3 +43,7 @@ autojump-zsh
 
 # https://webhostinggeeks.com/howto/how-to-use-tmpwatch-to-auto-clean-up-files-and-logs-in-linux/
 tmpwatch
+
+
+# locate command
+mlocate

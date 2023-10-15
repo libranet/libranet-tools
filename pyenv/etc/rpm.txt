@@ -21,3 +21,6 @@ tk-devel
 xz-devel 
 zlib 
 zlib-devel 
+
+# extra pyenv-plugin
+ccache

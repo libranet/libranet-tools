@@ -12,7 +12,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-config install-symlinks
 
 
 .PHONY: update
@@ -51,7 +51,26 @@ install-dotenv:
 	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
+.PHONY: install-config
+install-config:
+	@ echo -e "Copying etc/pgadmin4.toml.template to etc/pgadmin4.toml"
+	@ cp -n etc/pgadmin4.toml.template etc/pgadmin4.toml
+	@ echo "Please review the config in etc/pgadmin4.toml"
+	@ echo -e "Replacing string __CWD__ -> $(PWD)"
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' etc/pgadmin4.toml
+
+
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
+
+
+.PHONY: run-pgadmin4
+run-pgadmin4:
+	bin/pgadmin4
+
+
+.PHONY: open-browser
+open-browser:
+	@ xdg-open "http://127.0.0.1:5050/browser/"
