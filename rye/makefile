@@ -4,7 +4,7 @@
 # https://rye-up.com/guide/installation/
 .ONESHELL:
 
-export RYE_HOME=$(realpath .)/home
+export RYE_HOME=$(realpath .)/var/home
 export TMP=$(realpath var/tmp)
 
 .PHONY: clean
@@ -12,7 +12,6 @@ clean:
 	@ rm -fr bin
 	@ rm -fr home
 	@ rm -fr var
-
 
 
 .PHONY: install
@@ -32,7 +31,7 @@ create-dirs:
 
 .PHONY: install-rye
 install-rye:
-	@ export RYE_HOME=$(realpath .)/home
+	@ export RYE_HOME=$(realpath .)/var/home
 	@ export RYE_VERSION='latest'
 	@ export RYE_INSTALL_OPTION='--yes'
 	curl -fsLS https://rye-up.com/get --output bin/rye-installer.sh
