@@ -41,4 +41,4 @@ update:
 
 .PHONY: create-symlinks
 create-symlinks:
-	- ln -s $(realpath var/repo/bin) bin
+	- ln -s $(realpath var/home/bin) bin

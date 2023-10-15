@@ -43,7 +43,7 @@ install-packages:
 	- sudo dnf install -y $(cat etc/rpm-packages.txt)
 
 
-.PHONY: install-symlinks
-install-symlinks:
+.PHONY: install-wsl-conf
+install-wsl-confs:
 	# @ echo -e "Symlink ${CMD} to ${HOME}/bin/"
-	# @ cd ~/bin && ln -sf ${CMD}
+	@ sudo cd /etc && ln -sf $(realpath etc/wsl.conf)
