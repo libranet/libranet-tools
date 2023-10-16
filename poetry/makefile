@@ -74,11 +74,11 @@ install-extensions:
 
 .PHONY: install-dotenv
 install-dotenv:
-	@ echo -e "Copying .env.template to .env" ;\
-	@ cp -n .env.template .env ;\
+	@ echo -e "Copying .env.template to .env"
+	@ cp -n .env.template .env
 	@ echo "Please review the config in .env"
-	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
-	$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
+	@ echo -e "Replacing string __CWD__ -> $(PWD)"
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
 .PHONY: install-symlinks
