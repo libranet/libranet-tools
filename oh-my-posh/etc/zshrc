@@ -14,6 +14,8 @@ command -v oh-my-posh >/dev/null || export PATH="$BASE_DIR/bin:$PATH"
 # }
 # New-Alias -Name 'Set-PoshContext' -Value 'Set-EnvName' -Scope Global -Force
 
+export OMP_CACHE_DIR=${TOOLS_DIR}/oh-my-posh/var/cache
+
 # see https://ohmyposh.dev/docs/installation/prompt
 # eval "$(oh-my-posh init zsh)"
 #echo -e "loading  ${TOOLS_DIR}/etc/"

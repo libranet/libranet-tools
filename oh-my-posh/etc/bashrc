@@ -20,10 +20,11 @@
 # alias set_posh_context="set_env_name"
 
 
+export OMP_CACHE_DIR=${TOOLS_DIR}/oh-my-posh/var/cache
 
 # see https://ohmyposh.dev/docs/installation/prompt
 # eval "$(oh-my-posh init bash)"
 
 # eval "$(oh-my-posh init bash --config /opt/tools/oh-my-posh/etc/wvh.omp.json)"
 # eval "$(oh-my-posh init bash --config /opt/tools/oh-my-posh/var/themes/aliens.omp.json)"
-eval "$(oh-my-posh init bash --config /opt/tools/oh-my-posh/etc/aliens.omp.json)"
+eval "$(oh-my-posh init bash --config ${TOOLS_DIR}/oh-my-posh/etc/aliens.omp.json)"
