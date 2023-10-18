@@ -2,12 +2,12 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 #
 # see https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=script
-
+SED=`command -v gsed || command -v sed`
 
 .PHONY: clean
 clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg
-	- rm -fr var
+	@ rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr var
 
 
 .PHONY: install
@@ -44,11 +44,11 @@ install-packages:
 
 .PHONY: install-dotenv
 install-dotenv:
-@echo -e "Copying .env.template to .env" ;\
-cp -n .env.template .env ;\
-echo "Please review the config in .env"
-@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
-$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
+	@ echo -e "Copying .env.template to .env"
+	@ cp -n .env.template .env 
+	@ echo "Please review the config in .env"
+	@ echo -e "Replacing string __CWD__ -> $(PWD)"
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
 .PHONY: install-symlinks
