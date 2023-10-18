@@ -28,14 +28,13 @@ create-dirs:
 
 .PHONY: download-installer
 download-installer:
-	#- curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to ~/bin
-	- curl -sSLf https://just.systems/install.sh > bin/install-just.sh
+	- curl -sSLf --proto '=https' --tlsv1.2 https://just.systems/install.sh > bin/install-just.sh
 	@ chmod u+x bin/install-just.sh
 
 
 .PHONY: run-installer
 run-installer:
-	- bin/install-just.sh --to $(realpath bin) --target $(realpath var)
+	- bin/install-just.sh --to $(realpath bin)
 
 
 .PHONY: install-symlinks
