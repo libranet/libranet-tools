@@ -1,9 +1,6 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11' | tail -n 1`
-# PYTHON_VERSION=3.11.2
-
 
 .PHONY: clean
 clean:
@@ -20,7 +17,7 @@ update: upgrade-pip install-packages
 
 .PHONY: create-venv
 create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+	- python3 -m venv .
 
 
 .PHONY: create-dirs
@@ -53,7 +50,6 @@ install-configfile:
 install-symlinks:
 	@ echo -e "Symlink $(realpath bin/cookiecutter) to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf $(realpath bin/cookiecutter)
-
 	@ echo -e "Symlink $(realpath bin/cruft) to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf $(realpath bin/cruft)
 
@@ -61,4 +57,4 @@ install-symlinks:
 .PHONY: check
 check:
 	@ echo -e "\nCurrent version is:"
-	- bin/cookiecutter --version
+	@ bin/cookiecutter --version

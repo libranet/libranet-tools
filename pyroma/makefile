@@ -14,7 +14,7 @@ update: upgrade-pip install-packages
 
 .PHONY: create-venv
 create-venv:
-	- python# -m venv .
+	- python3 -m venv .
 
 
 .PHONY: create-dirs

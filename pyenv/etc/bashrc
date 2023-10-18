@@ -1,6 +1,7 @@
 # This is a comment.
 
 export PYENV_ROOT="/opt/tools/pyenv/var/repo"
+export TMP="/opt/tools/pyenv/var/tmp"
 
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 

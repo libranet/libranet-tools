@@ -1,0 +1,23 @@
+# This is a comment.
+# see https://www.pgadmin.org/docs/pgadmin4/7.7/config_py.html
+
+[default]
+AZURE_CREDENTIAL_CACHE_DIR = '/opt/tools/pgadmin/var/cache/azurecredential'
+LOG_FILE = '/opt/tools/pgadmin/var/log/pgadmin4.log'
+KERBEROS_CACHE_DIR = '/opt/tools/pgadmin/var/cache/kerberos'
+SQLITE_PATH = '/opt/tools/pgadmin/var/db/pgadmin4.db'
+SESSION_DB_PATH = '/opt/tools/pgadmin/var/sessions'
+STORAGE_DIR = '/opt/tools/pgadmin/var/storage'
+
+MASTER_PASSWORD = 'secret'
+# MASTER_PASSWORD = "{env[PG_PASSWORD]}"
+
+
+# Debug mode?
+DEBUG = 1
+
+# This will enable PSQL tool in pgAdmin when running in server mode.
+# PSQL is always enabled in Desktop mode, however in server mode it is
+# disabled by default because users can run arbitrary commands on the
+# server through it.
+ENABLE_PSQL = 1

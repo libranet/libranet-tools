@@ -13,7 +13,7 @@
 SHELL := /bin/bash
 
 SED=`command -v gsed || command -v sed`
-CMD=$(realpath bin/black)
+CMD=$(realpath bin/rustenv)
 
 .PHONY: help
 help:
@@ -36,7 +36,7 @@ create-dirs:
 
 
 .PHONY: install ## run all install-steps
-install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-symlinks check
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks check
 
 
 .PHONY: update  ## update the current installation
@@ -66,7 +66,7 @@ install:
 
 .PHONY: install-packages  ## install python-packages via pip
 install-packages:
-	- bin/pip install --upgrade black autoread-dotenv
+	- bin/pip install --upgrade rustenv
 
 
 .PHONY: install-dotenv  ## generate .dotenv from template
@@ -87,4 +87,4 @@ install-symlinks:
 .PHONY: check
 check:
 	@ echo -e "\nCurrent version is:"
-	@ bin/black --version
+	@ bin/rustenv --version

@@ -1,7 +1,7 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-
+SED=`command -v gsed || command -v sed`
 BIN_DIR=$(realpath bin/)
 
 
@@ -13,7 +13,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-symlinks
 
 
 .PHONY: update
@@ -40,6 +40,15 @@ install:
 .PHONY: install-packages
 install-packages:
 	- bin/pip install --upgrade ansible autoread-dotenv
+
+
+.PHONY: install-dotenv  ## generate .dotenv from template
+install-dotenv:
+	@ echo -e "Copying .env.template to .env"
+	@ cp -n .env.template .env
+	@ echo "Please review the config in .env"
+	@ echo -e "Replacing string __CWD__ -> $(PWD)"
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
 .PHONY: install-symlinks

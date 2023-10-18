@@ -1,1 +1,4 @@
- eval "$(starship init zsh)"
+export STARSHIP_CACHE="/opt/tools/starship/var/cache" 
+export STARSHIP_CONFIG="/opt/tools/starship/etc/starship.toml"
+
+eval "$(starship init zsh)"

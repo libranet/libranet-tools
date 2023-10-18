@@ -24,67 +24,38 @@ help:
 
 .PHONY: clean  ## remove generated files & dirs
 clean:
-	@ rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr bin 
 	@ rm -fr var
 
 
 .PHONY: create-dirs  ## create files and directories
 create-dirs:
-	@ mkdir -p etc
+	@ mkdir -p bin
 	@ mkdir -p var/cache
 	@ mkdir -p var/tmp
 
 
 .PHONY: install ## run all install-steps
-install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-symlinks check
+install: create-dirs install-packages install-symlinks check
 
 
 .PHONY: update  ## update the current installation
 update: upgrade-pip install-packages check
 
 
-.PHONY: revert  ## revert to frozen requirements
-revert:
-	- bin/python -m pip install -r etc/requirements.txt
-
-
-.PHONY: freeze  ## freeze current requirements
-freeze: create-dirs
-	- bin/python -m pip freeze > etc/requirements.txt
-
-
-.PHONY: create-venv  ## create a virtual python-environment
-create-venv:
-	- python3 -m venv .
-
-
-.PHONY: upgrade-pip  ## upgrade pip itself
-install:
-	- bin/python -m pip freeze > etc/requirements.txt
-	- bin/python -m pip install --upgrade pip
-
-
-.PHONY: install-packages  ## install python-packages via pip
+.PHONY: install-packages  ## install rust-packages via cargo
 install-packages:
-	- bin/pip install --upgrade black autoread-dotenv
-
-
-.PHONY: install-dotenv  ## generate .dotenv from template
-install-dotenv:
-	@ echo -e "Copying .env.template to .env"
-	@ cp -n .env.template .env
-	@ echo "Please review the config in .env"
-	@ echo -e "Replacing string __CWD__ -> $(PWD)"
-	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
+	- cargo install git-repo-manager
 
 
 .PHONY: install-symlinks  ## generate symlinks
 install-symlinks:
-	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
-	@ cd ~/bin && ln -sf ${CMD}
+	@ echo -e "Symlink ${CARGO_HOME}/bin/grm to bin/"
+	@ cd ~/bin && ln -sf ${CARGO_HOME}/bin/grm && cd -
+	@ cd bin && ln -sf ${CARGO_HOME}/bin/grm && cd -
 
 
 .PHONY: check
 check:
 	@ echo -e "\nCurrent version is:"
-	@ bin/black --version
+	@ bin/grm --version

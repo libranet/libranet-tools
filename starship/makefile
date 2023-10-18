@@ -12,7 +12,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs download-installer run-installer install-symlinks
+install: create-dirs download-installer run-installer install-symlinks check
 
 
 .PHONY: update
@@ -22,6 +22,7 @@ update: install
 .PHONY: create-dirs
 create-dirs:
 	@ mkdir -p bin
+	@ mkdir -p var/cache
 	@ mkdir -p var/tmp
 
 

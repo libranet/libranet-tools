@@ -1,6 +1,6 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
-
+SED=`command -v gsed || command -v sed`
 CMD=$(realpath bin/glances)
 
 
@@ -37,7 +37,7 @@ install:
 .PHONY: install-packages
 install-packages:
 	# https://github.com/nicolargo/glances
-    # - bin/pip install --upgrade glances
+	# - bin/pip install --upgrade glances
 	- bin/pip install --upgrade autoread-dotenv
 	- bin/pip install --upgrade 'glances[action,browser,cloud,cpuinfo,docker,export,folders,gpu,graph,ip,raid,snmp,web,wifi]'
 	- bin/pip install --upgrade sparklines

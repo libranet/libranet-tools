@@ -33,6 +33,7 @@ git-credential-oauth
 gitlab-runner
 glances
 grin
+grm
 hadolint
 hatch
 http
@@ -47,6 +48,7 @@ lynis
 oh-my-posh
 os-update.sh
 pdm
+pgadmin4
 pipx
 poe
 poetry
@@ -58,11 +60,13 @@ pyroma
 pysemgrep
 release
 ruff
+rustenv
 shellcheck
 semgrep
 sphinx-build
 starship
 supervisord
+tox
 tuna
 twine
 vault

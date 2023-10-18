@@ -2,12 +2,12 @@
 # Important: You *must* indent using <TAB>s, not spaces.
 
 CMD=$(realpath bin/pipx)
-PYTHON_VERSION=`pyenv versions --bare |grep '3.11' | tail -n 1`
 
 
 .PHONY: clean
 clean:
-	rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr bin 
+	@ rm -fr include lib lib64 pyvenv.cfg
 
 
 .PHONY: install
@@ -26,7 +26,7 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- PYENV_VERSION=${PYTHON_VERSION} python -m venv .
+	- python3 -m venv .
 
 
 .PHONY: upgrade-pip

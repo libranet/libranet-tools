@@ -1,9 +1,6 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-PYTHON_VERSION=`~/bin/pyenv versions --bare |grep '3.11'| tail -n 1`
-# PYTHON_VERSION='3.11.2'
-
 
 .PHONY: clean
 clean:
@@ -28,7 +25,7 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python -m venv .
+	- python3 -m venv .
 
 
 .PHONY: upgrade-pip
