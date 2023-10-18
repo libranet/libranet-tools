@@ -1,0 +1,50 @@
+# This is a comment
+#
+# This is the local configuration for the poetry-command.
+# Official docs: https://python-poetry.org/docs/configuration/#available-settings
+#
+# Poetry provides the ability to have settings that are specific to a project
+# by passing the --local option to the config command.
+# Please see https://python-poetry.org/docs/configuration/
+
+
+[virtualenvs]
+
+# Directory where virtual environments will be created. Defaults to {cache-dir}/virtualenvs
+# path = ""
+
+# Create the virtualenv inside the project’s root directory. Defaults to None.
+# If set to true, the virtualenv wil be created and expected in a folder named .venv within the root directory of the project.
+# If not set explicitly (default), poetry will use the virtualenv from the .venv directory when one is available.
+# If set to false, poetry will ignore any existing .venv directory
+# > poetry config virtualenvs.in-project true --local
+in-project = true
+
+# Create a new virtual environment if one doesn’t already exist. Defaults to true.
+# > poetry config virtualenvs.create true --local
+create = true
+prefer-active-python = false
+
+
+# [experimental]
+# new-installer = false
+
+
+[repositories]
+# see https://python-poetry.org/docs/repositories/
+
+# [repositories.repo-tsc-demo]  # move to projects's pyproject.toml
+# # poetry publish --repository repo-tsc-demo  --username __token__ --password $GITLAB_TOKEN_TSC
+# # project-id: 49163009, https://gitlab.com/tsc-projects/tsc-demo
+# url = "https://gitlab.com/api/v4/projects/49163009/packages/pypi/"
+
+[repositories.tsc-sphinx]
+# project-id: 47362917, https://gitlab.com/tsc-projects/tsc_sphinx
+url = "https://gitlab.com/api/v4/projects/47362917/packages/pypi/simple"
+
+[repositories.wvhconsulting]
+# project-id: xxx , https://gitlab.com/wvhconsulting/...
+url = "https://gitlab.com/api/v4/projects/xxx/packages/pypi/simple"
+
+# [repositories.ek-global]
+# url = "https://gitlab.com/api/v4/projects/37865045/packages/pypi/simple"

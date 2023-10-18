@@ -1,7 +1,7 @@
 # source this file in your bashrc/zshrc
 
 THIS_DIR=$(readlink -f $(dirname $(readlink -f $0)))
-PARENT_DIR=$(realpath -m "${THIS_DIR}/..")
+PARENT_DIR=$(realpath -m "${THIS_DIR}/../")
 
 export CARGO_HOME=${PARENT_DIR}/var/cargo
 
