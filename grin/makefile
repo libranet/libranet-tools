@@ -1,8 +1,10 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-CMD=$(realpath bin/grin)
+.NOTPARALLEL:
+.ONESHELL:
 
+CMD=$(realpath bin/grin)
 
 .PHONY: clean
 clean:

@@ -24,7 +24,6 @@ install-rpms:
 	- sudo alternatives --config java
 
 
-
 .PHONY: create-dirs
 create-dirs:
 	@ mkdir -p bin

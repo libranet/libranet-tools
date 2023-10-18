@@ -16,6 +16,7 @@ aws
 aws_completer
 az
 black
+btop
 bpytop
 checkmate
 conda
@@ -98,6 +99,7 @@ black
 bpytop
 cookiecutter
 cruft
+dotenv-linter
 flake8
 flit
 frogmouth
@@ -129,6 +131,7 @@ ruff
 semgrep
 sphinx-build
 starship
+tiptop
 twine
 virtualenv
 xdg-ninja.sh

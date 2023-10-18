@@ -1,8 +1,8 @@
 # This is a comment.
 # This file is managed manually by Wouter.
 # After updating this file, you need to execute:
-#   > bin/update-antibody-zsh-plugins.sh
-#   > antibody bundle < ~/.config/zsh/plugins.txt  > ~/.config/zsh/plugins.zsh
+#   > bin/update-antidote-zsh-plugins.sh
+#   > antidote bundle etc/plugins.txt  > etc/plugins.zsh
 
 # https://github.com/unixorn/awesome-zsh-plugins
 
@@ -10,19 +10,26 @@
 # djui/alias-tips
 
 robbyrussell/oh-my-zsh path:lib
-robbyrussell/oh-my-zsh path:themes/robbyrussell.zsh-theme
+robbyrussell/oh-my-zsh path:plugins/git
+
+# robbyrussell/oh-my-zsh path:themes/robbyrussell.zsh-theme
 
 # https://github.com/romkatv/powerlevel10k#antibody
-romkatv/powerlevel10k
+# romkatv/powerlevel10k
 
-
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-completions
-zsh-users/zsh-history-substring-search
+# zsh-users/zsh-autosuggestions
+# zsh-users/zsh-completions
+# zsh-users/zsh-history-substring-search
 
 # zsh-users/zsh-syntax-highlighting
-zdharma-continuum/fast-syntax-highlighting
+# zdharma-continuum/fast-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting kind:defer
+
 
 # https://github.com/fourdim/zsh-poetry
 fourdim/zsh-poetry
 
+
+# These popular core plugins should be loaded at the end
+zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-history-substring-search

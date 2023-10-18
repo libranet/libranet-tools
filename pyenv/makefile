@@ -13,8 +13,9 @@
 # In our makesfiles, use gsed if found, otherwise regular sed.
 SED=`command -v gsed || command -v sed`
 
-export PYENV_ROOT=var/repo
-TMPDIR=var/tmp
+PYENV_ROOT=$(realpath -m var/repo)
+PYENV_ROOT=/opt/tools/pyenv/var/repo
+TMPDIR=$(realpath var/tmp)
 
 # # PYENV_ROOT="$HOME/.pyenv
 # export PYENV_ROOT='.'
@@ -23,11 +24,21 @@ CMD=$(realpath ${PYENV_ROOT}/libexec/pyenv)
 
 .PHONY: clean
 clean:
-	- rm -fr var
+	@ rm -fr bin
+	@ rm -fr var
 
 
 .PHONY: install
 install: install-rpm-packages create-dirs install-pyenv update-pyenv install-plugins install-local-symlinks install-symlinks bashrc-install-from-example bashrc-set-dir
+
+
+.PHONY: create-dirs
+create-dirs:
+	@ mkdir -p bin
+	@ mkdir -p etc
+	@ mkdir -p var
+	@ mkdir -p var/tmp
+
 
 
 .PHONY: install-rpm-packages
@@ -50,14 +61,6 @@ update-pyenv:
 
 .PHONY: update
 update: update-pyenv
-
-
-.PHONY: create-dirs
-create-dirs:
-	@ mkdir -p bin
-	@ mkdir -p etc
-	@ mkdir -p var
-	@ mkdir -p var/tmp
 
 
 .PHONY: install-symlinks

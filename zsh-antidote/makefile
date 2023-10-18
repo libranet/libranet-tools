@@ -19,6 +19,7 @@ install: create-dirs clone-repo install-symlinks update-plugins
 .PHONY: create-dirs
 create-dirs:
 	@ mkdir -p bin
+	@ mkdir -p var/cache
 	@ mkdir -p var/home
 	@ mkdir -p var/tmp
 
