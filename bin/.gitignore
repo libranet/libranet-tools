@@ -12,6 +12,7 @@ ansible-test
 ansible-vault
 antibody
 asciinema
+autojump
 aws
 aws_completer
 az
@@ -25,6 +26,7 @@ cookiecutter
 cruft
 flake8
 flit
+fr
 frogmouth
 fullrelease
 fzf

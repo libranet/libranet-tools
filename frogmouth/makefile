@@ -52,7 +52,8 @@ install-dotenv:
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
-	@ cd ~/bin && ln -sf ${CMD}
+	@ cd ~/bin && ln -sf $(realpath bin/frogmouth) frogmouth && cd -
+	@ cd ~/bin && ln -sf $(realpath bin/frogmouth) fr && cd -
 
 
 .PHONY: check

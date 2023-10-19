@@ -4,8 +4,6 @@
 # https://github.com/aristocratos/bpytop
 # https://www.cyberciti.biz/open-source/command-line-hacks/bpytop-awesome-linux-macos-and-freebsd-resource-monitor/
 
-CMD=$(realpath bin/bpytop)
-
 TOOLS_DIR ?= ${HOME}
 BIN_DIR = ${TOOLS_DIR}/bin
 
@@ -48,7 +46,7 @@ install-packages:
 
 .PHONY: install-symlinks
 install-symlinks:
-	@ echo -e "Symlinking ${CMD} to ${BIN_DIR}"
-	@ cd ${BIN_DIR} && ln -sf ${CMD} bpytop
-	@ cd ${BIN_DIR} && ln -sf ${CMD} btop
+	@ echo -e "Symlinking to ${BIN_DIR}"
+	cd ${BIN_DIR} && ln -sf $(realpath bin/bpytop) bpytop && cd -
+	@ cd ${BIN_DIR} && ln -sf $(realpath bin/bpytop) btop && cd -
 	@ ln -sf ~/.config/bpytop etc
