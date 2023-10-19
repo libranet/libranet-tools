@@ -1,3 +1,14 @@
-  [[ -s /opt/tools/autojump/etc/profile.d/autojump.sh ]] && source /opt/tools/autojump/etc/profile.d/autojump.sh
+# https://github.com/joelthelion/autojump/wiki/
+AUTOJUMP_DIR=${TOOLS_DIR}/autojump
+AUTOJUMP_HOME=${AUTOJUMP_DIR}/var/home
 
+export AUTOJUMP_DATA_HOME=${AUTOJUMP_DIR}/var/cache
+export AUTOJUMP_ERROR_PATH=${AUTOJUMP_DIR}/var/log/autojump-errors.log
 
+if [ -n "$BASH_VERSION" ]; then
+    [ -f ${AUTOJUMP_HOME}/share/autojump/autojump.bash ] && source ${AUTOJUMP_HOME}/share/autojump/autojump.bash      
+fi
+
+if [ -n "$ZSH_VERSION" ]; then
+    [ -f ${AUTOJUMP_HOME}/share/autojump/autojump.zsh ] && source ${AUTOJUMP_HOME}/share/autojump/autojump.zsh      
+fi

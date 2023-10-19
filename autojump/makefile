@@ -19,7 +19,9 @@ install: create-dirs clone-repo install-autojump create-symlinks
 create-dirs:
 	@ mkdir -p etc/profile.d
 	@ mkdir -p var
+	@ mkdir -p var/cache
 	@ mkdir -p var/home
+	@ mkdir -p var/log
 
 
 .PHONY: clone-repo
@@ -31,7 +33,8 @@ clone-repo:
 .PHONY: install-autojump
 install-autojump:
 	# - cd var/repo && ./install.py --destdir ${THIS_DIR} -zshshare ${THIS_DIR}
-	- cd var/repo && ./install.py --destdir ${THIS_DIR}/var/home
+	# - cd var/repo && ./install.py --destdir ${THIS_DIR}/var/home
+	- cd var/repo && ./install.py --destdir ${THIS_DIR} .
 
 
 .PHONY: update
@@ -42,3 +45,12 @@ update:
 .PHONY: create-symlinks
 create-symlinks:
 	- ln -s $(realpath var/home/bin) bin
+
+
+.PHONY: stat
+stat:
+	- bin/autojump --stat
+
+
+.PHONY: stats
+stats: stat

@@ -26,7 +26,7 @@ create-dirs:
 
 .PHONY: download-and-install
 download-and-install:
-	curl -fsLS "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "var/tmp/awscliv2.zip"
+	curl -fLS "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "var/tmp/awscliv2.zip"
 	unzip var/tmp/awscliv2.zip -d var/tmp
 	var/tmp/aws/install --bin-dir ${THIS_DIR}/bin --install-dir ${THIS_DIR}/var/releases --update
 

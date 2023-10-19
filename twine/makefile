@@ -11,6 +11,7 @@
 # switch from default /bin/sh to
 SHELL := /bin/bash
 
+SED=`command -v gsed || command -v sed`
 CMD=$(realpath bin/twine)
 
 

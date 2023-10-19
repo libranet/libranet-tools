@@ -2,9 +2,8 @@
 # For more information,please see
 #  - <http://cookiecutter.readthedocs.io/en/latest/advanced/user_config.html>
 
-# relative paths will be relative to $CWD.
+# use absolute paths, because relative paths are relative to $CWD
 cookiecutters_dir: "/opt/tools/cookiecutter/var/cookiecutters"
-
 replay_dir: "/opt/tools/cookiecutter/var/cookiecutters_replay"
 
 default_context:
