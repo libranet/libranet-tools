@@ -46,13 +46,16 @@ install: create-dirs download install-symlinks
 create-dirs:
 	@ mkdir -p bin
 	@ mkdir -p var/downloads
+	@ mkdir -p var/tmp
 
 
 .PHONY: download
 download:
 	@ echo -e "Downloading ${DOWNLOAD_URL}:\n"
 	curl -SLf ${DOWNLOAD_URL} --output var/downloads/${FILENAME}
-	@ tar xvf  var/downloads/${FILENAME} --directory bin/ --strip-components 1
+	@ tar xf var/downloads/${FILENAME} --directory var/tmp --strip-components 1
+	@ mv var/tmp/shellcheck bin/
+	@ chmod u+x bin/shellcheck
 
 
 .PHONY: install-symlinks
