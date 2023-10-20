@@ -1,34 +1,40 @@
 # This is a comment.
 # This file is managed manually by Wouter.
+#
 # After updating this file, you need to execute:
 #   > bin/update-antidote-zsh-plugins.sh
 #   > antidote bundle etc/plugins.txt  > etc/plugins.zsh
 
-# https://github.com/unixorn/awesome-zsh-plugins
+# refs:
+#   - https://github.com/unixorn/awesome-zsh-plugins
+#   - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
 
 # python-based  causes sitecustomize to run twice
 # djui/alias-tips
 
 robbyrussell/oh-my-zsh path:lib
-robbyrussell/oh-my-zsh path:plugins/git
+# robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/aliases kind:defer
+robbyrussell/oh-my-zsh path:plugins/aws kind:defer
+robbyrussell/oh-my-zsh path:plugins/azure kind:defer
+robbyrussell/oh-my-zsh path:plugins/colorize kind:defer
+robbyrussell/oh-my-zsh path:plugins/gh kind:defer
+robbyrussell/oh-my-zsh path:plugins/poetry kind:defer
+
 
 # robbyrussell/oh-my-zsh path:themes/robbyrussell.zsh-theme
 
 # https://github.com/romkatv/powerlevel10k#antibody
 # romkatv/powerlevel10k
 
-# zsh-users/zsh-autosuggestions
 # zsh-users/zsh-completions
-# zsh-users/zsh-history-substring-search
 
 # zsh-users/zsh-syntax-highlighting
 # zdharma-continuum/fast-syntax-highlighting
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
-
 # https://github.com/fourdim/zsh-poetry
-fourdim/zsh-poetry
-
+# fourdim/zsh-poetry
 
 # These popular core plugins should be loaded at the end
 zsh-users/zsh-autosuggestions kind:defer
