@@ -30,8 +30,9 @@ create-dirs:
 .PHONY: download
 download:
 	@ echo -e "Downloading ${DOWNLOAD_URL} to var/downloads"
-	curl -sSLf ${DOWNLOAD_URL} --output var/dowloads/${FILENAME}
-	@ tar xzvf var/dowloads/${FILENAME}
+	curl -SLf ${DOWNLOAD_URL} --output var/downloads/${FILENAME}
+	@ tar xzvf var/downloads/${FILENAME} --directory var/tmp
+	@ mv var/tmp/chroma bin/
 	@ chmod u+x bin/chroma
 
 
