@@ -12,7 +12,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-config install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-dev install-config install-symlinks
 
 
 .PHONY: update
@@ -24,6 +24,7 @@ create-dirs:
 	@ mkdir -p etc
 	@ mkdir -p var/cache
 	@ mkdir -p var/log
+	@ mkdir -p var/src
 	@ mkdir -p var/tmp
 
 
@@ -37,9 +38,17 @@ install:
 	- bin/python -m pip install --upgrade pip
 
 
-.PHONY: install-packages
+.phony: install-packages
 install-packages:
 	- bin/pip install --upgrade pgadmin4 autoread-dotenv
+	# - bin/pip install --upgrade pgadmin4-config
+
+
+.phony: install-dev
+install-dev:
+	# - git clone https://github.com/libranet/pgadmin4-toml-config.git var/src/pgadmin4-config
+	- git clone git@github.com:libranet/pgadmin4-toml-config.git var/src/pgadmin4-config
+	- bin/pip install -e var/src/pgadmin4-config
 
 
 .PHONY: install-dotenv
