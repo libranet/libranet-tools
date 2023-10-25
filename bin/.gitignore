@@ -60,9 +60,11 @@ pre-commit
 prerelease
 pyenv
 pygmentize
+pyinstrument
 pylint
 pyroma
 pysemgrep
+py-spy
 release
 ruff
 rustenv

@@ -35,8 +35,8 @@ create-dirs:
 
 .PHONY: download
 download:
-	@ echo -e "Downloading ${DOWNLOAD_URL} to bin/checkmate"
-	curl -sSLf ${DOWNLOAD_URL} --output bin/checkmate
+	@ echo -e "Downloading ${DOWNLOAD_URL}"
+	@ curl -SLf ${DOWNLOAD_URL} --output bin/checkmate
 	@ chmod u+x bin/checkmate
 
 
