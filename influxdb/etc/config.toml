@@ -1,0 +1,8 @@
+# https://docs.influxdata.com/influxdb/v2/reference/config-options/?t=TOML#bolt-path
+
+
+bolt-path = "/opt/tools/influxdb/var/db/influxd.bolt"
+e2e-testing = false
+engine-path = "/opt/tools/influxdb/var/db/engine"
+
+http-bind-address = ":8086"
