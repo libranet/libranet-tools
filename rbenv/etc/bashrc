@@ -1,0 +1,4 @@
+
+export PATH="/opt/tools/rbenv/bin:$PATH"
+
+eval "$(rbenv init -)"'
