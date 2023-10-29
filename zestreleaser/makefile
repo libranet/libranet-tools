@@ -4,8 +4,8 @@
 
 .PHONY: clean
 clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg
-	- rm -fr var
+	@ rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr var
 
 
 .PHONY: install
@@ -41,7 +41,7 @@ install-packages:
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Create symlinks in ~/bin/"
-	- ln -fs $(realpath bin/release) ~/bin/
-	- ln -fs $(realpath bin/fullrelease) ~/bin/
-	- ln -fs $(realpath bin/prerelease) ~/bin/
-	- ln -fs $(realpath bin/longtest) ~/bin/
+	@ ln -fs $(realpath bin/release) ~/bin/
+	@ ln -fs $(realpath bin/fullrelease) ~/bin/
+	@ ln -fs $(realpath bin/prerelease) ~/bin/
+	@ ln -fs $(realpath bin/longtest) ~/bin/

@@ -23,8 +23,8 @@ help:
 
 .PHONY: clean ## remove generated files & dirs
 clean:
-	- rm -fr bin
-	- rm -fr var
+	@ rm -fr bin
+	@ rm -fr var
 
 
 .PHONY: install ## run all install-steps

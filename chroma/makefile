@@ -10,6 +10,7 @@ VERSION=2.9.1
 FILENAME=chroma-${VERSION}-linux-amd64.tar.gz
 DOWNLOAD_URL=https://github.com/alecthomas/chroma/releases/download/v${VERSION}/${FILENAME}
 
+
 .PHONY: clean
 clean:
 	@ rm -fr bin

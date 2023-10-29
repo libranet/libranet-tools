@@ -10,8 +10,8 @@ DOWNLOAD_URL=https://github.com/keycloak/keycloak/releases/download/${VERSION}/k
 
 .PHONY: clean
 clean:
-	- rm -fr bin
-	- rm -fr var
+	@ rm -fr bin
+	@ rm -fr var
 
 
 .PHONY: install

@@ -6,16 +6,16 @@
 
 .PHONY: clean
 clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg
-	- rm var
+	@ rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr var
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks version
 
 
 .PHONY: update
-update: upgrade-pip install-packages
+update: upgrade-pip install-packages version
 
 
 .PHONY: create-dirs
@@ -44,7 +44,7 @@ install-symlinks:
 	@ cd ~/bin && ln -sf $(realpath bin/isort)
 
 
-.PHONY: check
-check:
+.PHONY: version
+version:
 	@ echo -e "\nCurrent version is:"
-	- bin/isort --version
+	@ bin/isort --version

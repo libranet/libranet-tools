@@ -16,8 +16,8 @@ export TMP := var/tmp
 .PHONY: clean
 clean:
 	@ echo -e "Removing all conda-dirs except envs-dir"
-	- rm -fr var
-	- rm -fr \
+	@ rm -fr var
+	@ rm -fr \
 		bin \
 		cmake \
 		compiler_compat \

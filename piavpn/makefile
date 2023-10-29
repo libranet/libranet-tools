@@ -10,8 +10,8 @@ DOWNLOAD_URL='https://installers.privateinternetaccess.com/download/pia-linux-3.
 
 .PHONY: clean
 clean:
-	- rm -fr bin
-	- rm -fr var
+	@ rm -fr bin
+	@ rm -fr var
 
 
 .PHONY: install

@@ -10,10 +10,11 @@ VERSION=4.0.5390
 FILENAME="Azure.Functions.Cli.linux-x64.${VERSION}.zip"
 DOWNLOAD_URL="https://github.com/Azure/azure-functions-core-tools/releases/download/${VERSION}/${FILENAME}"
 
+
 .PHONY: clean
 clean:
-	- rm -fr bin
-	- rm -fr var
+	@ rm -fr bin
+	@ rm -fr var
 
 
 .PHONY: install

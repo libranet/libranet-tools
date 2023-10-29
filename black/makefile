@@ -36,11 +36,11 @@ create-dirs:
 
 
 .PHONY: install ## run all install-steps
-install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-symlinks check
+install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-symlinks version
 
 
 .PHONY: update  ## update the current installation
-update: upgrade-pip install-packages check
+update: freeze upgrade-pip install-packages version
 
 
 .PHONY: revert  ## revert to frozen requirements
@@ -59,8 +59,7 @@ create-venv:
 
 
 .PHONY: upgrade-pip  ## upgrade pip itself
-install:
-	- bin/python -m pip freeze > etc/requirements.txt
+upgrade-pip:
 	- bin/python -m pip install --upgrade pip
 
 
@@ -84,7 +83,11 @@ install-symlinks:
 	@ cd ~/bin && ln -sf ${CMD}
 
 
-.PHONY: check
-check:
+.PHONY: version
+version:
 	@ echo -e "\nCurrent version is:"
 	@ bin/black --version
+
+.PHONY: status
+status:
+	@ echo -e "\nAll steps succesfully executed.\n"

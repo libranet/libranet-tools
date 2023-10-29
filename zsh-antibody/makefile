@@ -10,8 +10,8 @@ TMPDIR = $(shell readlink -f var/tmp)
 
 .PHONY: clean
 clean:
-	- rm -fr bin
-	- rm -fr var
+	@ rm -fr bin
+	@ rm -fr var
 
 
 .PHONY: install

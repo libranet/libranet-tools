@@ -16,8 +16,8 @@ DEFAULT_TOOLCHAIN := stable
 
 .PHONY: clean
 clean:
-	- rm -fr bin
-	- rm -fr var
+	@ rm -fr bin
+	@ rm -fr var
 
 
 .PHONY: install
@@ -29,7 +29,7 @@ create-dirs:
 	@ mkdir -p etc
 	@ mkdir -p var/tmp
 	@ mkdir -p ${CARGO_HOME}/bin
-	- ln -s ${CARGO_HOME}/bin bin
+	@ ln -s ${CARGO_HOME}/bin bin
 
 
 .PHONY: update
@@ -38,8 +38,8 @@ update: update-rust
 
 .PHONY: download-installer
 download-installer:
-	- curl -fsLS https://sh.rustup.rs --output ${CARGO_HOME}/bin/install-rust.sh
-	- chmod u+x ${CARGO_HOME}/bin/install-rust.sh
+	@ curl -fLS https://sh.rustup.rs --output ${CARGO_HOME}/bin/install-rust.sh
+	@ chmod u+x ${CARGO_HOME}/bin/install-rust.sh
 
 
 .PHONY: run-installer
@@ -50,14 +50,14 @@ run-installer:
 
 .PHONY: install-dotenv
 install-dotenv:
-	@ echo -e "Copying etc/basrc.template to etc/bashrc" ;\
-	cp -n etc/bashrc.template etc/bashrc ;\
+	@ echo -e "Copying etc/basrc.template to etc/bashrc" 
+	@ cp -n etc/bashrc.template etc/bashrc
 
-	@ echo -e "Replacing string __CARGO_HOME__ -> ${CARGO_HOME}" ;\
-	$(SED) -i 's@__CARGO_HOME__@'"${CARGO_HOME}"'@' etc/bashrc
+	@ echo -e "Replacing string __CARGO_HOME__ -> ${CARGO_HOME}"
+	@ $(SED) -i 's@__CARGO_HOME__@'"${CARGO_HOME}"'@' etc/bashrc
 
-	@ echo -e "Replacing string __RUSTUP_HOME__ -> ${RUSTUP_HOME}" ;\
-	$(SED) -i 's@__RUSTUP_HOME__@'"${RUSTUP_HOME}"'@' etc/bashrc
+	@ echo -e "Replacing string __RUSTUP_HOME__ -> ${RUSTUP_HOME}"
+	@ $(SED) -i 's@__RUSTUP_HOME__@'"${RUSTUP_HOME}"'@' etc/bashrc
 	@ echo "Please review the config in etc/bashrc"
 
 

@@ -6,7 +6,7 @@ CMD=$(realpath bin/glances)
 
 .PHONY: clean
 clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg share
+	@ rm -fr bin include lib lib64 pyvenv.cfg share
 
 
 .PHONY: install
@@ -63,4 +63,4 @@ install-symlinks:  create-dirs
 .PHONY: check
 check:
 	@ echo -e "\nCurrent version is:"
-	- bin/glances --version
+	bin/glances --version

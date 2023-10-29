@@ -38,7 +38,7 @@ install-autocomplete:
 
 .PHONY: install-docs
 install-docs:
-    # available releases: https://github.com/terraform-docs/terraform-docs/tags
+	# available releases: https://github.com/terraform-docs/terraform-docs/tags
 	- go install github.com/terraform-docs/terraform-docs@v0.16.0
 
 

@@ -8,7 +8,7 @@ export TMP=$(realpath var/tmp)
 
 .PHONY: clean
 clean:
-	- rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr bin include lib lib64 pyvenv.cfg
 
 
 .PHONY: install

@@ -11,11 +11,11 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks status
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks version status
 
 
 .PHONY: update
-update: upgrade-pip install-packages status
+update: upgrade-pip install-packages version status
 
 
 .PHONY: create-dirs
@@ -44,6 +44,12 @@ install-packages:
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
+
+
+.PHONY: version
+version:
+	@ echo -e "\nCurrent version is:"
+	@ bin/ruff --version
 
 
 .PHONY: status

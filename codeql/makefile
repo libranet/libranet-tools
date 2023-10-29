@@ -4,7 +4,8 @@
 
 .PHONY: clean
 clean:
-	- rm -fr codeql var
+	@ rm -fr codeql
+	@ rm -fr var
 
 
 .PHONY: install
