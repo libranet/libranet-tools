@@ -1,8 +1,8 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-.ONESHELL:
 .NOTPARALLEL:
+.ONESHELL:
 .PHONY: all
 
 help: #? display this help information
@@ -11,7 +11,7 @@ help: #? display this help information
 	@ echo -e "Please use \`make <target>' where <target> is one of:\n"
 	@ grep -E '^[a-zA-Z_-]+:.*?#?.*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?#\\? "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-clean:  #? clean remove generated files & dirs 
+clean:  #? remove generated files & dirs 
 	@ rm -fr bin include lib lib64 pyvenv.cfg
 	@ rm -fr var
 
