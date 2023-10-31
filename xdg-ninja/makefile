@@ -23,12 +23,12 @@ create-dirs:
 
 .PHONY: clone-repo
 clone-repo:
-	- git clone https://github.com/b3nj5m1n/xdg-ninja.git var/repo || git pull
+	- git clone https://github.com/b3nj5m1n/xdg-ninja.git var/repo
 
 
 .PHONY: update-repo
 update-repo:
-	- cd var/repo && git pull
+	- cd var/repo && git pull && cd -
 
 
 .PHONY: install-symlinks
@@ -47,6 +47,6 @@ install-glow:
 
 # see https://github.com/charmbracelet/glow
 .PHONY: install-glow-opensuse
-install-glow:
+install-glow-opensuse:
 	- sudo etc/charm.repo /etc/yum.repos.d/
 	- sudo zypper install glow

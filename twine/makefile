@@ -48,7 +48,7 @@ create-venv:
 
 
 .PHONY: upgrade-pip
-install:
+upgrade-pip:
 	- bin/python -m pip install --upgrade pip
 
 
