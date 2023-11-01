@@ -5,6 +5,7 @@
 
 THIS_DIR=$(realpath .)
 
+
 .PHONY: clean
 clean:
 	@ rm -fr bin
@@ -17,6 +18,7 @@ install: create-dirs clone-repo install-autojump create-symlinks
 
 .PHONY: create-dirs
 create-dirs:
+	@ mkdir -p bin
 	@ mkdir -p etc/profile.d
 	@ mkdir -p var
 	@ mkdir -p var/cache
@@ -44,7 +46,7 @@ update:
 
 .PHONY: create-symlinks
 create-symlinks:
-	- ln -s $(realpath var/home/bin) bin
+	- cd bin && ln -s $(realpath var/home/bin/autojump) && cd -
 
 
 .PHONY: stat
