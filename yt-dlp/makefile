@@ -13,7 +13,7 @@
 SHELL := /bin/bash
 
 SED=`command -v gsed || command -v sed`
-CMD=$(realpath bin/pyprof2calltree)
+CMD=$(realpath bin/youtube-dl)
 
 .PHONY: help
 help:
@@ -32,25 +32,26 @@ clean:
 create-dirs:
 	@ mkdir -p etc
 	@ mkdir -p var/cache
+	@ mkdir -p var/dowwnloads
 	@ mkdir -p var/tmp
 
 
 .PHONY: install ## run all install-steps
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks version
+install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-symlinks check
 
 
 .PHONY: update  ## update the current installation
-update: upgrade-pip install-packages version
+update: upgrade-pip install-packages check
 
 
 .PHONY: revert  ## revert to frozen requirements
 revert:
-	- bin/python -m pip install -r etc/requirements.txt
+	@ bin/python -m pip install -r etc/requirements.txt
 
 
 .PHONY: freeze  ## freeze current requirements
 freeze: create-dirs
-	- bin/python -m pip freeze > etc/requirements.txt
+	@ bin/python -m pip freeze > etc/requirements.txt
 
 
 .PHONY: create-venv  ## create a virtual python-environment
@@ -59,14 +60,14 @@ create-venv:
 
 
 .PHONY: upgrade-pip  ## upgrade pip itself
-install:
-	- bin/python -m pip freeze > etc/requirements.txt
-	- bin/python -m pip install --upgrade pip
+upgrade-pip:
+	@ bin/python -m pip freeze > etc/requirements.txt
+	@ bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages  ## install python-packages via pip
 install-packages:
-	- bin/pip install --upgrade pyprof2calltree
+	- bin/pip install --upgrade youtube-dl autoread-dotenv
 
 
 .PHONY: install-dotenv  ## generate .dotenv from template
@@ -84,8 +85,7 @@ install-symlinks:
 	@ cd ~/bin && ln -sf ${CMD}
 
 
-.PHONY: version
-version:
+.PHONY: check
+check:
 	@ echo -e "\nCurrent version is:"
-	# @ bin/pyprof2calltree --version
-	@ bin/pip freeze | grep pyprof2calltree 
+	@ bin/youtube-dl --version
