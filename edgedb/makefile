@@ -1,8 +1,10 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
-.ONSHELL:
+.ONESHELL:
+.NOTPARALLEL:
 .PHONY: all
+
 export TMPDIR := $(realpath var/tmp)
 # export TMP := $(realpath var/tmp)
 # export TEMP := $(realpath var/tmp)
