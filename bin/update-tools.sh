@@ -1,27 +1,39 @@
 #!/bin/bash
 
 
+echo -e "Updating black"
 cd /opt/tools/black && make update
 echo -e "\n\n"
 
+echo -e "Updating isort"
 cd /opt/tools/isort && make update
 echo -e "\n\n"
 
+echo -e "Updating poetry"
+cd /opt/tools/poetry && make update
+echo -e "\n\n"
+
+echo -e "Updating pre-commit"
 cd /opt/tools/pre-commit && make update
 echo -e "\n\n"
 
+echo -e "Updating pyenv"
 cd /opt/tools/pyenv && make update
 echo -e "\n\n"
 
+echo -e "Updating ruff"
 cd /opt/tools/ruff && make update
 echo -e "\n\n"
 
+echo -e "Updating twine"
 cd /opt/tools/twine && make update
 echo -e "\n\n"
 
+echo -e "Updating xdg-ninja"
 cd /opt/tools/xdg-ninja && make update
 echo -e "\n\n"
  
+echo -e "Updating zestreleaser"
 cd /opt/tools/zestreleaser && make update
 echo -e "\n\n"
  
