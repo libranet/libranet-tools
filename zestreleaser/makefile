@@ -1,9 +1,8 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
-
+MAKEFLAGS += --always-make --warn-undefined-variables
 .NOTPARALLEL:
 .ONESHELL:
-.PHONY: all
 
 help:  #? display this help information
 	@ grep "^#?" makefile | cut -c 4-
@@ -24,14 +23,14 @@ create-dirs:  #? create files and directories
 	@ mkdir -p var/log
 	@ mkdir -p var/tmp
 
-create-venv:  #? create a virtual python-environment
-	- python3 -m venv .
+create-venv: #? create a virtual python-environment
+	python3 -m venv .
 
-upgrade-pip:  #? upgrade pip itself
-	- bin/python -m pip install --upgrade pip
+upgrade-pip: #? upgrade pip itself
+	bin/python -m pip install --upgrade pip
 
-install-packages:  #? install python-packages via pip
-	- bin/pip install --upgrade zest.releaser
+install-packages: #? install python-packages via pip
+	bin/pip install --upgrade zest.releaser
 
 install-symlinks:  #? generate symlinks
 	@ echo -e "Create symlinks in ~/bin/"

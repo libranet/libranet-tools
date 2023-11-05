@@ -38,8 +38,8 @@ vim
 wget
 unzip
 util-linux-user
-autojump
-autojump-zsh
+# autojump
+# autojump-zsh
 
 # https://webhostinggeeks.com/howto/how-to-use-tmpwatch-to-auto-clean-up-files-and-logs-in-linux/
 tmpwatch
@@ -47,3 +47,7 @@ tmpwatch
 
 # locate command
 mlocate
+
+# https://www.youtube.com/watch?v=ZNNqkeeOdrk
+neofetch
+ncdu
