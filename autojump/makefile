@@ -35,8 +35,8 @@ clone-repo:
 .PHONY: install-autojump
 install-autojump:
 	# - cd var/repo && ./install.py --destdir ${THIS_DIR} -zshshare ${THIS_DIR}
-	# - cd var/repo && ./install.py --destdir ${THIS_DIR}/var/home
-	- cd var/repo && ./install.py --destdir ${THIS_DIR} .
+	- cd var/repo && ./install.py --destdir ${THIS_DIR}/var/home
+	# - cd var/repo && ./install.py --destdir ${THIS_DIR} .
 
 
 .PHONY: update

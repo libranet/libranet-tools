@@ -1,6 +1,14 @@
 #!/bin/bash
 
 
+echo -e "Git pull in /opt/dotfiles"
+cd /opt/dotfiles/
+git pull
+
+echo -e "Git pull in /opt/tools"
+cd /opt/tools/
+git pull
+
 echo -e "Updating black"
 cd /opt/tools/black && make update
 echo -e "\n\n"

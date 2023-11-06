@@ -24,3 +24,20 @@ zlib-devel
 
 # extra pyenv-plugin
 ccache
+
+
+# https://pillow.readthedocs.io/en/latest/installation.html
+freetype-devel 
+fribidi-devel 
+lcms2-devel 
+libimagequant-devel 
+libjpeg-devel 
+libraqm-devel 
+libtiff-devel 
+libwebp-devel 
+libxcb-devel
+harfbuzz-devel 
+openjpeg2-devel 
+tcl-devel 
+tk-devel    
+zlib-devel

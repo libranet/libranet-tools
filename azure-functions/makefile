@@ -33,9 +33,9 @@ update:
 
 .PHONY: download-installer
 download-installer:
-	- curl -sSLf ${DOWNLOAD_URL} -o var/tmp/${FILENAME}
-	- unzip var/tmp/${FILENAME} -d var/azure-functions-cli
-	- chmod u+x var/azure-functions-cli/func var/azure-functions-cli/gozip
+	@ curl -sSLf ${DOWNLOAD_URL} --output var/tmp/${FILENAME}
+	@ unzip var/tmp/${FILENAME} -d var/azure-functions-cli
+	@ chmod u+x var/azure-functions-cli/func var/azure-functions-cli/gozip
 
 
 .PHONY: install-symlinks

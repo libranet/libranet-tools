@@ -36,6 +36,11 @@ install-postgres:
 	sudo dnf install -y postgresql${VERSION} postgresql${VERSION}-server
 
 
+.PHONY: fix-pg-config
+fix-pg-config:
+	sudo alternatives --install /usr/bin/pg_config pgsql-pg_config /usr/pgsql-16/bin/pg_config 930
+
+
 .PHONY: init-db
 init-db:
 	sudo /usr/pgsql-${VERSION}/bin/postgresql-${VERSION}-setup initdb
@@ -49,11 +54,27 @@ version:
 
 .PHONY: status
 status:
-	sudo systemctl status postgresql-15
+	sudo systemctl status postgresql-${VERSION}
 
 
+.PHONY: set
 set:
 	sudo su - postgres && psql
+
+
+.PHONY: enable
+enable:
+	sudo systemctl enable postgresql-${VERSION}
+
+
+.PHONY: start
+start:
+	sudo systemctl start postgresql-${VERSION}
+
+
+.PHONY: stop
+stop:
+	sudo systemctl stop postgresql-${VERSION}
 
 
 .PHONY: install-symlinks
@@ -67,3 +88,8 @@ install-symlinks:
 change-password:
 	# sudo -u postgres psql -c "SELECT 1"
 	sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '123'"
+
+
+.PHONY: psql
+psql: 
+	sudo -u postgres psql
