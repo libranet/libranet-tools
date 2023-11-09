@@ -7,14 +7,6 @@ clean:
 	@ rm -fr var
 
 
-.PHONY: install
-install: create-dirs clone-repo install-symlinks
-
-
-.PHONY: update
-update: create-dirs update-repo install-symlinks
-
-
 .PHONY: create-dirs
 create-dirs:
 	@ mkdir -p etc
@@ -24,9 +16,17 @@ create-dirs:
 	@ mkdir -p var/log
 
 
+.PHONY: install
+install: create-dirs clone-repo install-symlinks
+
+
+.PHONY: update
+update: create-dirs update-repo install-symlinks
+
+
 .PHONY: clone-repo
 clone-repo:
-	- git clone https://github.com/zsh-users/antigen.git var/repo || git pull
+	git clone https://github.com/zsh-users/antigen.git var/repo || git pull
 
 
 .PHONY: update-repo

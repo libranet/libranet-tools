@@ -27,25 +27,25 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip
-install:
-	- bin/python -m pip install --upgrade pip
+upgrade-pip:
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade yen autoread-dotenv
+	bin/pip install --upgrade yen autoread-dotenv
 
 
 .PHONY: install-dotenv
 install-dotenv:
-	@echo -e "Copying .env.template to .env" ;\
-	cp -n .env.template .env ;\
-	echo "Please review the config in .env"
-	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	@ echo -e "Copying .env.template to .env"
+	@ cp -n .env.template .env
+	@ echo "Please review the config in .env"
+	@ echo -e "Replacing string __CWD__ -> $(PWD)"
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
@@ -57,9 +57,9 @@ install-symlinks:
 
 .PHONY: yen-list
 yen-list:
-	- yen list
+	yen list
 
 
 .PHONY: yen-demo
 yen-demo: yen-list
-	- yen create var/tmp/venv312 -p 3.12.0
+	yen create var/tmp/venv312 -p 3.12.0

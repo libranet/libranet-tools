@@ -24,7 +24,6 @@ create-dirs:
 
 .PHONY: clone-repo
 clone-repo:
-#	- git clone https://github.com/CISOfy/lynis var/repo || git pull
 	git clone https://github.com/woutervh/lynis var/repo || git pull
 
 

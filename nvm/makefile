@@ -16,7 +16,7 @@ install: create-dirs install-nvm
 .PHONY: install-nvm
 install-nvm:
 	# - curl -fsLS ${URL}
-	- curl -o- ${URL} | bash
+	curl -o- ${URL} | bash
 
 
 

@@ -23,33 +23,33 @@ create-dirs:
 
 .PHONY: download-neo4j
 download-neo4j:
-	- wget --no-clobber ${URL} -O var/downloads/neo4j-community-${NEO4J_VERSION}-unix.tar.gz
-	- cd var/downloads/ && tar -xzf neo4j-community-${NEO4J_VERSION}-unix.tar.gz
+	wget --no-clobber ${URL} -O var/downloads/neo4j-community-${NEO4J_VERSION}-unix.tar.gz
+	cd var/downloads/ && tar -xzf neo4j-community-${NEO4J_VERSION}-unix.tar.gz
 
 
 .PHONY: download-apoc
 download-apoc:
-	- wget --no-clobber ${URL_APOC} -O var/downloads/apoc-${APOC_VERSION}-all.jar
+	wget --no-clobber ${URL_APOC} -O var/downloads/apoc-${APOC_VERSION}-all.jar
 
 
 .PHONY: make-instance
 make-instance:
-	- mv var/downloads/neo4j-community-${NEO4J_VERSION} var/instances/${NEO4J_VERSION}
+	mv var/downloads/neo4j-community-${NEO4J_VERSION} var/instances/${NEO4J_VERSION}
 
 
 .PHONY: install-apoc
 install-apoc:
-	- cp var/downloads/apoc-${APOC_VERSION}-all.jar var/instances/${NEO4J_VERSION}/plugins
+	cp var/downloads/apoc-${APOC_VERSION}-all.jar var/instances/${NEO4J_VERSION}/plugins
 
 
 .PHONY: make-symlinks
 make-symlinks:
-	- cd var/instances && ln -fs ${NEO4J_VERSION} current
-	- ln -fs var/instances/current/bin bin
-	- ln -fs var/instances/current/conf etc
-	- cd var && ln -fs instances/current/import import
-	- cd var && ln -fs instances/current/logs log
+	@ cd var/instances && ln -fs ${NEO4J_VERSION} current
+	@ ln -fs var/instances/current/bin bin
+	@ ln -fs var/instances/current/conf etc
+	@ cd var && ln -fs instances/current/import import
+	@ cd var && ln -fs instances/current/logs log
 
-	# @echo -e "Create symlinks in ${HOME}/bin/"
-	- cd ~/bin  && ln -fs $(realpath var/instances/${NEO4J_VERSION}/bin/neo4j)
-	- cd ~/bin  && ln -fs $(realpath var/instances/${NEO4J_VERSION}/bin/neo4j-admin)
+	@ echo -e "Create symlinks in ${HOME}/bin/"
+	@ cd ~/bin  && ln -fs $(realpath var/instances/${NEO4J_VERSION}/bin/neo4j)
+	@ cd ~/bin  && ln -fs $(realpath var/instances/${NEO4J_VERSION}/bin/neo4j-admin)

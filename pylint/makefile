@@ -12,11 +12,11 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-dotenv install-symlinks version
 
 
 .PHONY: update
-update: upgrade-pip install-packages
+update: upgrade-pip install-packages version
 
 
 .PHONY: create-dirs
@@ -28,17 +28,17 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip
-install:
-	- bin/python -m pip install --upgrade pip
+upgrade-pip:
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade pylint autoread-dotenv
+	bin/pip install --upgrade pylint autoread-dotenv
 
 
 .PHONY: install-dotenv
@@ -56,6 +56,6 @@ install-symlinks:
 	@ cd ~/bin && ln -sf ${CMD}
 
 
-.PHONY: check
-check:
-	- bin/pylint --version
+.PHONY: version
+version:
+	bin/pylint --version

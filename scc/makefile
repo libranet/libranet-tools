@@ -18,7 +18,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs download install-symlinks check
+install: create-dirs download install-symlinks version
 
 
 .PHONY: create-dirs
@@ -38,11 +38,10 @@ download:
 
 .PHONY: install-symlinks
 install-symlinks:
-#	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD} scc
 
 
-.PHONY: check
-check:
+.PHONY: version
+version:
 	@ echo -e "\nCurrent version is:"
 	@ bin/scc --version
