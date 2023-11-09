@@ -65,7 +65,7 @@ update: update-pyenv
 
 .PHONY: install-symlinks
 install-symlinks:
-	mkdir -p ${HOME}/bin
+	@ mkdir -p ${HOME}/bin
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
 
@@ -79,23 +79,23 @@ install-local-symlinks: create-dirs
 .PHONY: install-plugins
 install-plugins:
 	# see https://github.com/pyenv/pyenv-ccache
-	- git clone https://github.com/pyenv/pyenv-ccache.git $(PYENV_ROOT)/plugins/pyenv-ccache
+	git clone https://github.com/pyenv/pyenv-ccache.git $(PYENV_ROOT)/plugins/pyenv-ccache
 	# see https://github.com/pyenv/pyenv-users
-	- git clone https://github.com/pyenv/pyenv-users.git "$(PYENV_ROOT)/plugins/pyenv-users"
+	git clone https://github.com/pyenv/pyenv-users.git "$(PYENV_ROOT)/plugins/pyenv-users"
 
 
 .PHONY: bashrc-install-from-example  ## instantiate the bashrc-file (no override)
 # cp --backup  creates .env~, but will overwrite this next time.
 # safest way, is to not overwrite existing .bashrc-files, manual intervention needed.
 bashrc-install-from-example:
-	@ echo -e "Copying etc/bashrc.example to etc/bashrc" ;\
-	cp -n  etc/bashrc.example  etc/bashrc ;\
-	echo "Please review the etc/bashrc-file."
+	@ echo -e "Copying etc/bashrc.example to etc/bashrc"
+	@ cp -n  etc/bashrc.example  etc/bashrc
+	@ echo -e "Please review the etc/bashrc-file."
 
 
 .PHONY: bashrc-set-dir ## replace placeholder __PYENV_ROOT__ with current working directory
 bashrc-set-dir: bashrc-install-from-example
-	@echo -e "Replacing string __PYENV_ROOT__ -> $(PYENV_ROOT ${PYENV_ROOT})" ;\
+	@echo -e "Replacing string __PYENV_ROOT__ -> $(PYENV_ROOT ${PYENV_ROOT})"
 	$(SED) -i 's@__PYENV_ROOT__@'"$(realpath ${PYENV_ROOT})"'@'  etc/bashrc
 
 
@@ -133,8 +133,7 @@ pyenv-install-python-latest-38:
 
 .PHONY: pyenv-install-python-latest-39 ## install python 3.9.x
 pyenv-install-python-latest-39:
-#	- PYTHON_VERSION=$(pyenv install --list | egrep '^[[:space:]]*3\.9' | tail -n 1) && bin/pyenv install -v ${PYTHON_VERSION}
-	- bin/pyenv install -v $(pyenv install --list | egrep '^[[:space:]]*3\.9' | tail -n 1)
+	bin/pyenv install -v $(pyenv install --list | egrep '^[[:space:]]*3\.9' | tail -n 1)
 
 
 .PHONY: pyenv-install-python-latest-310 ## install python 3.10.x

@@ -12,7 +12,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs download-installer run-installer install-symlinks check
+install: create-dirs download-installer run-installer install-symlinks version
 
 
 .PHONY: update
@@ -28,22 +28,22 @@ create-dirs:
 
 .PHONY: download-installer
 download-installer:
-	- curl -sSLf https://starship.rs/install.sh > bin/install-starship.sh
-	- chmod u+x bin/install-starship.sh
+	curl -sSLf https://starship.rs/install.sh > bin/install-starship.sh
+	chmod u+x bin/install-starship.sh
 
 
 .PHONY: run-installer
 run-installer:
-	- bin/install-starship.sh --bin-dir bin --yes --verbose
+	bin/install-starship.sh --bin-dir bin --yes --verbose
 
 
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink $(realpath bin/starhip) to ${HOME}/bin/"
-	- cd ~/bin && ln -sf $(realpath bin/starship)
+	cd ~/bin && ln -sf $(realpath bin/starship)
 
 
-.PHONY: check
-check:
+version:
+version:
 	@ echo -e "\nCurrent version is:"
-	- bin/starship --version
+	@ bin/starship --version

@@ -27,7 +27,7 @@ create-dirs:
 
 .PHONY: download-vault
 download-vault:
-	- wget --no-clobber ${URL} -O var/downloads/vault-${VERSION}.zip
+	wget --no-clobber ${URL} -O var/downloads/vault-${VERSION}.zip
 
 
 .PHONY: unzip-vault
@@ -42,9 +42,9 @@ make-symlinks:
 
 .PHONY: start-server-dev
 start-server-dev:
-	- bin/vault --dev
+	bin/vault --dev
 
 
 .PHONY: start-server
 start-server:
-	- bin/vault --config etc/vault.cfg
+	bin/vault --config etc/vault.cfg

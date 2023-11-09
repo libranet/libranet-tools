@@ -11,11 +11,12 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks version status
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks version
+	@ echo -e "\nAll steps succesfully executed.\n"
 
 
 .PHONY: update
-update: upgrade-pip install-packages version status
+update: upgrade-pip install-packages version
 
 
 .PHONY: create-dirs
@@ -27,17 +28,17 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip
 upgrade-pip:
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade ruff
+	bin/pip install --upgrade ruff
 
 
 .PHONY: install-symlinks
@@ -50,8 +51,3 @@ install-symlinks:
 version:
 	@ echo -e "\nCurrent version is:"
 	@ bin/ruff --version
-
-
-.PHONY: status
-status:
-	@ echo -e "\nAll steps succesfully executed.\n"
