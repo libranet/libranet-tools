@@ -1,8 +1,9 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 MAKEFLAGS += --always-make --warn-undefined-variables
+.DEFAULT_GOAL := help # set default goal to not be dependent on sorting / ordering.
 .NOTPARALLEL:
-.ONESHELL:
+.ONESHELL:  # all lines of the recipe will be given to a single invocation of the shell
 
 help:  #? display this help information
 	@ grep "^#?" makefile | cut -c 4-
@@ -10,18 +11,18 @@ help:  #? display this help information
 	@ echo -e "Please use \`make <target>' where <target> is one of:\n"
 	@ grep -E '^[a-zA-Z_-]+:.*?#?.*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?#\\? "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-clean:  #? remove generated files & dirs 
+clean:  #? remove generated files & dirs
 	@ rm -fr bin include lib lib64 pyvenv.cfg
 	@ rm -fr var
-
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks version  #? run all install-steps
-
-update: upgrade-pip install-packages version  #? update the current installation
 
 create-dirs:  #? create files and directories
 	@ mkdir -p var/cache
 	@ mkdir -p var/log
 	@ mkdir -p var/tmp
+
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks version  #? run all install-steps
+
+update: upgrade-pip install-packages version  #? update the current installation
 
 create-venv: #? create a virtual python-environment
 	python3 -m venv .

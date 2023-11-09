@@ -39,12 +39,12 @@ create-dirs:
 
 .PHONY: upgrade-pip
 install:
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade semgrep autoread-dotenv
+	bin/pip install --upgrade semgrep autoread-dotenv
 
 
 .PHONY: install-dotenv  ## generate .dotenv from template
@@ -67,15 +67,15 @@ install-symlinks:
 # cp --backup  creates .env~, but will overwrite this next time.
 # safest way, is to not overwrite existing .env-files, manual intervention needed.
 dotenv-install-from-template:
-	@echo -e "Copying .env.template to .env" ;\
-	cp -n .env.template .env ;\
-	echo "Please review any credentials in the .env-file."
+	@ echo -e "Copying .env.template to .env" ;\
+	@ cp -n .env.template .env ;\
+	@ echo "Please review any credentials in the .env-file."
 
 
 .PHONY: dotenv-set-basedir ## replace placeholder __CDW__ with current working directory
 dotenv-set-basedir:
-	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
-	$(SED) -i 's@__CWD__@'"$(PWD)"'@'  .env
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@'  .env
 
 
 .PHONY: dotenv-install ## install .env-file from .env.template

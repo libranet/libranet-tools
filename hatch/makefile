@@ -11,11 +11,11 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks version
 
 
 .PHONY: update
-update: upgrade-pip install-packages
+update: upgrade-pip install-packages version
 
 
 .PHONY: create-dirs
@@ -25,17 +25,17 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip
 install:
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade hatch
+	bin/pip install --upgrade hatch
 
 
 .PHONY: install-symlinks
@@ -44,7 +44,7 @@ install-symlinks:
 	@ cd ~/bin && ln -sf ${CMD}
 
 
-.PHONY: check
-check:
+.PHONY: version
+version:
 	@ echo -e "\nCurrent version is:"
-	- bin/hatch --version
+	@ bin/hatch --version

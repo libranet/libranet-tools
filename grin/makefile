@@ -27,17 +27,17 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip
 install:
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade grin3
+	bin/pip install --upgrade grin3
 
 
 .PHONY: install-symlinks

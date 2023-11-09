@@ -25,12 +25,12 @@ create-dirs:
 .PHONY: clone-repo
 clone-repo:
 #	- git clone https://github.com/CISOfy/lynis var/repo || git pull
-	- git clone https://github.com/woutervh/lynis var/repo || git pull
+	git clone https://github.com/woutervh/lynis var/repo || git pull
 
 
 .PHONY: update
 update:
-	- cd var/repo && git pull
+	cd var/repo && git pull
 
 
 .PHONY: create-symlinks
@@ -41,4 +41,4 @@ create-symlinks:
 
 .PHONY: audit
 audit:
-	- cd var/repo/ && ./lynis audit system
+	cd var/repo/ && ./lynis audit system

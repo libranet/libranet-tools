@@ -8,11 +8,11 @@
 .NOTPARALLEL:
 .PHONY: all
 
-# SHELL := /bin/bash  # switch from default /bin/sh 
+# SHELL := /bin/bash  # switch from default /bin/sh
 
 SED=`command -v gsed || command -v sed`
 
-#? 
+#?
 #? Manage a local installation of poe.
 #? website: https://poethepoet.natn.io
 
@@ -41,24 +41,24 @@ update: upgrade-pip install-packages version #? update the current installation
 
 
 revert: #? revert to frozen requirements
-	- bin/python -m pip install -r etc/requirements.txt
+	bin/python -m pip install -r etc/requirements.txt
 
 
 freeze: create-dirs #? freeze current requirements
-	- bin/python -m pip freeze > etc/requirements.txt
+	bin/python -m pip freeze > etc/requirements.txt
 
 
 create-venv: #? create a virtual python-environment
-	- python3 -m venv .
+	python3 -m venv .
 
 
 upgrade-pip: #? upgrade pip itself
-	- bin/python -m pip freeze > etc/requirements.txt
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip freeze > etc/requirements.txt
+	bin/python -m pip install --upgrade pip
 
 
 install-packages: #? install python-packages via pip
-	- bin/pip install --upgrade poethepoet autoread-dotenv
+	bin/pip install --upgrade poethepoet autoread-dotenv
 
 
 install-dotenv: #? generate .dotenv from template

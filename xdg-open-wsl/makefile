@@ -21,7 +21,7 @@ update: upgrade-pip install-packages
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: create-dirs
@@ -37,7 +37,6 @@ install:
 
 .PHONY: install-packages
 install-packages:
-	# - bin/pip install --upgrade xdg-open-wsl  # not on pypi
 	- bin/pip install --upgrade git+https://github.com/woutervh/xdg-open-wsl.git@master
 
 

@@ -27,8 +27,8 @@ create-dirs:
 
 .PHONY: download
 download:
-	- wget https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.14.6/codeql-bundle-linux64.tar.gz -P var/downloads
-	- tar xzf var/tmp/codeql-bundle-linux64.tar.gz
+	wget https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.14.6/codeql-bundle-linux64.tar.gz -P var/downloads
+	tar xzf var/tmp/codeql-bundle-linux64.tar.gz
 
 
 # .PHONY: install-configfile

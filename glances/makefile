@@ -10,11 +10,11 @@ clean:
 
 
 .PHONY: install
-install: create-venv create-dirs upgrade-pip install-packages install-dotenv install-symlinks
+install: create-venv create-dirs upgrade-pip install-packages install-dotenv install-symlinks version
 
 
 .PHONY: update
-update: upgrade-pip install-packages
+update: upgrade-pip install-packages version
 
 
 .PHONY: create-dirs
@@ -26,30 +26,30 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip
 install:
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages
 install-packages:
 	# https://github.com/nicolargo/glances
-	# - bin/pip install --upgrade glances
-	- bin/pip install --upgrade autoread-dotenv
-	- bin/pip install --upgrade 'glances[action,browser,cloud,cpuinfo,docker,export,folders,gpu,graph,ip,raid,snmp,web,wifi]'
-	- bin/pip install --upgrade sparklines
-	- bin/pip install --upgrade pySMART
+	# bin/pip install --upgrade glances
+	bin/pip install --upgrade autoread-dotenv
+	bin/pip install --upgrade 'glances[action,browser,cloud,cpuinfo,docker,export,folders,gpu,graph,ip,raid,snmp,web,wifi]'
+	bin/pip install --upgrade sparklines
+	bin/pip install --upgrade pySMART
 
 
 .PHONY: install-dotenv
 install-dotenv:
-	@echo -e "Copying .env.template to .env" ;\
+	@ echo -e "Copying .env.template to .env" ;\
 	cp -n .env.template .env ;\
 	echo "Please review the config in .env"
-	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
+	@ echo -e "Replacing string __CWD__ -> $(PWD)" ;\
 	$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 
@@ -60,7 +60,7 @@ install-symlinks:  create-dirs
 	@ cd var && ln -sf ~/.cache/glances log
 
 
-.PHONY: check
-check:
+.PHONY: version
+version:
 	@ echo -e "\nCurrent version is:"
-	bin/glances --version
+	@ bin/glances --version

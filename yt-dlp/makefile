@@ -56,7 +56,7 @@ freeze: create-dirs
 
 .PHONY: create-venv  ## create a virtual python-environment
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip  ## upgrade pip itself
@@ -67,7 +67,7 @@ upgrade-pip:
 
 .PHONY: install-packages  ## install python-packages via pip
 install-packages:
-	- bin/pip install --upgrade youtube-dl autoread-dotenv
+	bin/pip install --upgrade youtube-dl autoread-dotenv
 
 
 .PHONY: install-dotenv  ## generate .dotenv from template

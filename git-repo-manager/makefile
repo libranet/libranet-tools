@@ -40,7 +40,7 @@ install: create-dirs install-packages install-symlinks check
 
 
 .PHONY: update  ## update the current installation
-update: upgrade-pip install-packages check
+update: install-packages check
 
 
 .PHONY: install-packages  ## install rust-packages via cargo
@@ -59,3 +59,7 @@ install-symlinks:
 check:
 	@ echo -e "\nCurrent version is:"
 	@ bin/grm --version
+
+
+sync-tsc:
+	grm repos find remote --provider gitlab --token-command "echo ${GITLAB_TOKEN_TSC}" --root gitlab --format yaml --group tsc-projects  > gitlab-tsc-projects.yaml

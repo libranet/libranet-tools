@@ -16,7 +16,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs download install-symlinks check
+install: create-dirs download install-symlinks version
 
 
 .PHONY: create-dirs
@@ -38,7 +38,7 @@ install-symlinks:
 	@ cd ~/bin && ln -sf ${CMD} jq
 
 
-.PHONY: check
-check:
+.PHONY: version
+version:
 	@ echo -e "\nCurrent version is:"
 	@ bin/jq --version

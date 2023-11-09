@@ -13,7 +13,7 @@ clean:
 
 
 .PHONY: install
-install: create-dirs download-installer run-installer install-symlinks
+install: create-dirs download-installer run-installer install-symlinks version
 
 
 .PHONY: update
@@ -28,22 +28,22 @@ create-dirs:
 
 .PHONY: download-installer
 download-installer:
-	- curl -sSLf --proto '=https' --tlsv1.2 https://just.systems/install.sh > bin/install-just.sh
+	curl -sSLf --proto '=https' --tlsv1.2 https://just.systems/install.sh > bin/install-just.sh
 	@ chmod u+x bin/install-just.sh
 
 
 .PHONY: run-installer
 run-installer:
-	- bin/install-just.sh --to $(realpath bin)
+	bin/install-just.sh --to $(realpath bin)
 
 
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink $(realpath bin/just) to ${HOME}/bin/"
-	- cd ~/bin && ln -sf $(realpath bin/just)
+	@ cd ~/bin && ln -sf $(realpath bin/just)
 
 
-.PHONY: check
-check:
+.PHONY: version
+version:
 	@ echo -e "\nCurrent version is:"
-	- bin/just --version
+	@ bin/just --version

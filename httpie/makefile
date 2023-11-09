@@ -11,11 +11,11 @@ clean:
 
 
 .PHONY: install
-install: create-dirs create-venv upgrade-pip install-packages install-symlinks
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks version
 
 
 .PHONY: update
-update: upgrade-pip upgrade-wheel install-packages
+update: upgrade-pip upgrade-wheel install-packages version
 
 
 .PHONY: create-dirs
@@ -25,33 +25,33 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip
 upgrade-pip:
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: upgrade-wheel
 upgrade-wheel:
-	- bin/python -m pip install --upgrade wheel
+	bin/python -m pip install --upgrade wheel
 
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade httpie
+	bin/pip install --upgrade httpie
 
 
 .PHONY: install-symlinks
 install-symlinks:
 	# @ echo -e "Symlink $(realpath bin/http) to ${HOME}/bin/"
-	- cd ~/bin && ln -sf $(realpath bin/httpie)
-	- cd ~/bin && ln -sf $(realpath bin/http)
-	- cd ~/bin && ln -sf $(realpath bin/https)
+	@ cd ~/bin && ln -sf $(realpath bin/httpie)
+	@ cd ~/bin && ln -sf $(realpath bin/http)
+	@ cd ~/bin && ln -sf $(realpath bin/https)
 
 
-.PHONY: check
-check:
+.PHONY: version
+version:
 	@ echo -e "\nCurrent version is:"
-	- bin/httpie --version
+	@ bin/httpie --version

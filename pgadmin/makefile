@@ -30,31 +30,31 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip
 install:
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip install --upgrade pip
 
 
 .phony: install-packages
 install-packages:
-	- bin/pip install --upgrade pgadmin4 autoread-dotenv
+	bin/pip install --upgrade pgadmin4 autoread-dotenv
 	# - bin/pip install --upgrade pgadmin4-config
 
 
 .phony: install-dev
 install-dev:
 	# - git clone https://github.com/libranet/pgadmin4-toml-config.git var/src/pgadmin4-config
-	- git clone git@github.com:libranet/pgadmin4-toml-config.git var/src/pgadmin4-config
-	- bin/pip install -e var/src/pgadmin4-config
+	git clone git@github.com:libranet/pgadmin4-toml-config.git var/src/pgadmin4-config
+	bin/pip install -e var/src/pgadmin4-config
 
 
 .PHONY: install-dotenv
 install-dotenv:
 	@ echo -e "Copying .env.template to .env"
-	@ cp -n .env.template .env 
+	@ cp -n .env.template .env
 	@ echo "Please review the config in .env"
 	@ echo -e "Replacing string __CWD__ -> $(PWD)"
 	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' .env

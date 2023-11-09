@@ -26,17 +26,17 @@ create-dirs:
 
 .PHONY: create-venv
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
 
 .PHONY: upgrade-pip
 install:
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade nox nox-poetry
+	bin/pip install --upgrade nox nox-poetry
 
 
 .PHONY: install-symlinks
