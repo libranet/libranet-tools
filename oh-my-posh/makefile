@@ -20,8 +20,7 @@ create-dirs:
 	@ mkdir -p etc
 	@ mkdir -p var
 	@ mkdir -p var/tmp
-    # avoid files like ~/omp.cache because cache-dir did not exist.
-	@ mkdir -p ~/.cache/oh-my-posh
+	@ mkdir -p ~/.cache/oh-my-posh  # avoid files like ~/omp.cache because cache-dir did not exist.
 
 
 .PHONY: install-executable
@@ -48,12 +47,12 @@ install-symlinks:
 
 .PHONY: enable-bashrc
 enable-bashrc:
-	echo -e '\n\nsource ${BASE_DIR}/etc/bashrc' >> ~/.bashrc
+	@ echo -e '\n\nsource ${BASE_DIR}/etc/bashrc' >> ~/.bashrc
 
 
 .PHONY: enable-zshrc
 enable-zshrc:
-	echo -e '\n\nsource ${BASE_DIR}/etc/zshrc' >> ~/.zshrc
+	@ echo -e '\n\nsource ${BASE_DIR}/etc/zshrc' >> ~/.zshrc
 
 
 .PHONY: download-fonts
