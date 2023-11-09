@@ -19,6 +19,8 @@ az
 black
 btop
 bpytop
+browser
+certbot
 checkmate
 chroma
 conda
@@ -30,6 +32,7 @@ flake8
 flit
 fr
 frogmouth
+func
 fullrelease
 fzf
 fzf-tmux
@@ -72,6 +75,8 @@ scc
 semgrep
 shellcheck
 sphinx-build
+sqlcipherbrowser
+sqlitebrowser
 starship
 supervisord
 tox

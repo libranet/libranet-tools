@@ -11,6 +11,11 @@ clean:
 	@ rm -fr bin include lib lib64 pyvenv.cfg
 
 
+.PHONY: create-dirs
+create-dirs:
+	@ mkdir -p var/src
+	@ mkdir -p var/tmp
+
 .PHONY: install
 install: create-venv upgrade-pip install-packages install-symlinks
 
@@ -24,23 +29,18 @@ create-venv:
 	python3 -m venv .
 
 
-.PHONY: create-dirs
-create-dirs:
-	@ mkdir -p var/src
-	@ mkdir -p var/tmp
-
-
 .PHONY: upgrade-pip
 install:
-	- bin/python -m pip install --upgrade pip
+	bin/python -m pip install --upgrade pip
 
 
 .PHONY: install-packages
 install-packages:
-	- bin/pip install --upgrade git+https://github.com/woutervh/xdg-open-wsl.git@master
+	bin/pip install --upgrade git+https://github.com/woutervh/xdg-open-wsl.git@master
 
 
 .PHONY: install-symlinks
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
+	@ cd ~/bin && ln -sf ${CMD browser}
