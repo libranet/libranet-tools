@@ -3,21 +3,14 @@
 
 THIS_DIR=$(realpath .)
 
-
-.PHONY: clean
 clean:
 
-
-.PHONY: install
 install: add-repo-epel install-packages install-wslu install-symlinks
 
-
-.PHONY: update
-update: 
+update:
 	sudo dnf check-update && sudo dnf update -y
 
-.PHONY: add-repo-epel
-add-repo-epel: 
+add-repo-epel:
     # https://www.linuxcapable.com/how-to-install-enable-epel-epel-next-on-almalinux-9/
 	sudo dnf upgrade --refresh -y
 	sudo dnf config-manager --set-enabled crb
@@ -37,13 +30,9 @@ install-wslu:
 	sudo dnf copr enable wslutilities/wslu -y
 	sudo dnf install wslu
 
-
-.PHONY: install-packages
 install-packages:
 	- sudo dnf install -y $(cat etc/rpm-packages.txt)
 
-
-.PHONY: install-wsl-conf
 install-wsl-confs:
 	# @ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ sudo cd /etc && ln -sf $(realpath etc/wsl.conf)
