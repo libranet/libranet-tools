@@ -21,51 +21,44 @@ help:  #? display this help information
 SED=`command -v gsed || command -v sed`
 
 PYENV_ROOT=$(realpath -m var/repo)
-PYENV_ROOT=/opt/tools/pyenv/var/repo
 TMPDIR=$(realpath var/tmp)
-
-# # PYENV_ROOT="$HOME/.pyenv
-# export PYENV_ROOT='.'
 CMD=$(realpath ${PYENV_ROOT}/libexec/pyenv)
 
 
-clean:
+clean: #? remove generated files & dirs
 	@ rm -fr bin
 	@ rm -fr var
 
-create-dirs:
+create-dirs: #? create files and directories
 	@ mkdir -p bin
 	@ mkdir -p etc
 	@ mkdir -p var
 	@ mkdir -p var/tmp
 
-install: install-rpm-packages create-dirs install-pyenv update-pyenv install-plugins install-local-symlinks install-symlinks bashrc-install-from-example bashrc-set-dir
+install: install-rpm-packages create-dirs install-pyenv update-pyenv install-plugins install-local-symlinks install-symlinks bashrc-install-from-example bashrc-set-dir  #? run all install-steps
 
-install-rpm-packages:
+install-rpm-packages: #? install rpm-packages
 	# - for i in $(cat etc/rpm.txt);do sudo dnf install $i -y; done
 	# - for i in $$(grep -vE '^\s*(#|$)' etc/rpm.txt); do sudo dnf install "$$i" -y; done
 	# - ../bin/install-rpm.sh etc/rpm.txt
 
-install-pyenv:
+install-pyenv:  #? run pyenv-install-script
 	# curl https://pyenv.run | bash
 	curl -s -S -L -f https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 
-update-pyenv:
+update-pyenv: #? update pyenv itself
 	${CMD} update
 
 update: update-pyenv
 
-install-symlinks:
+install-symlinks: create-dirs  #? cretae symlinks
 	@ mkdir -p ${HOME}/bin
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
-
-
-install-local-symlinks: create-dirs
 	@ echo -e "Symlink ${CMD} to bin/"
 	@ cd bin && ln -sf ${CMD}
 
-install-plugins:
+install-plugins:  #? install extra pyenv-plugins
 	# see https://github.com/pyenv/pyenv-ccache
 	git clone https://github.com/pyenv/pyenv-ccache.git $(PYENV_ROOT)/plugins/pyenv-ccache
 	# see https://github.com/pyenv/pyenv-users
@@ -81,7 +74,6 @@ bashrc-install-from-example:  #? instantiate the bashrc-file (no override)
 bashrc-set-dir: bashrc-install-from-example #? replace placeholder __PYENV_ROOT__ with current working directory
 	@echo -e "Replacing string __PYENV_ROOT__ -> $(PYENV_ROOT ${PYENV_ROOT})"
 	$(SED) -i 's@__PYENV_ROOT__@'"$(realpath ${PYENV_ROOT})"'@'  etc/bashrc
-
 
 pyenv-available-versions:  #? list available python-versions
 	bin/pyenv install --list
