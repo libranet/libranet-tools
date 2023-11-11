@@ -31,20 +31,20 @@ install: create-dirs create-venv upgrade-pip install-packages install-dotenv ins
 
 update: upgrade-pip install-packages version #? update the current installation
 
-revert:
-	bin/python -m pip install -r etc/requirements.txt #? revert to frozen requirements
+revert:  #? revert to frozen requirements
+	bin/python -m pip install -r etc/requirements.txt 
 
-freeze: create-dirs
-	bin/python -m pip freeze > etc/requirements.txt #? freeze current requirements
+freeze: create-dirs  #? freeze current requirements
+	bin/python -m pip freeze > etc/requirements.txt
 
-create-venv: #? create a virtual python-environment
+create-venv:  #? create a virtual python-environment
 	python3 -m venv .
 
-upgrade-pip: #? upgrade pip itself
+upgrade-pip:  #? upgrade pip itself
 	bin/python -m pip freeze > etc/requirements.txt
 	bin/python -m pip install --upgrade pip
 
-install-packages: #? install python-packages via pip
+install-packages:  #? install python-packages via pip
 	bin/pip install --upgrade salt autoread-dotenv
 
 install-dotenv:  #? generate .dotenv from template
