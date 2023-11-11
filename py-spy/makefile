@@ -15,58 +15,39 @@ help:  #? display this help information
 
 # switch from default /bin/sh to
 SHELL := /bin/bash
-
-SED=`command -v gsed || command -v sed`
 CMD=$(realpath bin/py-spy)
 
-.PHONY: clean  ## remove generated files & dirs
 clean:
 	@ rm -fr bin include lib lib64 pyvenv.cfg
 	@ rm -fr var
 
-
-.PHONY: create-dirs  ## create files and directories
 create-dirs:
 	@ mkdir -p etc
 	@ mkdir -p var/cache
 	@ mkdir -p var/tmp
 
 
-.PHONY: install ## run all install-steps
 install: create-dirs create-venv upgrade-pip install-packages install-symlinks check
 
 
-.PHONY: update  ## update the current installation
 update: upgrade-pip install-packages check
 
-
-.PHONY: revert  ## revert to frozen requirements
 revert:
-	- bin/python -m pip install -r etc/requirements.txt
+	bin/python -m pip install -r etc/requirements.txt
 
-
-.PHONY: freeze  ## freeze current requirements
 freeze: create-dirs
-	- bin/python -m pip freeze > etc/requirements.txt
+	bin/python -m pip freeze > etc/requirements.txt
 
-
-.PHONY: create-venv  ## create a virtual python-environment
 create-venv:
-	- python3 -m venv .
+	python3 -m venv .
 
+upgrade-pip:
+	bin/python -m pip freeze > etc/requirements.txt
+	bin/python -m pip install --upgrade pip
 
-.PHONY: upgrade-pip  ## upgrade pip itself
-install:
-	- bin/python -m pip freeze > etc/requirements.txt
-	- bin/python -m pip install --upgrade pip
-
-
-.PHONY: install-packages  ## install python-packages via pip
 install-packages:
-	- bin/pip install --upgrade py-spy
+	bin/pip install --upgrade py-spy
 
-
-.PHONY: install-dotenv  ## generate .dotenv from template
 install-dotenv:
 	@ echo -e "Copying .env.template to .env"
 	@ cp -n .env.template .env
@@ -74,8 +55,6 @@ install-dotenv:
 	@ echo -e "Replacing string __CWD__ -> $(PWD)"
 	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
-
-.PHONY: install-symlinks  ## generate symlinks
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ cd ~/bin && ln -sf ${CMD}
