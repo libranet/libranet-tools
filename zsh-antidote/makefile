@@ -13,31 +13,36 @@ help:  #? display this help information
 	@ echo -e "Please use \`make <target>' where <target> is one of:\n"
 	@ grep -E '^[a-zA-Z_-]+:.*?#?.*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?#\\? "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-clean:
+clean:  #? remove generated files & dirs
 	@ rm -fr bin
 	@ rm -fr var
 
-create-dirs:
+create-dirs:  #? create dirs
 	@ mkdir -p bin
 	@ mkdir -p var/cache
 	@ mkdir -p var/home
 	@ mkdir -p var/tmp
 
-install: create-dirs clone-repo install-symlinks update-plugins
+install: create-dirs clone-repo install-symlinks update-plugins  #? run all install-steps
 
-update:
-	@ cd var/repo && git pull
+update:  #? update antidote
+	@ cd var/repo && git pull && cd -
+	@ chmod u+x var/repo/antidote
 	@ bin/antidote update
 
-clone-repo:
+clone-repo:  #? clone antidote-repo
 	git clone --depth=1 https://github.com/mattmc3/antidote.git var/repo
 	@ chmod u+x var/repo/antidote
 
-install-symlinks:
+install-symlinks:  #? install symlinks
 	@ ln -sf $(realpath var/repo/antidote) bin/
 	@ ln -sf $(realpath var/repo/antidote.zsh) bin/
 
-update-plugins:
+update-plugins:  #? update plugins
 	bin/antidote bundle < etc/plugins.txt > etc/plugins.zsh
 
-plugins: update-plugins
+plugins: update-plugins  #? update plugins
+
+version:  #? show current version
+	@ echo -e "\nCurrent version is:"
+	@ bin/antidote --version
