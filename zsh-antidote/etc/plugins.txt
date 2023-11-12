@@ -12,29 +12,26 @@
 # python-based  causes sitecustomize to run twice
 # djui/alias-tips
 
-robbyrussell/oh-my-zsh path:lib
-# robbyrussell/oh-my-zsh path:plugins/git
-robbyrussell/oh-my-zsh path:plugins/aliases kind:defer
-robbyrussell/oh-my-zsh path:plugins/aws kind:defer
-robbyrussell/oh-my-zsh path:plugins/azure kind:defer
-robbyrussell/oh-my-zsh path:plugins/colorize kind:defer
-robbyrussell/oh-my-zsh path:plugins/gh kind:defer
-robbyrussell/oh-my-zsh path:plugins/poetry kind:defer
+ohmyzsh/ohmyzsh path:lib
+# ohmyzsh/ohmyzsh path:plugins/git
+# ohmyzsh/ohmyzsh path:themes/robbyrussell.zsh-theme
+ohmyzsh/ohmyzsh path:plugins/aliases kind:defer
+ohmyzsh/ohmyzsh path:plugins/aws kind:defer
+ohmyzsh/ohmyzsh path:plugins/azure kind:defer
+ohmyzsh/ohmyzsh path:plugins/colorize kind:defer
+ohmyzsh/ohmyzsh path:plugins/dirhistory kind:defer
+ohmyzsh/ohmyzsh path:plugins/gh kind:defer
+ohmyzsh/ohmyzsh path:plugins/poetry kind:defer
 
-
-# robbyrussell/oh-my-zsh path:themes/robbyrussell.zsh-theme
+# https://github.com/fourdim/zsh-poetry
+# fourdim/zsh-poetry kind:defer
 
 # https://github.com/romkatv/powerlevel10k#antibody
 # romkatv/powerlevel10k
 
 # zsh-users/zsh-completions
-
 # zsh-users/zsh-syntax-highlighting
-# zdharma-continuum/fast-syntax-highlighting
 zdharma-continuum/fast-syntax-highlighting kind:defer
-
-# https://github.com/fourdim/zsh-poetry
-# fourdim/zsh-poetry
 
 # These popular core plugins should be loaded at the end
 zsh-users/zsh-autosuggestions kind:defer
