@@ -33,7 +33,6 @@ create-dirs:
 	@ mkdir -p var/downloads
 	@ mkdir -p var/log
 	@ mkdir -p var/run
-	@ mkdir -p var/
 
 install: create-dirs download install-symlinks
 
