@@ -12,7 +12,6 @@ help:  #? display this help information
 	@ grep -E '^[a-zA-Z_-]+:.*?#?.*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?#\\? "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 
-
 CMD=$(realpath bin/hadolint)
 
 SED=`command -v gsed || command -v sed`
@@ -36,7 +35,6 @@ download:
 	@ echo -e "Downloading ${DOWNLOAD_URL} to bin/hadolint"
 	curl -sSLf ${DOWNLOAD_URL} --output bin/hadolint
 	@ chmod u+x bin/hadolint
-
 
 install-symlinks:
 #	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
