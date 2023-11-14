@@ -19,7 +19,6 @@ clean:
 	@ rm -fr bin
 	@ rm -fr var
 
-
 create-dirs:
 	@ mkdir -p bin
 	@ mkdir -p etc/profile.d
@@ -31,13 +30,11 @@ create-dirs:
 install: create-dirs clone-repo install-autojump create-symlinks
 
 clone-repo:
-	# git clone https://github.com/wting/autojump.git var/repo || git pull
 	git clone https://github.com/woutervh/autojump.git var/repo || git pull
 
 install-autojump:
 	# cd var/repo && ./install.py --destdir ${THIS_DIR} -zshshare ${THIS_DIR}
 	cd var/repo && ./install.py --destdir ${THIS_DIR}/var/home
-	# cd var/repo && ./install.py --destdir ${THIS_DIR} .
 
 update:
 	cd var/repo && git pull && ./install.py
