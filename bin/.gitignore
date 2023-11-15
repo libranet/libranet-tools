@@ -117,6 +117,7 @@ bpytop
 cookiecutter
 cruft
 dotenv-linter
+edgedb
 flake8
 flit
 frogmouth
@@ -149,8 +150,10 @@ semgrep
 sphinx-build
 starship
 tiptop
+tldr
 twine
 virtualenv
+wsl-notify-send.exe
 xdg-ninja.sh
 xdg-open
 yen
