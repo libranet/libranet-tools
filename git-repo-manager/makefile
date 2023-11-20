@@ -44,5 +44,8 @@ version:
 	@ echo -e "\nCurrent version is:"
 	@ bin/grm --version
 
-sync-tsc:
+sync-find-tsc:
 	grm repos find remote --provider gitlab --token-command "echo ${GITLAB_TOKEN_TSC}" --root gitlab --format yaml --group tsc-projects  > gitlab-tsc-projects.yaml
+
+sybnc-tsc:
+	grm repos sync config --config tsc.yaml

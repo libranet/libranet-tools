@@ -24,3 +24,14 @@ fi
 
 # Source your static plugins file.
 source $zsh_plugins
+
+
+# https://github.com/MichaelAquilina/zsh-auto-notify
+export AUTO_NOTIFY_THRESHOLD=5
+export AUTO_NOTIFY_EXPIRE_TIME=10000
+export AUTO_NOTIFY_TITLE="Hey! %command has just finished"
+export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
+
+# redefine what is ignored by auto-notify
+export AUTO_NOTIFY_IGNORE=("docker" "man" "sleep")
+# AUTO_NOTIFY_IGNORE+=("docker")

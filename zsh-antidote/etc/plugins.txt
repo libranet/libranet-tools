@@ -23,6 +23,9 @@ ohmyzsh/ohmyzsh path:plugins/dirhistory kind:defer
 ohmyzsh/ohmyzsh path:plugins/gh kind:defer
 ohmyzsh/ohmyzsh path:plugins/poetry kind:defer
 
+# https://github.com/MichaelAquilina/zsh-auto-notify
+# MichaelAquilina/zsh-auto-notify kind:defer
+
 # https://github.com/fourdim/zsh-poetry
 # fourdim/zsh-poetry kind:defer
 
