@@ -14,7 +14,6 @@ help:  #? display this help information
 SED=`command -v gsed || command -v sed`
 CMD=$(realpath bin/fab)
 
-
 clean:
 	@ rm -fr bin include lib lib64 pyvenv.cfg
 	@ rm -fr var
@@ -37,11 +36,11 @@ install-packages:
 	bin/pip install --upgrade fabric autoread-dotenv
 
 install-dotenv:
-	@echo -e "Copying .env.template to .env" ;\
-	cp -n .env.template .env ;\
-	echo "Please review the config in .env"
-	@echo -e "Replacing string __CWD__ -> $(PWD)" ;\
-	$(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
+	@ echo -e "Copying .env.template to .env"
+	@ cp -n .env.template .env
+	@ echo "Please review the config in .env"
+	@ echo -e "Replacing string __CWD__ -> $(PWD)"
+	@ $(SED) -i 's@__CWD__@'"$(PWD)"'@' .env
 
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
