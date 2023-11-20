@@ -11,11 +11,9 @@ help:  #? display this help information
 	@ echo -e "Please use \`make <target>' where <target> is one of:\n"
 	@ grep -E '^[a-zA-Z_-]+:.*?#?.*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?#\\? "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-
 # Please see:
 #  - https://cli.github.com/
 #  - https://github.com/cli/cli/blob/trunk/docs/install_linux.md
-
 
 install:
 	sudo dnf install -y 'dnf-command(config-manager)'
