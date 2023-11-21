@@ -1,5 +1,4 @@
-bzip2
-bzip2-devel
+bzip2 bzip2-devel
 libffi-devel
 libuuid-devel
 ncurses-devel
@@ -53,3 +52,6 @@ neofetch
 ncdu
 
 lsof
+
+# ss - socket statistics
+iproute
