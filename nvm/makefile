@@ -21,6 +21,7 @@ install: create-dirs install-nvm
 install-nvm:
 	# - curl -fsLS ${URL}
 	curl -o- ${URL} | bash
+	chmod u+x var/repo/nvm/nvm.sh
 
 install-symlinks:
 	@ echo -e "Symlink $(realpath bin/nvm) to ${HOME}/bin/"
@@ -44,3 +45,11 @@ install-node-18:
 install-node-19:
 	nvm install 19
 	nvm which 19
+
+install-node-20:
+	nvm install 20
+	nvm which 20
+
+install-node-21:
+	bin/nvm install 21
+	bin/nvm which 21
