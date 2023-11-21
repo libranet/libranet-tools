@@ -1,9 +1,13 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 MAKEFLAGS += --always-make --warn-undefined-variables
+# SHELL:=/usr/bin/bash  # switch from default /bin/sh to
 .DEFAULT_GOAL := help # set default goal to not be dependent on sorting / ordering.
 .NOTPARALLEL:
 .ONESHELL:  # all lines of the recipe will be given to a single invocation of the shell
+
+print-%:  #? print make-variable
+	@ echo $*=$($*)  # cfr. http://blog.jgc.org/2015/04/the-one-line-you-should-add-to-every.html
 
 help:  #? display this help information
 	@ grep "^#?" makefile | cut -c 4-
@@ -11,12 +15,8 @@ help:  #? display this help information
 	@ echo -e "Please use \`make <target>' where <target> is one of:\n"
 	@ grep -E '^[a-zA-Z_-]+:.*?#?.*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?#\\? "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-
-
-# switch from default /bin/sh to
-SHELL := /bin/bash
-
 SED=`command -v gsed || command -v sed`
+# SED=$(command -v gsed || command -v sed)
 CMD=$(realpath bin/black)
 
 clean:  #? remove generated files & dirs
@@ -40,12 +40,21 @@ install-symlinks:  #? generate symlinks
 	@ cd ~/bin && ln -sf ${CARGO_HOME}/bin/grm && cd -
 	@ cd bin && ln -sf ${CARGO_HOME}/bin/grm && cd -
 
-version:
+version:  #? display current version
 	@ echo -e "\nCurrent version is:"
 	@ bin/grm --version
 
-sync-find-tsc:
-	grm repos find remote --provider gitlab --token-command "echo ${GITLAB_TOKEN_TSC}" --root gitlab --format yaml --group tsc-projects  > gitlab-tsc-projects.yaml
+find-tsc-projects:  #? find gitlab-repos for tsc-projects
+	grm repos find remote --provider gitlab --token-command "echo ${GITLAB_TOKEN_TSC}" --root repo --format yaml --group tsc-projects > gitlab-tsc-projects.yaml
 
-sybnc-tsc:
-	grm repos sync config --config tsc.yaml
+find-tsc-users:  #? find gitlab-repos for tsc-users
+	grm repos find remote --provider gitlab --token-command "echo ${GITLAB_TOKEN_TSC}" --root repo --format yaml --group tsc-users > gitlab-tsc-users.yaml
+
+find-tsc-extranet:  #? find gitlab-repos for tsc-extranet
+	grm repos find remote --provider gitlab --token-command "echo ${GITLAB_TOKEN_TSC}" --root repo --format yaml --group t3375 > gitlab-tsc-extranet.yaml
+
+sync-tsc-projects:  #? sync gitlab-repos for tsc-projects
+	grm sync --config gitlab-tsc-projects.yaml
+
+sync-tsc-users:  #? sync gitlab-repos for tsc-users
+	grm sync --config gitlab-tsc-users.yaml
