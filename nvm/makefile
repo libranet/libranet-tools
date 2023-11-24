@@ -1,6 +1,7 @@
 # This is a comment.
 # Important: You *must* indent using <TAB>s, not spaces.
 
+
 NVM_DIR=$(realpath .)/repo
 
 VERSION=v0.39.5
@@ -51,5 +52,6 @@ install-node-20:
 	nvm which 20
 
 install-node-21:
-	bin/nvm install 21
-	bin/nvm which 21
+	. etc/bashrc
+	nvm install 21
+	nvm which 21

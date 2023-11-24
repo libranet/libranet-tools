@@ -27,6 +27,7 @@ conda
 conda-env
 cookiecutter
 cruft
+d2
 fab
 flake8
 flit
@@ -52,6 +53,7 @@ just
 locust
 longtest
 lynis
+mmdc
 oh-my-posh
 os-update.sh
 pdm
