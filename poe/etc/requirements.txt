@@ -1,0 +1,6 @@
+autoread-dotenv==1.0.2
+pastel==0.2.1
+poethepoet==0.24.1
+python-dotenv==1.0.0
+sitecustomize-entrypoints==1.1.0
+tomli==2.0.1
