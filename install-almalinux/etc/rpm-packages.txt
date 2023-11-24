@@ -1,4 +1,5 @@
-bzip2 bzip2-devel
+bzip2 
+bzip2-devel
 libffi-devel
 libuuid-devel
 ncurses-devel
@@ -9,6 +10,7 @@ sqlite-devel
 tk-devel
 xz-devel
 zlib-devel
+
 bash-completion
 crontabs
 curl
@@ -33,10 +35,12 @@ strace
 telnet
 tmux
 yum-utils
-vim
-wget
 unzip
 util-linux-user
+vim
+wget
+
+# autojump now installed via /opt/tools
 # autojump
 # autojump-zsh
 
