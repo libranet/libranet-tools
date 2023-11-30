@@ -117,6 +117,7 @@ az
 black
 bpytop
 cookiecutter
+copier
 cruft
 dotenv-linter
 edgedb
