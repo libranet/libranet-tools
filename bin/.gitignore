@@ -156,6 +156,11 @@ tldr
 twine
 virtualenv
 wsl-notify-send.exe
+wt
 xdg-ninja.sh
 xdg-open
 yen
+
+
+# tmp
+sphinx-build-tools
