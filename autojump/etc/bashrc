@@ -1,15 +1,13 @@
 # https://github.com/joelthelion/autojump/wiki/
 export AUTOJUMP_DIR=${TOOLS_DIR}/autojump
-export AUTOJUMP_HOME=${AUTOJUMP_DIR}/var/home
-
 export AUTOJUMP_DATA_HOME=${AUTOJUMP_DIR}/var/cache
 export AUTOJUMP_ERROR_PATH=${AUTOJUMP_DIR}/var/log/autojump-errors.log
+export AUTOJUMP_HOME=${AUTOJUMP_DIR}/var/home
 
 if [ -n "$BASH_VERSION" ]; then
     [ -f ${AUTOJUMP_HOME}/share/autojump/autojump.bash ] && source ${AUTOJUMP_HOME}/share/autojump/autojump.bash      
 fi
 
 if [ -n "$ZSH_VERSION" ]; then
-    # echo -e "sourcing ${AUTOJUMP_HOME}/share/autojump/autojump.zsh"
     [ -f ${AUTOJUMP_HOME}/share/autojump/autojump.zsh ] && source ${AUTOJUMP_HOME}/share/autojump/autojump.zsh      
 fi
