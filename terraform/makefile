@@ -12,34 +12,29 @@ help:  #? display this help information
 	@ grep -E '^[a-zA-Z_-]+:.*?#?.*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?#\\? "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 
-# see https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+CMD=$(realpath bin/terraform)
 
-# https://github.com/hashicorp/terraform/pull/31952
-# https://github.com/hashicorp/terraform/issues/15389
-# generates unwanted $HOME/.terraform.d/checkpoint_signature
+SED=`command -v gsed || command -v sed`
+TMPDIR = $(shell readlink -f var/tmp)
 
-VERSION=1.6.1
-URL=https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip
+VERSION=1.6.5
+DOWNLOAD_URL=https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_arm64.zip
 
 clean:
+	@ rm -fr bin
+	@ rm -fr var
 
-install: add-repo install-rpm install-autocomplete install-docs
+create-dirs:
+	@ mkdir -p bin
+	@ mkdir -p var/cache
+	@ mkdir -p var/tmp
 
-add-repo:
-	sudo dnf check-update
-	sudo dnf install -y dnf-plugins-core
-	sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+install: create-dirs download install-symlinks
 
-install-rpm:
-	sudo dnf -y install terraform
-
-install-autocomplete:
-	terraform -install-autocomplete  2> /dev/null
-
-install-docs:
-	# available releases: https://github.com/terraform-docs/terraform-docs/tags
-	go install github.com/terraform-docs/terraform-docs@v0.16.0
+download:
+	curl -fLS "${DOWNLOAD_URL}" -o "var/tmp/terraform_${VERSION}_linux_arm64.zip"
+	unzip var/tmp/terraform_${VERSION}_linux_arm64.zip -d bin
+	@ chmod u+x bin/terraform
 
 install-symlinks:
-	@ mkdir -p bin
-	cd bin && ln -sf `which terraform`
+	@ cd ~/bin && ln -sf ${CMD} terraform
