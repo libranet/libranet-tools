@@ -17,15 +17,11 @@ CMD=$(realpath bin/hadolint)
 SED=`command -v gsed || command -v sed`
 TMPDIR = $(shell readlink -f var/tmp)
 
-VERSION=v2.12.0
-#DOWNLOAD_URL=https://github.com/hadolint/hadolint/releases/download/${VERSION}/hadolint-Linux-x86_64
-DOWNLOAD_URL=https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
-
 clean:
 	@ rm -fr bin
 	@ rm -fr var
 
-install: create-dirs download install-symlinks
+install: create-dirs download install-rvm install-symlinks
 
 create-dirs:
 	@ mkdir -p bin
@@ -45,7 +41,7 @@ download:
 	@ chmod u+x bin/rvm-installer.sh
 
 install-rvm:
-	bin/install-rvm.sh latest --path $(realpath var/home) --ignore-dotfiles
+	bin/rvm-installer.sh latest --path $(realpath var/home) --ignore-dotfiles
 
 install-symlinks:
 #	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
