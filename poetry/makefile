@@ -46,6 +46,10 @@ install-extensions: #? install poetry-plugins
 	@ echo -e "Installing poetry-plugin: poetry-bumpversion."
 	bin/poetry self add poetry-bumpversion
 
+	# see https://github.com/python-poetry/poetry-plugin-export
+	@ echo -e "Installing poetry-plugin: poetry-plugin-export."
+	bin/poetry self add poetry-plugin-export
+
  	# see https://pypi.org/project/poetry-dynamic-versioning/
 	# @ echo -e "Installing poetry-plugin: poetry-dynamic-versioning."
 	# bin/poetry self add "poetry-dynamic-versioning[plugin]"

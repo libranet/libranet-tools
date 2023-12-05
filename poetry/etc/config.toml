@@ -8,6 +8,10 @@
 # Please see https://python-poetry.org/docs/configuration/
 
 
+# [experimental]
+# new-installer = false
+
+
 [virtualenvs]
 
 # Directory where virtual environments will be created. Defaults to {cache-dir}/virtualenvs
@@ -26,17 +30,22 @@ create = true
 prefer-active-python = false
 
 
-# [experimental]
-# new-installer = false
+[warnings]
+# Warning: poetry-plugin-export will not be installed by default in a future version of Poetry.
+# In order to avoid a breaking change and make your automation forward-compatible, 
+# please install poetry-plugin-export explicitly. 
+# See https://python-poetry.org/docs/plugins/#using-plugins for details on how to install a plugin.
+# To disable this warning run 'poetry config warnings.export false'.
+export = false
 
 
 [repositories]
 # see https://python-poetry.org/docs/repositories/
 
-# [repositories.repo-tsc-demo]  # move to projects's pyproject.toml
-# # poetry publish --repository repo-tsc-demo  --username __token__ --password $GITLAB_TOKEN_TSC
-# # project-id: 49163009, https://gitlab.com/tsc-projects/tsc-demo
-# url = "https://gitlab.com/api/v4/projects/49163009/packages/pypi/"
+[repositories.tsc-demo]  # move to projects's pyproject.toml
+# poetry publish --repository tsc-demo --username __token__ --password $GITLAB_TOKEN_TSC
+# project-id: 49163009, https://gitlab.com/tsc-projects/tsc-demo
+url = "https://gitlab.com/api/v4/projects/49163009/packages/pypi/simple"
 
 [repositories.tsc-sphinx]
 # project-id: 47362917, https://gitlab.com/tsc-projects/tsc_sphinx
@@ -46,5 +55,3 @@ url = "https://gitlab.com/api/v4/projects/47362917/packages/pypi/simple"
 # project-id: xxx , https://gitlab.com/wvhconsulting/...
 url = "https://gitlab.com/api/v4/projects/xxx/packages/pypi/simple"
 
-# [repositories.ek-global]
-# url = "https://gitlab.com/api/v4/projects/37865045/packages/pypi/simple"
