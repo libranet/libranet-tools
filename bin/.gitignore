@@ -152,6 +152,7 @@ ruff
 semgrep
 sphinx-build
 starship
+terraform
 tiptop
 tldr
 twine

@@ -27,6 +27,7 @@ clean:
 create-dirs:
 	@ mkdir -p bin
 	@ mkdir -p var/cache
+	@ mkdir -p var/cache/terraform-plugin-cache
 	@ mkdir -p var/tmp
 
 install: create-dirs download install-symlinks
