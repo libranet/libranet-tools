@@ -33,6 +33,7 @@ upgrade-pip:
 
 install-packages:
 	bin/pip install --upgrade grin3
+	bin/pip install --upgrade autoread-dotenv
 
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
