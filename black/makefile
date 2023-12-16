@@ -9,8 +9,15 @@ MAKEFLAGS += --always-make --warn-undefined-variables
 SHELL := /bin/bash
 
 SED=`command -v gsed || command -v sed`
-CMD=$(realpath bin/black)
+SED1=$(command -v sed)
 
+CMD=$(realpath bin/black)
+CMD1=$(shell realpath bin/black)
+
+
+show:
+	@ echo -e ${SED1}
+	@ echo -e ${CMD1}
 
 help:  #? display this help information
 	@ grep "^#?" makefile | cut -c 4-
