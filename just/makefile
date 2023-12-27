@@ -17,17 +17,21 @@ clean:
 	@ rm -fr bin
 	@ rm -fr var
 
-install: create-dirs download-installer run-installer install-symlinks version
+install: create-dirs download-installer download-completions run-installer install-symlinks version
 
 update: install
 
 create-dirs:
 	@ mkdir -p bin
+	@ mkdir -p etc
 	@ mkdir -p var/tmp
 
 download-installer:
 	curl -sSLf --proto '=https' --tlsv1.2 https://just.systems/install.sh > bin/install-just.sh
 	@ chmod u+x bin/install-just.sh
+
+download-completions:
+	@ cd etc && wget https://raw.githubusercontent.com/gotcha/just-bash-completion/master/just-completion.bash
 
 run-installer:
 	bin/install-just.sh --to $(realpath bin)
