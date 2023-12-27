@@ -60,3 +60,8 @@ install-symlinks:
 
 version:
 	bin/ansible --version
+
+
+dummy-config:
+	bin/ansible-config init --disabled > etc/ansible-default.cfg
+	bin/ansible-config init --disabled -t all > etc/ansible-all-default.cfg
