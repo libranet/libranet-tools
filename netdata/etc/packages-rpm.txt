@@ -1,0 +1,7 @@
+autoconf-archive
+json-c-devel
+libmnl-devel
+libuv-devel
+libyaml-devel
+systemd-devel
+lz4-devel
