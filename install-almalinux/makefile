@@ -47,3 +47,10 @@ install-openssh:
 install-wsl-confs:
 	# @ echo -e "Symlink ${CMD} to ${HOME}/bin/"
 	@ sudo cd /etc && ln -sf $(realpath etc/wsl.conf)
+
+
+install-cron:
+	sudo dnf update -y && sudo dnf upgrade -y
+	sudo dnf install crontabs cronie cronie-anacron -y
+	sudo systemctl start crond && sudo systemctl enable crond
+	sudo systemctl status crond
