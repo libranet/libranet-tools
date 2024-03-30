@@ -21,6 +21,7 @@ clean:
 
 create-dirs:
 	@ mkdir -p var/cache
+	@ mkdir -p var/man
 	@ mkdir -p var/tmp
 
 install: create-dirs create-venv upgrade-pip install-packages install-symlinks version
@@ -34,7 +35,7 @@ upgrade-pip:
 	bin/python -m pip install --upgrade pip
 
 install-packages:
-	bin/pip install --upgrade pipx
+	bin/pip install --upgrade pipx autoread-dotenv
 
 install-symlinks:
 	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
