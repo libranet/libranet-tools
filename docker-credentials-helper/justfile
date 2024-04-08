@@ -1,0 +1,50 @@
+# Just is a crossplatform task-runner, similar to make.
+# And justfiles are equivalent to makefiles.
+#
+# Official docs:
+#  - https://just.systems/man/en
+#
+# Usage:
+#   > just --help
+#   > just <taskname>
+#
+# Notes:
+#  - Comments immediately preceding a recipe will appear in just --list:
+
+# load environment variables from .env file
+set dotenv-filename := ".env"
+set dotenv-load := true
+
+# search for justfiles in parent directories
+set fallback
+
+# TMPDIR = `realpath var/tmp`
+
+VERSION := '0.8.0'
+URL := 'https://github.com/docker/docker-credential-helpers/releases/download/v0.8.0/docker-credential-pass-v0.8.0.linux-amd64'
+
+
+# Help target
+help:
+    @ just --list --unsorted
+
+# remove generated files & dirs
+clean:
+    @ rm -fr bin
+
+alias clear := clean
+
+# create files and directories
+create-dirs:
+    @ mkdir -p bin
+
+# download the just installer to install-script
+download-installer: create-dirs
+    curl -sSLf --proto '=https' --tlsv1.2 https://github.com/docker/docker-credential-helpers/releases/download/v0.8.0/docker-credential-pass-v0.8.0.linux-amd64 --output bin/docker-credential-pass
+    @ chmod u+x bin/docker-credential-pass
+
+# show the current version
+version:
+    @ echo -e "\nCurrent version is:"
+    @ bin/docker-credential-pass --version
+
