@@ -1,0 +1,70 @@
+# Just is a crossplatform task-runner, similar to make.
+# And justfiles are equivalent to makefiles.
+#
+# Official docs:
+#  - https://just.systems/man/en
+#
+# Usage:
+#   > just --help
+#   > just <taskname>
+#
+# Notes:
+#  - Comments immediately preceding a recipe will appear in just --list:
+
+# load environment variables from .env file
+set dotenv-filename := ".env"
+set dotenv-load := true
+
+# search for justfiles in parent directories
+set fallback
+
+TMPDIR := `realpath var/tmp`
+
+CMD := `realpath bin/virtualenv`
+
+# Help target
+help:
+    @ just --list --unsorted
+
+# remove generated files & dirs
+clean:
+	@ rm -fr bin
+	@ rm -fr var
+
+alias clear := clean
+
+# run all install-steps
+install: create-dirs download-installer download-completions run-installer install-symlinks version
+
+# update the current installation
+update: install
+
+# create files and directories
+create-dirs:
+	@ mkdir -p bin
+	@ mkdir -p etc
+	@ mkdir -p var/tmp
+
+# download the just installer to install-script
+download-installer:
+	curl -sSLf --proto '=https' --tlsv1.2 https://just.systems/install.sh > bin/install-just.sh
+	@ rm -fr bin/just
+	@ chmod u+x bin/install-just.sh
+
+# download the just bash completion script
+download-completions:
+	@ cd etc && wget https://raw.githubusercontent.com/gotcha/just-bash-completion/master/just-completion.bash -O just-completion.bash
+
+# run the installer script
+run-installer:
+	bin/install-just.sh --to $(realpath bin)
+
+# create symlinks
+install-symlinks:
+	@ echo -e "Symlink $(realpath bin/just) to ${HOME}/bin/"
+	@ cd ~/bin && ln -sf $(realpath bin/just)
+
+# show the current version
+version:
+	@ echo -e "\nCurrent version is:"
+	@ bin/just --version

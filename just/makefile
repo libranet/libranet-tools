@@ -28,10 +28,11 @@ create-dirs:
 
 download-installer:
 	curl -sSLf --proto '=https' --tlsv1.2 https://just.systems/install.sh > bin/install-just.sh
+	@ rm -fr bin/just
 	@ chmod u+x bin/install-just.sh
 
 download-completions:
-	@ cd etc && wget https://raw.githubusercontent.com/gotcha/just-bash-completion/master/just-completion.bash
+	@ cd etc && wget https://raw.githubusercontent.com/gotcha/just-bash-completion/master/just-completion.bash -O just-completion.bash
 
 run-installer:
 	bin/install-just.sh --to $(realpath bin)
