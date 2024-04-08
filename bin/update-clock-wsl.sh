@@ -13,3 +13,10 @@ update_clock
 
 # dnf install system-timesyncd
 timedatectl status
+
+
+# sudo yum install chrony
+# sudo systemctl start chronyd
+# sudo systemctl enable chronyd
+# sudo chronyd -q 'server 0.centos.pool.ntp.org iburst'
+# chronyc tracking

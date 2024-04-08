@@ -32,6 +32,9 @@ create-venv:
 install:
 	bin/python -m pip install --upgrade pip
 
+upgrade-pip:
+	bin/pip install -U pip
+
 install-packages:
 	bin/pip install --upgrade fabric autoread-dotenv
 
@@ -48,4 +51,4 @@ install-symlinks:
 
 version:
 	@ echo -e "\nCurrent version is:"
-	@ bin/fabric --version
+	@ bin/fab --version

@@ -37,6 +37,10 @@ echo -e "Updating twine"
 cd /opt/tools/twine && make update
 echo -e "\n\n"
 
+echo -e "Updating uv"
+cd /opt/tools/uv && make update
+echo -e "\n\n"
+
 echo -e "Updating xdg-ninja"
 cd /opt/tools/xdg-ninja && make update
 echo -e "\n\n"

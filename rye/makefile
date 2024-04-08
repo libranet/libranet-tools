@@ -18,7 +18,6 @@ help:  #? display this help information
 
 clean:
 	@ rm -fr bin
-	@ rm -fr home
 	@ rm -fr var
 
 create-dirs:
@@ -36,7 +35,6 @@ install-rye:
 	@ export RYE_INSTALL_OPTION='--yes'
 	curl -fsLS https://rye-up.com/get --output bin/rye-installer.sh
 	@ chmod u+x bin/rye-installer.sh
-	@ echo -e "${TMP} , ${RYE_HOME}"
 	@ bin/rye-installer.sh
 
 update-rye:
