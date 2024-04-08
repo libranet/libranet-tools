@@ -1,0 +1,66 @@
+# Just is a crossplatform task-runner, similar to make.
+# And justfiles are equivalent to makefiles.
+#
+# Official docs:
+#  - https://just.systems/man/en
+#
+# Usage:
+#   > just --help
+#   > just <taskname>
+#
+# Notes:
+#  - Comments immediately preceding a recipe will appear in just --list:
+
+# load environment variables from .env file
+set dotenv-filename := ".env"
+set dotenv-load := true
+
+# search for justfiles in parent directories
+set fallback
+
+CMD := `realpath bin/virtualenv`
+
+# Help target
+help:
+    @ just --list --unsorted
+
+# remove generated files & dirs
+clean:  
+	@ rm -fr bin include lib lib64 pyvenv.cfg
+	@ rm -fr var
+
+alias clear := clean
+
+# create files and directories
+create-dirs: 
+	@ mkdir -p var/cache
+	@ mkdir -p var/log
+	@ mkdir -p var/tmp
+
+# run all install-steps
+install: create-dirs create-venv upgrade-pip install-packages install-symlinks version  
+
+# update the current installation
+update: upgrade-pip install-packages version 
+
+# create files and directories
+create-venv: 
+	python3 -m venv .
+
+# upgrade pip itself
+upgrade-pip: 
+	bin/python -m pip install --upgrade pip
+
+# install python-packages via pip
+install-packages: 
+	bin/pip install --upgrade virtualenv autoread-dotenv
+
+# generate symlinks
+install-symlinks: 
+	@ echo -e "Symlink ${CMD} to ${HOME}/bin/"
+	@ cd ~/bin && ln -sf ${CMD}
+
+# show current version
+version:
+	@ echo -e "\nCurrent version is:"
+	@ bin/virtualenv --version
