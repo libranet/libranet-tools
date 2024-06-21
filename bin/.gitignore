@@ -38,6 +38,7 @@ d2
 debug-statement-hook
 detect-private-key
 doc8
+docker-color-output
 docker-credential-pass
 end-of-file-fixer
 fab
