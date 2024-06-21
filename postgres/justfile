@@ -1,0 +1,101 @@
+# Just is a crossplatform task-runner, similar to make.
+# And justfiles are equivalent to makefiles.
+#
+# Official docs:
+#  - https://just.systems/man/en
+#
+# Usage:
+#   > just --help
+#   > just <taskname>
+#
+# Notes:
+#  - Comments immediately preceding a recipe will appear in just --list:
+
+# load environment variables from .env file
+set dotenv-filename := ".env"
+set dotenv-load := true
+
+
+TMPDIR := absolute_path('var/tmp')
+VERSION := "16"
+
+
+# Help target
+help:
+    @ just --list --unsorted
+
+
+# clean all
+clean:
+	@ rm -fr bin
+	@ rm -fr var
+
+
+# full install postgres	
+install: create-dirs add-repo install-postgres init-db version
+
+# create directories
+create-dirs:
+	@ mkdir -p bin
+	@ mkdir -p etc
+	@ mkdir -p var/tmp
+
+# add repo for postgres
+add-repo:
+	sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+# https://www.tecmint.com/install-postgresql-rocky-linux/
+# sudo dnf -qy module disable postgresql
+
+
+# install postgres via dnf
+install-postgres:
+	sudo dnf install -y postgresql{{VERSION}} postgresql{{VERSION}}-server
+
+# fix pg_config
+fix-pg-config:
+	sudo alternatives --install /usr/bin/pg_config pgsql-pg_config /usr/pgsql-16/bin/pg_config 930
+
+# run initdb for postgres
+init-db:
+	sudo /usr/pgsql-{{VERSION}}/bin/postgresql-{{VERSION}}-setup initdb
+
+# show version psql
+version:
+	@ echo -e "Version psql:"
+	@ psql --version
+
+set:
+	sudo su - postgres && psql
+
+# enable postgres
+postgres-enable:
+	sudo systemctl enable postgresql-{{VERSION}}
+
+
+# run postgres command (status|start|stop)
+postgres cmd='status':
+	sudo systemctl {{cmd}} postgresql-{{VERSION}}
+
+
+# show status of postgres
+# postgres-status:
+# 	sudo systemctl status postgresql-{{VERSION}}
+
+# # start postgres
+# postgres-start cmd='status':
+# 	sudo systemctl start postgresql-{{VERSION}}
+
+# # stop postgres
+# postgres-stop:
+# 	sudo systemctl stop postgresql-{{VERSION}}
+
+
+# change password for postgres user
+change-password:
+	# sudo -u postgres psql -c "SELECT 1"
+	sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '123'"
+
+# start psql-session
+psql:
+	sudo -u postgres psql
