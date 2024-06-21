@@ -20,6 +20,9 @@ bpytop
 browser
 certbot
 check-executables-have-shebangs
+check-case-conflict
+check-merge-conflict
+check-symlinks
 check-json
 check-toml
 check-xml

@@ -37,7 +37,7 @@ upgrade-pip:
 
 install-packages:
 	bin/pip install --upgrade pgadmin4 autoread-dotenv
-	# - bin/pip install --upgrade pgadmin4-config
+	bin/pip install --upgrade werkzeug<3.0
 
 install-dev:
 	# - git clone https://github.com/libranet/pgadmin4-toml-config.git var/src/pgadmin4-config

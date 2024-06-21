@@ -58,3 +58,6 @@ sync-tsc-projects:  #? sync gitlab-repos for tsc-projects
 
 sync-tsc-users:  #? sync gitlab-repos for tsc-users
 	grm sync --config gitlab-tsc-users.yaml
+
+get-example-config:
+	curl --proto '=https' --tlsv1.2 -sSfO https://raw.githubusercontent.com/hakoerber/git-repo-manager/master/example.config.toml
